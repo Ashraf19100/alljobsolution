@@ -1,5 +1,5 @@
 <?php
-require_once '../database/database.php';
+require_once 'database/database.php';
 
 $login = new datamodel();
 if(isset($_POST)){
@@ -19,6 +19,14 @@ if(isset($_POST)){
     }
     $result = $login->getData('users',' * ',$condition);
     if(isset($result)){
+        session_start();
+        foreach($result as $row){
+            foreach($row as $key => $val){
+                $_SESSION[$key]=$val;
+            }
+        }
+        header("Location: ../alljobsolution/index.php?page=dashboard");
+        exit;
         
     }
     

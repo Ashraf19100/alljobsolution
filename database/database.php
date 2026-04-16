@@ -20,10 +20,7 @@
 
 
     }
-    class session{
-
-        
-    }
+   
 
     class datamodel extends database{
         public function getData($table, $field=' * ', $condition=''){
@@ -33,7 +30,7 @@
                 $sql .= $condition;
             }
             $result = $this->connect()->query($sql);
-            print_r($result);
+            
             if($result->num_rows > 0){
                 $infodata = array();
                 while($row = $result->fetch_assoc()){
