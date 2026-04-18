@@ -18,6 +18,7 @@ if(isset($_POST)){
         
     }
     $result = $login->getData('users',' * ',$condition);
+    
     if(isset($result)){
         session_start();
         foreach($result as $row){

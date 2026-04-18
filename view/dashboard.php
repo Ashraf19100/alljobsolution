@@ -1,9 +1,6 @@
 <?php  
-    session_start();
-    if(!isset($_SESSION['email'])){
-        header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
-        exit;
-    }
+    
+    
     
 ?>
 
@@ -24,7 +21,14 @@
                         <button type="submit" class="btn btn-info shadow-sm border-0 text-start text-uppercase text-white ">Search</button>
                     </form>
                 </div>
-                <?php require "view/allpost.php" ?>
+
+               <?php
+                require_once 'view/allpost.php';
+               
+               ?> 
+              
+
+                
                 
             </div>
         </div>

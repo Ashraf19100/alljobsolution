@@ -1,4 +1,7 @@
+<?php 
 
+
+?>
 
 <div class="col-md-2">
     <div class="logo">
@@ -16,21 +19,23 @@
     <div class="side-navbar bg-light">
         <ul>
             <li><a href="index.php?page=home">Home</a></li>
-            <li class="nasted-nav"><a href="">User Information</a>
-                <ul class="side-subnav">
-                    <li><a href="">Perrsonal Inforrmation</a></li>
-                    <li><a href="">Education</a></li>
+            <li class="nasted-nav"><a href="">User Information</a><button id='nav-btn'>+</button>
+                <ul class="side-subnav " id="sub_nav">
+                    <li><a href="index.php?page=personalinfo">Perrsonal Inforrmation</a></li>
+                    <li><a href="index.php?page=educationalinfo">Education</a></li>
                 </ul>
             </li>
             <li><a href="">my resume</a></li>
             <li><a href="">Admit Card</a></li>
             <li><a href="">Notice</a></li>
-            <li class="nasted-nav"><a href="">find job</a>
-                <ul class="side-subnav">
+            
+            <li class="nasted-nav"><a href="">find job</a><button id='nav-btn2'>+</button>
+                <ul class="side-subnav" id="sub_nav2">
                     <li><a href="">Government Job</a></li>
                     <li><a href="">Private Job</a></li>
                 </ul>
             </li>
+            <li><a href="index.php?page=logout">logout</a></li>
         </ul>
     </div>
 </div>

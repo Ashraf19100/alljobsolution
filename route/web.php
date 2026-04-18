@@ -1,4 +1,6 @@
-<?php
+
+<?php 
+session_start();
 
 $page = $_GET['page'] ?? 'home';
 
@@ -21,10 +23,31 @@ switch ($page) {
         break;
 
     case 'dashboard':
+        if(isset($_SESSION['email'])){
         require_once 'view/dashboard.php';
         break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
+            exit;
+        }
+    case 'personalinfo':
+        require_once 'view/personalinfo.php';
+        break;
+    case 'personalinfo-submit':
+        require_once 'actions/personalinfoController.php';
+        break;
+    case 'educationalinfo':
+        require_once 'view/educationalinfo.php';
+        break;
+    case 'logout':
+        require_once 'actions/logoutController.php';
+        break;
+        
 
     default:
-        require_once 'view/home.php'; // you can create this
+        require_once 'view/home.php'; // you can create this 
         break;
 }
+
+                
+?>

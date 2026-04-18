@@ -1,7 +1,4 @@
-<?php 
-	session_start();
 
-?>
 
 <div class=" navbar d-flex align-item-center justify-content-between">
 			<div class="logo-job">
@@ -12,13 +9,13 @@
 					<li class="px-2"><a href="index.php?page=home">Home</a></li>                                      
 					<li class="px-2"><a href="">search job</a></li>
 					<li class="px-2 nav-list" >
-						<a href=""><?php if($_SESSION['email']){
+						<a href=""><?php if(isset($_SESSION['email'])){
 							print($_SESSION['name']);
 						}else{
 							echo "user name";
 						} ?></a>
 						<ul class="sub-nav">
-							<?php if($_SESSION['email']){ ?>
+							<?php if(isset($_SESSION['email'])){ ?>
 							<li class="px-2"><a href="index.php?page=dashboard">Dashboard</a></li>                       
 							<li class="px-2"><a href="index.php?page=logout">logout</a></li>                       
 

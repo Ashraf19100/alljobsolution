@@ -6,8 +6,15 @@
 <body>
 	<div class="wrapper">
 		<?php require "layouts/navbar.php" ?>
+        
         <div class="login_form">
+
             <div class="login_card">
+                <?php if(isset($_GET['message'])){ 
+                  echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
+
+                 } ?>
+                
                 <div class="login_card_top">
                     <img src="assets/img/logo.png" alt="">
                 </div>

@@ -66,6 +66,33 @@
 
             }
         }
+        public function updateData($table , $column, $condition){
+            if($column != ''){
+                $sql = "UPDATE $table SET ";
+                $count = count($column);
+                $i=1;
+            
+                foreach($column as $key => $val){
+                    if($i<$count){
+                    $sql .= " $key = '".$val."', ";
+
+                    }else{
+                    $sql .= " $key = '".$val."' ";
+
+                    }
+                    $i++;
+                }
+                $sql .= $condition;
+                
+                $result = $this->connect()->query($sql);
+
+
+                
+                return $result;
+                
+
+            }
+        }
 
     }
 
