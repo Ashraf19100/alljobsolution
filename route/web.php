@@ -36,8 +36,17 @@ switch ($page) {
     case 'personalinfo-submit':
         require_once 'actions/personalinfoController.php';
         break;
+    case 'education-submit':
+        require_once 'actions/educationinfoController.php';
+        break;
     case 'educationalinfo':
         require_once 'view/educationalinfo.php';
+        break;
+    case 'profileinfo':
+        require_once 'view/imageupload.php';
+        break;
+    case 'imageupload-submit':
+        require_once 'actions/imageuploadController.php';
         break;
     case 'logout':
         require_once 'actions/logoutController.php';
@@ -45,7 +54,7 @@ switch ($page) {
         
 
     default:
-        require_once 'view/home.php'; // you can create this 
+        require_once 'view/home.php'; 
         break;
 }
 

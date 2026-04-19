@@ -93,6 +93,32 @@
 
             }
         }
+        public function validate($file,$fileExt){
+            
+            
+        }
+        public function fileupload($file){
+            
+            $allowed =[ 'jpg', 'jpeg', 'png', 'pdf'];
+            $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+            if(!in_array($fileExt, $allowed)){
+                $message ="Invalid File Extention";
+                $result = false;
+            }else{
+                $result = true;
+                $fileName = uniqid("IMG_", true). ".".$fileExt;
+                $destination = "uploads/". $fileName ;
+                $checkUpload = move_uploaded_file($file['tmp_name'], $destination);
+            }
+            
+            
+          
+            if(isset($checkUpload)){
+                return [$result, $fileName];
+            }else{
+                return [$result ,$message];
+            }
+        }
 
     }
 

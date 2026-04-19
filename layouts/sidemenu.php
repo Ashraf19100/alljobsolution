@@ -23,6 +23,7 @@
                 <ul class="side-subnav " id="sub_nav">
                     <li><a href="index.php?page=personalinfo">Perrsonal Inforrmation</a></li>
                     <li><a href="index.php?page=educationalinfo">Education</a></li>
+                    <li><a href="index.php?page=profileinfo">profile</a></li>
                 </ul>
             </li>
             <li><a href="">my resume</a></li>

@@ -4,6 +4,13 @@
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
 
     $result = $eduinfo->getData('user_education',' * ', $condition );
+    if(isset($result)){
+        foreach($result as $row){
+            foreach($row as $key => $val){
+                $education[$key] = $val;
+            }
+        }
+    }
     
     
 ?>
@@ -30,7 +37,7 @@
                         <div class="card shadow p-4">
                             <h4 class="mb-3">ADD NEW DEGREE</h4>
 
-                            <form>
+                            <form action="index.php?page=education-submit" method="POST">
 
                                 <div class="row">
                                     <!-- Exam Name -->
@@ -52,11 +59,18 @@
                                         <label class="form-label">Roll / ID</label>
                                         <input type="text" name="roll_id" class="form-control">
                                     </div>
+                                    
 
                                     <!-- Subject -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Subject</label>
                                         <input type="text" name="subject" class="form-control">
+                                    </div>
+                                    <!-- result -->
+
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Result</label>
+                                        <input type="text" name="result" class="form-control">
                                     </div>
 
                                     <!-- Passing Year -->
@@ -86,7 +100,9 @@
                             </div>
                             
                             
-                        <?php foreach($result as $education){ ?>
+                        <?php 
+                            if(isset($education)){
+                         ?>
                             <div class="card shadow p-1">
                                 <div class="row mb-3">
                                 <div class="col-md-6">
@@ -117,7 +133,7 @@
                                 </div>
                             </div>
                             </div>
-                            <?php } ?>
+                            <?php  }?>
                         </div>
                     </div>
                     

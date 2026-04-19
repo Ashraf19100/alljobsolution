@@ -4,12 +4,14 @@ require_once 'database/database.php';
 $personalinfo = new datamodel();   
 $condition = " WHERE user_id ='".$_SESSION['id']."'";
 $user_info = $personalinfo->getData('user_details',' * ', $condition );   
+if(isset($user_info)){
+    foreach($user_info as $user_info){
+        foreach($user_info as $key => $val){
+        $row[$key] = $val;
+    }
+    }
+}
 
-foreach($user_info as $user_info){
-    foreach($user_info as $key => $val){
-    $row[$key] = $val;
-}
-}
 
     
 ?>
