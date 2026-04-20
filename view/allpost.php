@@ -34,7 +34,7 @@ $result = $alljob->getData('jobs');
                 </div>
                 </div>
             
-                <a href="" class="w-100 btn bg-info m-1 text-center text-white">Details</a>
+                <a href="index.php?page=" class="w-100 btn bg-info m-1 text-center text-white">Details</a>
             </div>
         </div>
         <?php } ?>

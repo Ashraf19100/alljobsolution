@@ -48,6 +48,12 @@ switch ($page) {
     case 'imageupload-submit':
         require_once 'actions/imageuploadController.php';
         break;
+    case 'resumeupload':
+        require_once 'view/resume.php';
+        break;
+    case 'resumeupload-submit':
+        require_once 'actions/resumeuploadController.php';
+        break;
     case 'logout':
         require_once 'actions/logoutController.php';
         break;

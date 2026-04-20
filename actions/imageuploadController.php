@@ -21,24 +21,26 @@ if(isset($_FILES)){
     }
 }
 if($image['name']!=''){
-    list($imageresult , $imagefile)=$profileinfo->fileupload($image);
+    list($imageresult , $imagefile)=$profileinfo->fileupload($image, 'img');
     $column['profile_image'] = $imagefile;
+    if($imageresult == 0){
+        header("Location: ../alljobsolution/index.php?page=profileinfo&message='".$imagefile."'");
+        die();
+    }
 }
 
 
 if($signature['name']!=''){
-    list($signatureresult , $signaturefile)=$profileinfo->fileupload($signature);
+    list($signatureresult , $signaturefile)=$profileinfo->fileupload($signature , 'signature');
     $column['signature'] = $signaturefile;
+    if($signatureresult == 0){
+        header("Location: ../alljobsolution/index.php?page=profileinfo&message='". $signaturefile ."'");
+        die();
+    }
 
 }
-if($imageresult == 0){
-    header("Location: ../alljobsolution/index.php?page=profileinfo&message='".$imagefile."'");
-    die();
-}
-if($signatureresult == 0){
-    header("Location: ../alljobsolution/index.php?page=profileinfo&message='". $signaturefile ."'");
-    die();
-}
+
+
 
 
 

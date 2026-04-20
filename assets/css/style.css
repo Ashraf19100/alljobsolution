@@ -254,3 +254,11 @@ a:hover {
     height: 0;
     overflow: hidden;
 }
+.nasted-nav{
+    position: relative;
+}
+.navbutton{
+    position: absolute;
+    top:2px;
+    right: 0;
+}

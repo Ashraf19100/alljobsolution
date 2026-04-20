@@ -93,11 +93,8 @@
 
             }
         }
-        public function validate($file,$fileExt){
-            
-            
-        }
-        public function fileupload($file){
+        
+        public function fileupload($file, $folder){
             
             $allowed =[ 'jpg', 'jpeg', 'png', 'pdf'];
             $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -106,8 +103,8 @@
                 $result = false;
             }else{
                 $result = true;
-                $fileName = uniqid("IMG_", true). ".".$fileExt;
-                $destination = "uploads/". $fileName ;
+                $fileName = $_SESSION['email']."-". uniqid("file_", true). ".".$fileExt;
+                $destination = "uploads/".$folder."/". $fileName ;
                 $checkUpload = move_uploaded_file($file['tmp_name'], $destination);
             }
             

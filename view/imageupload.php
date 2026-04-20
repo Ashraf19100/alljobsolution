@@ -84,7 +84,7 @@ if(isset($userprofile)){
 
                  } ?>
                                 <div class="col-md-3">
-                                    <img src="uploads/<?= $profile['profile_image'] ?>" class="w-100 img-fluid rounded-circle " alt="img"> 
+                                    <img src="uploads/img/<?= $profile['profile_image'] ?>" class="w-100 img-fluid rounded-circle " alt="img"> 
                                 </div>
                                 <div class="col-md-9">
                                     <div class="info ">
@@ -93,7 +93,7 @@ if(isset($userprofile)){
                                         <h3 class="fs-4 fw-light text-capitalize"> user type :<?= $_SESSION['role'] ?></h3>
                                         <h3 class="fs-4 fw-light text-capitalize"> user contact :<?= $_SESSION['phone'] ?></h3>
                                     </div>
-                                    <img src="uploads/<?= $profile['signature'] ?>" alt="">
+                                    <img class="img-fluid" src="uploads/signature/<?= $profile['signature'] ?>" alt="">
                                 </div>
                             </div>
                                                             
