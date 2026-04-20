@@ -262,3 +262,9 @@ a:hover {
     top:2px;
     right: 0;
 }
+.jobs{
+    height: 86vh;
+    width: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+}

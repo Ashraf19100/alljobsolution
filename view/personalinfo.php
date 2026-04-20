@@ -42,13 +42,13 @@ if(isset($user_info)){
                                     <!-- Father Name -->
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Father Name</label>
-                                        <input type="text" name="father_name" class="form-control" <?php if(isset($row)){?> value="<?= $row['father_name'] ?> " <?php  } ?>  required>
+                                        <input type="text" name="father_name" class="form-control" <?php if(isset($row['father_name'])){?> value="<?= $row['father_name'] ?> " <?php  } ?>  required>
                                     </div>
 
                                     <!-- Mother Name -->
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Mother Name</label>
-                                        <input type="text" name="mother_name" class="form-control" <?php if(isset($row)){?> value="<?= $row['mother_name']?> " <?php  } ?> required>
+                                        <input type="text" name="mother_name" class="form-control" <?php if(isset($row['mother_name'])){?> value="<?= $row['mother_name']?> " <?php  } ?> required>
                                     </div>
                                 </div>
 
@@ -56,19 +56,19 @@ if(isset($user_info)){
                                     <!-- Date of Birth -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Date of Birth</label>
-                                        <input type="date" name="dob" class="form-control" <?php if(isset($row)){?> value="<?= $row['dob']?> " <?php  } ?> required>
+                                        <input type="date" name="dob" class="form-control" <?php if(isset($row['dob'])){?> value="<?= $row['dob']?> " <?php  } ?> required>
                                     </div>
 
                                     <!-- Nationality -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Nationality</label>
-                                        <input type="text" name="nationality" <?php if(isset($row)){?> value="<?= $row['nationality']?> " <?php  } ?> class="form-control">
+                                        <input type="text" name="nationality" <?php if(isset($row['nationality'])){?> value="<?= $row['nationality']?> " <?php  } ?> class="form-control">
                                     </div>
 
                                     <!-- Religion -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Religion</label>
-                                        <input type="text" name="religion" <?php if(isset($row)){?> value="<?= $row['religion']?> " <?php  } ?> class="form-control">
+                                        <input type="text" name="religion" <?php if(isset($row['religion'])){?> value="<?= $row['religion']?> " <?php  } ?> class="form-control">
                                     </div>
                                 </div>
 
@@ -91,15 +91,15 @@ if(isset($user_info)){
                                         <label class="form-label">Marital Status</label>
                                         <select name="marital_status" class="form-select">
                                             <option value="">Select</option>
-                                            <option value="single" <?php if(isset($row)){if($row['marital_status']=='single'){?> selected  <?php } } ?>>Single</option>
-                                            <option value="married" <?php if(isset($row)){if($row['marital_status']=='married'){?> selected  <?php } } ?> >Married</option>
+                                            <option value="single" <?php if(isset($row['marital_status'])){if($row['marital_status']=='single'){?> selected  <?php } } ?>>Single</option>
+                                            <option value="married" <?php if(isset($row['marital_status'])){if($row['marital_status']=='married'){?> selected  <?php } } ?> >Married</option>
                                         </select>
                                     </div>
 
                                     <!-- NID -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">NID</label>
-                                        <input type="text" name="nid" class="form-control" <?php if(isset($row)){?> value="<?= $row['nid']?> " <?php  } ?> >
+                                        <input type="text" name="nid" class="form-control" <?php if(isset($row['nid'])){?> value="<?= $row['nid']?> " <?php  } ?> >
                                     </div>
                                 </div>
 
@@ -107,20 +107,20 @@ if(isset($user_info)){
                                     <!-- Birth Registration -->
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Birth Registration No</label>
-                                        <input type="text" name="birth_registration" class="form-control" <?php if(isset($row)){?> value="<?= $row['birth_registration']?> " <?php  } ?>>
+                                        <input type="text" name="birth_registration" class="form-control" <?php if(isset($row['birth_registration'])){?> value="<?= $row['birth_registration']?> " <?php  } ?>>
                                     </div>
 
                                     <!-- Passport -->
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Passport No</label>
-                                        <input type="text" name="passport_no" class="form-control" <?php if(isset($row)){?> value="<?= $row['passport_no']?> " <?php  } ?>>
+                                        <input type="text" name="passport_no" class="form-control" <?php if(isset($row['passport_no'])){?> value="<?= $row['passport_no']?> " <?php  } ?>>
                                     </div>
                                 </div>
 
                                 <!-- Address -->
                                 <div class="mb-3">
                                     <label class="form-label">Address</label>
-                                    <textarea name="address" class="form-control" rows="3" ><?php if(isset($row)){?> <?= $row['address']?> <?php  } ?></textarea>
+                                    <textarea name="address" class="form-control" rows="3" ><?php if(isset($row['address'])){?> <?= $row['address']?> <?php  } ?></textarea>
                                 </div>
 
                                 <!-- Submit -->
@@ -149,9 +149,9 @@ if(isset($user_info)){
                         <!-- Body -->
                         <div class="card-body p-2">
                             <?php if(isset($_GET['message'])){ 
-                  echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
+                                echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
 
-                 } ?>
+                                } ?>
                             <div class="row g-2">
 
                                 <!-- Father Name -->

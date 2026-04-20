@@ -48,6 +48,9 @@ switch ($page) {
     case 'imageupload-submit':
         require_once 'actions/imageuploadController.php';
         break;
+    case 'jobdetails':
+        require_once 'view/jobdetails.php';
+        break;
     case 'resumeupload':
         require_once 'view/resume.php';
         break;
