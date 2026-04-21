@@ -33,104 +33,104 @@ if(isset($user_info)){
                         <button type="submit" class="btn btn-info shadow-sm border-0 text-start text-uppercase text-white ">Search</button>
                     </form>
                 </div>
-                <div class="information-section ">
-                    <div class="container">
-                        <div class="card shadow add-btn-action " id="add_degree">
-                            <h3 class="mb-4 text-center">Personal Information</h3>
-                            <form action="index.php?page=personalinfo-submit" method="POST">
-                                <div class="row">
-                                    <!-- Father Name -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label">Father Name</label>
-                                        <input type="text" name="father_name" class="form-control" <?php if(isset($row['father_name'])){?> value="<?= $row['father_name'] ?> " <?php  } ?>  required>
-                                    </div>
+                <div class="information-section container">
+                    <div class=" card shadow add-btn-action " id="add_degree">
+                        <h3 class="mb-4 text-center">Personal Information</h3>
+                        <form action="index.php?page=personalinfo-submit" method="POST">
+                            <div class="row">
+                                <!-- Father Name -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Father Name</label>
+                                    <input type="text" name="father_name" class="form-control" <?php if(isset($row['father_name'])){?> value="<?= $row['father_name'] ?> " <?php  } ?>  required>
+                                </div>
 
-                                    <!-- Mother Name -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label">Mother Name</label>
-                                        <input type="text" name="mother_name" class="form-control" <?php if(isset($row['mother_name'])){?> value="<?= $row['mother_name']?> " <?php  } ?> required>
+                                <!-- Mother Name -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Mother Name</label>
+                                    <input type="text" name="mother_name" class="form-control" <?php if(isset($row['mother_name'])){?> value="<?= $row['mother_name']?> " <?php  } ?> required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Date of Birth -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control" <?php if(isset($row['dob'])){?> value="<?= $row['dob']?> " <?php  } ?> required>
+                                </div>
+
+                                <!-- Nationality -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Nationality</label>
+                                    <input type="text" name="nationality" <?php if(isset($row['nationality'])){?> value="<?= $row['nationality']?> " <?php  } ?> class="form-control">
+                                </div>
+
+                                <!-- Religion -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Religion</label>
+                                    <input type="text" name="religion" <?php if(isset($row['religion'])){?> value="<?= $row['religion']?> " <?php  } ?> class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Gender -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label d-block">Gender</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" value="Male" >
+                                        <label class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" value="Female" >
+                                        <label class="form-check-label">Female</label>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <!-- Date of Birth -->
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label">Date of Birth</label>
-                                        <input type="date" name="dob" class="form-control" <?php if(isset($row['dob'])){?> value="<?= $row['dob']?> " <?php  } ?> required>
-                                    </div>
-
-                                    <!-- Nationality -->
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label">Nationality</label>
-                                        <input type="text" name="nationality" <?php if(isset($row['nationality'])){?> value="<?= $row['nationality']?> " <?php  } ?> class="form-control">
-                                    </div>
-
-                                    <!-- Religion -->
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label">Religion</label>
-                                        <input type="text" name="religion" <?php if(isset($row['religion'])){?> value="<?= $row['religion']?> " <?php  } ?> class="form-control">
-                                    </div>
+                                <!-- Marital Status -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Marital Status</label>
+                                    <select name="marital_status" class="form-select">
+                                        <option value="">Select</option>
+                                        <option value="single" <?php if(isset($row['marital_status'])){if($row['marital_status']=='single'){?> selected  <?php } } ?>>Single</option>
+                                        <option value="married" <?php if(isset($row['marital_status'])){if($row['marital_status']=='married'){?> selected  <?php } } ?> >Married</option>
+                                    </select>
                                 </div>
 
-                                <div class="row">
-                                    <!-- Gender -->
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label d-block">Gender</label>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="gender" value="Male" >
-                                            <label class="form-check-label">Male</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="gender" value="Female" >
-                                            <label class="form-check-label">Female</label>
-                                        </div>
-                                    </div>
+                                <!-- NID -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">NID</label>
+                                    <input type="text" name="nid" class="form-control" <?php if(isset($row['nid'])){?> value="<?= $row['nid']?> " <?php  } ?> >
+                                </div>
+                            </div>
 
-                                    <!-- Marital Status -->
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label">Marital Status</label>
-                                        <select name="marital_status" class="form-select">
-                                            <option value="">Select</option>
-                                            <option value="single" <?php if(isset($row['marital_status'])){if($row['marital_status']=='single'){?> selected  <?php } } ?>>Single</option>
-                                            <option value="married" <?php if(isset($row['marital_status'])){if($row['marital_status']=='married'){?> selected  <?php } } ?> >Married</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- NID -->
-                                    <div class="col-md-4 mb-3">
-                                        <label class="form-label">NID</label>
-                                        <input type="text" name="nid" class="form-control" <?php if(isset($row['nid'])){?> value="<?= $row['nid']?> " <?php  } ?> >
-                                    </div>
+                            <div class="row">
+                                <!-- Birth Registration -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Birth Registration No</label>
+                                    <input type="text" name="birth_registration" class="form-control" <?php if(isset($row['birth_registration'])){?> value="<?= $row['birth_registration']?> " <?php  } ?>>
                                 </div>
 
-                                <div class="row">
-                                    <!-- Birth Registration -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label">Birth Registration No</label>
-                                        <input type="text" name="birth_registration" class="form-control" <?php if(isset($row['birth_registration'])){?> value="<?= $row['birth_registration']?> " <?php  } ?>>
-                                    </div>
-
-                                    <!-- Passport -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label">Passport No</label>
-                                        <input type="text" name="passport_no" class="form-control" <?php if(isset($row['passport_no'])){?> value="<?= $row['passport_no']?> " <?php  } ?>>
-                                    </div>
+                                <!-- Passport -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Passport No</label>
+                                    <input type="text" name="passport_no" class="form-control" <?php if(isset($row['passport_no'])){?> value="<?= $row['passport_no']?> " <?php  } ?>>
                                 </div>
+                            </div>
 
-                                <!-- Address -->
-                                <div class="mb-3">
-                                    <label class="form-label">Address</label>
-                                    <textarea name="address" class="form-control" rows="3" ><?php if(isset($row['address'])){?> <?= $row['address']?> <?php  } ?></textarea>
-                                </div>
+                            <!-- Address -->
+                            <div class="mb-3">
+                                <label class="form-label">Address</label>
+                                <textarea name="address" class="form-control" rows="3" ><?php if(isset($row['address'])){?> <?= $row['address']?> <?php  } ?></textarea>
+                            </div>
 
-                                <!-- Submit -->
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary px-5">Submit</button>
-                                </div>
+                            <!-- Submit -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary px-5">Submit</button>
+                            </div>
 
-                            </form>
-                        </div>
-                        <div class="container mt-5">
+                        </form>
+                    </div>
+
+                    <div class=" mt-5">
                     <div class="card p-4 shadow-lg border-0 rounded-4">
 
                         <!-- Header -->

@@ -42,6 +42,13 @@ switch ($page) {
     case 'educationalinfo':
         require_once 'view/educationalinfo.php';
         break;
+    case 'experience':
+        require_once 'view/experience.php';
+        break;
+    case 'experience-submit':
+        require_once 'actions/experienceController.php';
+        break;
+        // 
     case 'profileinfo':
         require_once 'view/imageupload.php';
         break;
@@ -50,6 +57,9 @@ switch ($page) {
         break;
     case 'jobdetails':
         require_once 'view/jobdetails.php';
+        break;
+    case 'application':
+        require_once 'view/application.php';
         break;
     case 'resumeupload':
         require_once 'view/resume.php';

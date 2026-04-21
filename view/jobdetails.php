@@ -36,9 +36,13 @@ $min_edu = "Secondary School Certificate";
     $subject= "science";
 }else{
 $min_edu = "Class 8"; 
-    $institution = "Reputated Scholl";
-    $subject= "any";
+    $institution = "Reputated School";
+    $subject= "any subject";
 }
+
+$responsibility= explode('.', $job['description']);
+
+
     
 ?>
 
@@ -71,7 +75,7 @@ $min_edu = "Class 8";
 
                                     </div>
                                     <div class="text-center">
-                                        <a class="btn btn-success px-4">APPLY NOW</a>
+                                        <a href="index.php?page=application&job_id= <?=$job['id'] ?>" class="btn btn-success px-4">APPLY NOW</a>
                                     </div>
                                 </div>
                             </div>
@@ -95,15 +99,72 @@ $min_edu = "Class 8";
                                     </div>
                                 </div>
                             </div>
-                            <div class="requirements shadow p-4 ">
+                            <div class="requirements shadow p-4 mt-4">
                                 <h3 class="fs-3 fw-bold text-success">Requirements</h3>
-                                <div class="education">
+                                <div class="education py-2">
                                     <h5 class="fs-5 fw-bold">Education</h5>
                                     <ul>
                                         <li>Candidate Must have a Degree of <?= $min_edu ?> from any <?= $institution ?> in <?= $subject ?></li>
                                     </ul>
                                 </div>
+                                <div class="addi_requirements py-2">
+                                    <h5 class="fs-5 fw-bold">Additional Requirements</h5>
+                                    <ul>
+                                        <li>Candidate Must have Knowledge in the field of <?= $job['requirements'] ?> </li>
+                                    </ul>
+                                </div>
+                                <div class="experience py-2 ">
+                                    <h5 class="fs-5 fw-bold">Experience</h5>
+                                    <ul>
+                                        <?php if($job['job_exp_required'] !=0 ){ ?>
+                                        <li>Candidate must have minimum of <?= $job['min_job_exp_year'] ?> year experienece in related field</li> <?php }else{?><li>Candidate with experienece in related field will get preference</li>
+                                        <li>Freashers are encouraged to apply</li> <?php } ?>
+                                    </ul>
+                                </div>
                             </div>
+                            <div class="responsibility p-4 mt-4 shadow">
+                                
+                                <div class="description">
+                                    <h3 class="fs-3 fw-bold text-success">Responsibilities</h3>
+                                    <ul>
+                                        <?php $i=0; 
+                                        foreach($responsibility as $responsibility){?>
+                                        
+                                        <li><?= $responsibility ?></li>
+                                        <?php $i++; } ?>
+                                    </ul>
+                                </div>
+                                <div class="company-benifits">
+                                    <h3 class="fs-3 fw-bold text-success">Compensation & Other Benefits</h3>
+                                    <li>Lunch Facilities: Partially Subsidize</li>
+                                    <li>Festival Bonus: 2</li>
+                                    <li>A competitive salary structure.</li>
+                                    <li>An exceptional working environment with supportive peers and mentors.</li>
+                                    <li>Lots of challenges and even more scope to implement your ideas.</li>
+                                </div>
+                                <div class="others">
+                                    <h3 class="fs-3 fw-bold text-success">Workplace</h3>
+                                    <p>Work at office</p>
+                                    <h3 class="fs-3 fw-bold text-success">Employment Status</h3>
+                                    <p>Full Time</p>
+                                    <h3 class="fs-3 fw-bold text-success">Job Location</h3>
+                                    <p><?= $job['location']?></p>
+                                </div>
+                                
+
+                            </div>
+                            <div class="company-information p-4 shadow mt-4">
+                                <h4 class="fs-3 fw-bold text-success">Company Information</h4>
+                                <h5><?=$company['company_name']?></h3>
+                                <h6>Address:</h5>
+                                <p><?=$company['location']?></p>
+                                <h6>Description</h5>
+                                <p><?= $company['description']?></p> 
+                            </div>
+                            <div class="apply-link p-4 mt-4 shadow text-center">
+                                <a href="index.php?page=application&job_id= <?=$job['id'] ?>" class="btn btn-success px-4">APPLY NOW</a>
+                            </div>
+
                  
                         </div>
                          

@@ -17,23 +17,25 @@ require_once 'database/database.php';
     <div class="logo">
         <img src="assets/img/logo.png" alt="">
     </div>    
-    <div class="user_info d-flex bg-light p-1">
-        <div class="profile-img w-25">
+    <div class="shadow card user_info bg-light p-1">
+        <div class="profile-img w-50 ">
             <img src="uploads/img/<?= $profile['profile_image'] ?>" style="" class="img-fluid rounded-circle" alt="">
         </div>
-        <div class="user-id">
-            <p class="text-info fw-bold"><?php print($_SESSION['name']);  ?></p>
+        <div class="user-id p-1">
+            <p class="text-info text-capitalize fw-bold"><?php print($_SESSION['name']);  ?></p>
             <p class="text-gray fw-light"><?php print($_SESSION['email']);  ?></p>
         </div>
     </div>
-    <div class="side-navbar bg-light">
+    <div class="side-navbar  bg-light">
         <ul>
             <li><a href="index.php?page=home">Home</a></li>
+            <li><a href="index.php?page=dashboard">Dashboard</a></li>
             <li class="nasted-nav"><a href="" >User Information</a><button id='nav-btn' class="btn btn-info  navbutton">+</button>
                 <ul class="side-subnav " id="sub_nav">
                     <li><a href="index.php?page=personalinfo">Perrsonal Inforrmation</a></li>
                     <li><a href="index.php?page=educationalinfo">Education</a></li>
                     <li><a href="index.php?page=profileinfo">profile</a></li>
+                    <li><a href="index.php?page=experience">Experience</a></li>
                 </ul>
             </li>
             <li><a href="index.php?page=resumeupload">my resume</a></li>
