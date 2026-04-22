@@ -27,8 +27,10 @@ if(isset($_POST)){
             }
         }
         header("Location: ../alljobsolution/index.php?page=dashboard");
-        exit;
-        
+        exit;    
+    }else{
+        header("Location: ../alljobsolution/index.php?page=login&message=wrong password or email");
+        exit;  
     }
     
 }

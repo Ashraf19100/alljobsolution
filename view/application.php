@@ -16,7 +16,9 @@
     $mas = $application->getData('user_education',' * ', $conditionmas );
     $mph = $application->getData('user_education',' * ', $conditionMPh );
     $phd = $application->getData('user_education',' * ', $conditionPhd );
-    $gra_degree = $application->getData('bachelor_degrees',' * ', '' );
+    $ssc_degree = $application->getData('bachelor_degrees',' * ', ' WHERE degree_level = 1 ' );
+    $hsc_degree = $application->getData('bachelor_degrees',' * ', ' WHERE degree_level = 2 ' );
+    $gra_degree = $application->getData('bachelor_degrees',' * ', ' WHERE degree_level = 3 ' );
 
 
     $job_details = $application->getData('jobs',' * ', $conditionjob );
@@ -168,12 +170,9 @@
                                             <label class="form-label">Exam Name</label>
                                             <select name="exam_name" class="form-control" <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                                 <option value="">--------select exam Name--------</option>
-                                                <option value="SSC" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'SSC'){?> selected <?php } ?>>SSC</option>
-                                                <option value="Dakhil" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'Dakhil'){?> selected <?php } ?>>Dakhil</option>
-                                                <option value="SSC Vocational" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'SSC Vocational'){?> selected <?php } ?>>SSC Vocational</option>
-                                                <option value="Dakhil Vocational" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'Dakhil Vocational'){?> selected <?php } ?>>Dakhil Vocational</option>
-                                                <option value="O Level/Cambidge" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'O Level/Cambidge'){?> selected <?php } ?>>O Level/Cambidge</option>
-                                                <option value="SSC Equivalent" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'SSC Equivalent'){?> selected <?php } ?>>SSC Equivalent</option>
+                                                <?php foreach($ssc_degree as $ssc_degree){?>  
+                                                <option value="<?=$ssc_degree['degree_name'] ?>" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == $ssc_degree['degree_name']){?> selected <?php } ?>><?=$ssc_degree['degree_name'] ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
 
@@ -219,17 +218,9 @@
                                             <label class="form-label">Exam Name</label>
                                             <select name="exam_name" class="form-control" <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                                 <option value="">--------select exam Name--------</option>
-                                                <option value="HSC" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC'){?> selected <?php } ?>>HSC</option>
-                                                <option value="Alim" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Alim'){?> selected <?php } ?>>Alim</option>
-                                                <option value="Business Management" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Business Management'){?> selected <?php } ?>>Business Management</option>
-                                                <option value="Diploma in Engineering" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Diploma in Engineering'){?> selected <?php } ?>>Diploma in Engineering</option>
-                                                <option value="Diploma in Pharmacy" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Diploma in Pharmacy'){?> selected <?php } ?>>Diploma in Pharmacy</option>
-                                                <option value="Diploma in Medical Technelogy" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Diploma in Medical Technelogy'){?> selected <?php } ?>>Diploma in Medical Technelogy</option>
-
-                                                <option value="HSC Vocational" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC Vocational'){?> selected <?php } ?>>HSC Vocational</option>
-                                                <option value="HSC (BM)" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC (BM)'){?> selected <?php } ?>>HSC (BM)</option>
-                                                <option value="A Level/Sr.Cambidge" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'A Level/Sr.Cambidge'){?> selected <?php } ?>>A Level/Sr.Cambidge</option>
-                                                <option value="HSC Equivalent" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC Equivalent'){?> selected <?php } ?>>HSC Equivalent</option>
+                                                <?php foreach($hsc_degree as $hsc_degree){?>  
+                                                <option value="<?=$hsc_degree['degree_name'] ?>" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == $hsc_degree['degree_name']){?> selected <?php } ?>><?=$hsc_degree['degree_name'] ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
 
