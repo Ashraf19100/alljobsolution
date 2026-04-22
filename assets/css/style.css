@@ -268,3 +268,8 @@ a:hover {
     overflow: scroll;
     scrollbar-width: none;
 }
+.company-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

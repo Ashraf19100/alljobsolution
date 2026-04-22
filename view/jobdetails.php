@@ -126,21 +126,23 @@ $responsibility= explode('.', $job['description']);
                                 
                                 <div class="description">
                                     <h3 class="fs-3 fw-bold text-success">Responsibilities</h3>
-                                    <ul>
+                                    <ol>
                                         <?php $i=0; 
                                         foreach($responsibility as $responsibility){?>
                                         
                                         <li><?= $responsibility ?></li>
                                         <?php $i++; } ?>
-                                    </ul>
+                                    </ol>
                                 </div>
                                 <div class="company-benifits">
                                     <h3 class="fs-3 fw-bold text-success">Compensation & Other Benefits</h3>
-                                    <li>Lunch Facilities: Partially Subsidize</li>
-                                    <li>Festival Bonus: 2</li>
-                                    <li>A competitive salary structure.</li>
-                                    <li>An exceptional working environment with supportive peers and mentors.</li>
-                                    <li>Lots of challenges and even more scope to implement your ideas.</li>
+                                    <ol>
+                                        <li>Lunch Facilities: Partially Subsidize</li>
+                                        <li>Festival Bonus: 2</li>
+                                        <li>A competitive salary structure.</li>
+                                        <li>An exceptional working environment with supportive peers and mentors.</li>
+                                        <li>Lots of challenges and even more scope to implement your ideas.</li>
+                                    </ol>
                                 </div>
                                 <div class="others">
                                     <h3 class="fs-3 fw-bold text-success">Workplace</h3>

@@ -2,6 +2,7 @@
     require_once 'database/database.php';
     $application = new datamodel();
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
+    $conditionjob = " WHERE id ='".$_SESSION['id']."'";
     $conditionssc = " WHERE user_id ='".$_SESSION['id']."' and exam_name = 'SSC'";
     $conditionhsc = " WHERE user_id ='".$_SESSION['id']."' and exam_name = 'HSC'";
     $conditiongra = " WHERE user_id ='".$_SESSION['id']."' and exam_name = 'Bachelorr'";
@@ -15,6 +16,10 @@
     $mas = $application->getData('user_education',' * ', $conditionmas );
     $mph = $application->getData('user_education',' * ', $conditionMPh );
     $phd = $application->getData('user_education',' * ', $conditionPhd );
+    $gra_degree = $application->getData('bachelor_degrees',' * ', '' );
+
+
+    $job_details = $application->getData('jobs',' * ', $conditionjob );
 
 
     $experience_info = $application->getData('user_experience',' * ', $condition );
@@ -32,9 +37,11 @@
         return $singlerow;
     }
     $personal_info=singlearray($personal_info);
+    $job_details=singlearray($job_details);
     $ssc=singlearray($ssc);
     $hsc=singlearray($hsc);
     $gra=singlearray($gra);
+    
     
 ?>
 
@@ -154,18 +161,26 @@
                                     </div>
                                 </div>
                                 <div class="SSC shadow p-4 mt-4">
-                                    <h3>Secondary or Related Certificate</h3>
+                                    <h3>Secondary or Related Certificate <?php if($job_details['ssc_required'] == 1){ echo" <span class='text-danger'>*</span> " ;} ?> </h3>
                                     <div class="row">
                                         <!-- Exam Name -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Exam Name</label>
-                                            <input type="text" name="exam_name" class="form-control" placeholder="e.g. SSC, HSC, BSc">
+                                            <select name="exam_name" class="form-control" <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
+                                                <option value="">--------select exam Name--------</option>
+                                                <option value="SSC" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'SSC'){?> selected <?php } ?>>SSC</option>
+                                                <option value="Dakhil" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'Dakhil'){?> selected <?php } ?>>Dakhil</option>
+                                                <option value="SSC Vocational" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'SSC Vocational'){?> selected <?php } ?>>SSC Vocational</option>
+                                                <option value="Dakhil Vocational" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'Dakhil Vocational'){?> selected <?php } ?>>Dakhil Vocational</option>
+                                                <option value="O Level/Cambidge" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'O Level/Cambidge'){?> selected <?php } ?>>O Level/Cambidge</option>
+                                                <option value="SSC Equivalent" <?php if( isset($ssc['exam_name'] ) && $ssc['exam_name'] == 'SSC Equivalent'){?> selected <?php } ?>>SSC Equivalent</option>
+                                            </select>
                                         </div>
 
                                         <!-- University / Board -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">University / Board</label>
-                                            <input type="text" name="uni_board" class="form-control" placeholder="e.g. Dhaka Board">
+                                            <input type="text" name="uni_board" class="form-control" placeholder="e.g. Dhaka Board" <?php if(isset($ssc['uni_board'])) { echo "value = '".$ssc['uni_board']."'";   } ?> <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
 
@@ -173,42 +188,55 @@
                                         <!-- Roll ID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Roll / ID</label>
-                                            <input type="text" name="roll_id" class="form-control">
+                                            <input type="text" name="roll_id" class="form-control" <?php if(isset($ssc['roll_id'] )) { echo "value = '".$ssc['roll_id']."'";   } ?> <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                         </div>
                                         
 
                                         <!-- Subject -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Subject</label>
-                                            <input type="text" name="subject" class="form-control">
+                                            <input type="text" name="subject" class="form-control" <?php if(isset($ssc['subject'])) { echo "value = '".$ssc['subject']."'";   } ?> <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                         </div>
                                         <!-- result -->
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Result</label>
-                                            <input type="text" name="result" class="form-control">
+                                            <input type="text" name="result" class="form-control" <?php if(isset($ssc['result'])) { echo "value = '".$ssc['result']."'";   } ?> <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                         </div>
 
                                         <!-- Passing Year -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Passing Year</label>
-                                            <input type="number" name="passing_year" class="form-control" min="1950" max="2099">
+                                            <input type="number" name="passing_year" class="form-control" min="1950" max="2099" <?php if(isset($ssc['passing_year'])) { echo "value = '".$ssc['passing_year']."'";   } ?> <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="HSC shadow p-4 mt-4">
-                                    <h3>Higher Secondary or Related Certificate</h3>
+                                    <h3>Higher Secondary or Related Certificate <?php if($job_details['hsc_required'] == 1){ echo" <span class='text-danger'>*</span> " ;} ?></h3>
                                     <div class="row">
                                         <!-- Exam Name -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Exam Name</label>
-                                            <input type="text" name="exam_name" class="form-control" placeholder="e.g. SSC, HSC, BSc">
+                                            <select name="exam_name" class="form-control" <?php if($job_details['ssc_required'] == 1){?> required <?php } ?>>
+                                                <option value="">--------select exam Name--------</option>
+                                                <option value="HSC" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC'){?> selected <?php } ?>>HSC</option>
+                                                <option value="Alim" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Alim'){?> selected <?php } ?>>Alim</option>
+                                                <option value="Business Management" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Business Management'){?> selected <?php } ?>>Business Management</option>
+                                                <option value="Diploma in Engineering" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Diploma in Engineering'){?> selected <?php } ?>>Diploma in Engineering</option>
+                                                <option value="Diploma in Pharmacy" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Diploma in Pharmacy'){?> selected <?php } ?>>Diploma in Pharmacy</option>
+                                                <option value="Diploma in Medical Technelogy" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'Diploma in Medical Technelogy'){?> selected <?php } ?>>Diploma in Medical Technelogy</option>
+
+                                                <option value="HSC Vocational" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC Vocational'){?> selected <?php } ?>>HSC Vocational</option>
+                                                <option value="HSC (BM)" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC (BM)'){?> selected <?php } ?>>HSC (BM)</option>
+                                                <option value="A Level/Sr.Cambidge" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'A Level/Sr.Cambidge'){?> selected <?php } ?>>A Level/Sr.Cambidge</option>
+                                                <option value="HSC Equivalent" <?php if( isset($hsc['exam_name'] ) && $hsc['exam_name'] == 'HSC Equivalent'){?> selected <?php } ?>>HSC Equivalent</option>
+                                            </select>
                                         </div>
 
                                         <!-- University / Board -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">University / Board</label>
-                                            <input type="text" name="uni_board" class="form-control" placeholder="e.g. Dhaka Board">
+                                            <input type="text" name="uni_board" class="form-control" placeholder="e.g. Dhaka Board" <?php if(isset($hsc['uni_board'])) { echo "value = '".$hsc['uni_board']."'";   } ?> <?php if($job_details['hsc_required'] == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
 
@@ -216,43 +244,49 @@
                                         <!-- Roll ID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Roll / ID</label>
-                                            <input type="text" name="roll_id" class="form-control">
+                                            <input type="text" name="roll_id" class="form-control" <?php if(isset($hsc['roll_id'])) { echo "value = '".$hsc['roll_id']."'";   } ?> <?php if($job_details['hsc_required'] == 1){?> required <?php } ?>>
                                         </div>
                                         
 
                                         <!-- Subject -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Subject</label>
-                                            <input type="text" name="subject" class="form-control">
+                                            <input type="text" name="subject" class="form-control" <?php if(isset($hsc['subject'])) { echo "value = '".$hsc['subject']."'";   } ?> <?php if($job_details['hsc_required'] == 1){?> required <?php } ?> >
                                         </div>
                                         <!-- result -->
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Result</label>
-                                            <input type="text" name="result" class="form-control">
+                                            <input type="text" name="result" class="form-control" <?php if(isset($hsc['result'])) { echo "value = '".$hsc['result']."'";   } ?> <?php if($job_details['hsc_required'] == 1){?> required <?php } ?> >
                                         </div>
 
                                         <!-- Passing Year -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Passing Year</label>
-                                            <input type="number" name="passing_year" class="form-control" min="1950" max="2099">
+                                            <input type="number" name="passing_year" class="form-control" min="1950" max="2099" <?php if(isset($hsc['passing_year'])) { echo "value = '".$hsc['passing_year']."'";   } ?> <?php if($job_details['hsc_required'] == 1){?> required <?php } ?> >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="Bachelor shadow p-4 mt-4">
-                                    <h3>Bachelor or Related Certificate</h3>
+                                    <h3>Bachelor or Related Certificate <?php if($job_details['gra_required'] == 1){ echo" <span class='text-danger'>*</span> " ;} ?></h3>
 
                                     <div class="row">
                                         <!-- Exam Name -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Exam Name</label>
-                                            <input type="text" name="exam_name" class="form-control" placeholder="e.g. SSC, HSC, BSc">
+                                            <select name="exam_name" class="form-control" <?php if($job_details['gra_required'] == 1){?> required <?php } ?>>
+                                                <option value="">-----------select----------</option>
+                                                <?php foreach($gra_degree as $gra_degree){?>  
+                                                <option value="<?=$gra_degree['degree_name'] ?>" <?php if( isset($gra['exam_name'] ) && $gra['exam_name'] == $gra_degree['degree_name']){?> selected <?php } ?>><?=$gra_degree['degree_name'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            
                                         </div>
 
                                         <!-- University / Board -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">University / Board</label>
-                                            <input type="text" name="uni_board" class="form-control" placeholder="e.g. Dhaka Board">
+                                            <input type="text" name="uni_board" class="form-control" placeholder="e.g. Dhaka Board" <?php if(isset($gra['uni_board'])) { echo "value = '".$gra['uni_board']."'";   } ?> <?php if($job_details['gra_required'] == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
 
@@ -260,31 +294,32 @@
                                         <!-- Roll ID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Roll / ID</label>
-                                            <input type="text" name="roll_id" class="form-control">
+                                            <input type="text" name="roll_id" class="form-control" <?php if(isset($gra['roll_id'])) { echo "value = '".$gra['roll_id']."'";   } ?> <?php if($job_details['gra_required'] == 1){?> required <?php } ?>>
                                         </div>
                                         
 
                                         <!-- Subject -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Subject</label>
-                                            <input type="text" name="subject" class="form-control">
+                                            <input type="text" name="subject" class="form-control" <?php if(isset($gra['subject'])) { echo "value = '".$gra['subject']."'";   } ?> <?php if($job_details['gra_required'] == 1){?> required <?php } ?>>
                                         </div>
                                         <!-- result -->
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Result</label>
-                                            <input type="text" name="result" class="form-control">
+                                            <input type="text" name="result" class="form-control" <?php if(isset($gra['result'])) { echo "value = '".$gra['result']."'";   } ?> <?php if($job_details['gra_required'] == 1){?> required <?php } ?>>
                                         </div>
 
                                         <!-- Passing Year -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Passing Year</label>
-                                            <input type="number" name="passing_year" class="form-control" min="1950" max="2099">
+                                            <input type="number" name="passing_year" class="form-control" min="1950" max="2099" <?php if(isset($gra['passing_year'])) { echo "value = '".$gra['passing_year']."'";   } ?> <?php if($job_details['gra_required'] == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- experience -->
                                 <div class="experience shadow p-4 mt-4">
+                                    <h3>Experience </h3>
                                     <div class="row">
                                         <!-- Company Name -->
                                         <div class="mb-3 col-md-6">
