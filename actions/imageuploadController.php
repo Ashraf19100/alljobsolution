@@ -23,6 +23,7 @@ if(isset($_FILES)){
 if($image['name']!=''){
     list($imageresult , $imagefile)=$profileinfo->fileupload($image, 'img');
     $column['profile_image'] = $imagefile;
+    $_SESSION['profile_image']=$imagefile;
     if($imageresult == 0){
         header("Location: ../alljobsolution/index.php?page=profileinfo&message='".$imagefile."'");
         die();
@@ -33,6 +34,8 @@ if($image['name']!=''){
 if($signature['name']!=''){
     list($signatureresult , $signaturefile)=$profileinfo->fileupload($signature , 'signature');
     $column['signature'] = $signaturefile;
+    $_SESSION['signature'] = $signaturefile;
+
     if($signatureresult == 0){
         header("Location: ../alljobsolution/index.php?page=profileinfo&message='". $signaturefile ."'");
         die();
@@ -49,6 +52,7 @@ $condition= " WHERE id = ". $_SESSION['id'];
 
 $profileresult =  $profileinfo->updateData('users', $column, $condition);
     if(isset($profileresult)){
+        $_SESSION['phone'] = $_POST['phone'];
         header("Location: ../alljobsolution/index.php?page=profileinfo&message='successfully updated'");
     }
 

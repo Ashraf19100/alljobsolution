@@ -1,21 +1,14 @@
 <?php  
     require_once 'database/database.php';
     $resumes = new datamodel();
-    $skills = new datamodel();
+    $skill = new datamodel();
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
-    $resumeinfo = $resumes->getData('resumes', ' * ', $condition);
-    $skill_list = $skills->getData('skills', ' * ', '');
-    if(isset($resumeinfo)){
-        foreach($resumeinfo as $row){
-            foreach($row as $key => $val){
-                $cvprofile[$key] = $val;
-            }
-        }
+    $resumeinfo = $resumes->getSingleData('resumes', ' * ', $condition);
+    $skill_list = $skill->getData('skills', ' * ', '');
+    if(isset($resumeinfo->skills)){
+        $cvskills = explode(",", $resumeinfo->skills);
     }
-    if(isset($cvprofile)){
-        $cvskills = explode(",",$cvprofile['skills']);
-    }
-    
+   
     
 ?>
 
@@ -45,8 +38,8 @@
 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <?php foreach($skill_list as $skill){ ?>
-                                        <input type="checkbox" name="skill[]" class="form-check-input" value="<?= $skill['skill_name'] ?>" placeholder="" <?php if(in_array($skill['skill_name'] , $cvskills)){?>Checked <?php } ?> ><label class="form-label px-1"><?= $skill['skill_name'] ?></label>
+                                        <?php foreach($skill_list as $skill_list){ ?>
+                                        <input type="checkbox" name="skills[]" class="form-check-input" value="<?= $skill_list['skill_name'] ?>" placeholder="" <?php if( in_array($skill_list['skill_name'],$cvskills)){ ?> checked <?php } ?> ><label class="form-label px-1"><?= $skill_list['skill_name'] ?></label>
                                             <?php } ?>
                                     </div>
                                     <div class="col-md-6 mb-3">
@@ -93,14 +86,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if(isset($cvprofile)){?>
+                                            <?php if(isset($resumeinfo)){?>
                                             <tr>
-                                                <td><?= $cvprofile['skills'] ?></td>
-                                                <td><?= $cvprofile['file_path'] ?>td>
+                                                <td><?= $resumeinfo->skills ?></td>
+                                                <td><?= $resumeinfo->file_path ?></td>
                                                 <td>
-                                                <a href="uploads/resume/<?= $cvprofile['file_path'] ?>" target="_blank" class="btn btn-primary btn-sm">
-                                                    View PDF
-                                                </a>
+                                                    <a href="uploads/resume/<?= $resumeinfo->file_path ?>" target="_blank" class="btn btn-primary btn-sm">
+                                                        View PDF
+                                                    </a>
                                                 </td>
                                                 <td>
                                                 <button class="btn btn-success btn-sm" onclick="generatePDF('john')">

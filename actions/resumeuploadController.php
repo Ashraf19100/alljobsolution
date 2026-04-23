@@ -16,7 +16,7 @@ if(!isset($resumeinfo)){
 
 if(isset($_POST)){   
     if(!empty($_POST)){
-    $all_skills = implode(',', $_POST['skill']);
+    $all_skills = implode(',', $_POST['skills']);
     $column['skills'] = $all_skills;
     }
     

@@ -2,14 +2,14 @@
     require_once 'database/database.php';
     $userinfo = new datamodel();
     $condition = " WHERE id ='".$_SESSION['id']."'";
-    $userprofile = $userinfo->getData('users', ' * ', $condition);
-if(isset($userprofile)){
-    foreach($userprofile as $row){
-        foreach($row as $key => $val){
-            $profile[$key] = $val;
-        }
-    }
-}
+    $image_profile = $userinfo->getSingleData('users', ' * ', $condition);
+// if(isset($userprofile)){
+//     foreach($userprofile as $row){
+//         foreach($row as $key => $val){
+//             $image_profile[$key] = $val;
+//         }
+//     }
+// }
     
     
 ?>
@@ -41,8 +41,8 @@ if(isset($userprofile)){
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Phone</label>
-                                        <input type="number" name="phone" class="form-control" <?php if($profile['phone']!=''){
-                                            ?> value=<?= $profile['phone'] ?> <?php
+                                        <input type="number" name="phone" class="form-control" <?php if($image_profile->phone !=''){
+                                            ?> value=<?= $image_profile->phone ?> <?php
                                         } ?> placeholder="e.g. +8801">
                                     </div>
                                     <!-- Exam Name -->
@@ -80,11 +80,11 @@ if(isset($userprofile)){
                             </div>
                             <div class="image-signature row">
                                 <?php if(isset($_GET['message'])){ 
-                  echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
+                  echo  '<h5 class="text-danger text-center p-2">'.$_GET['message'].'</h5>';
 
                  } ?>
                                 <div class="col-md-3">
-                                    <img src="uploads/img/<?= $profile['profile_image'] ?>" class="w-100 img-fluid rounded-circle " alt="img"> 
+                                    <img src="uploads/img/<?= $_SESSION['profile_image'] ?>" class="w-100 img-fluid rounded-circle " alt="img"> 
                                 </div>
                                 <div class="col-md-9">
                                     <div class="info ">
@@ -93,7 +93,7 @@ if(isset($userprofile)){
                                         <h3 class="fs-4 fw-light text-capitalize"> user type :<?= $_SESSION['role'] ?></h3>
                                         <h3 class="fs-4 fw-light text-capitalize"> user contact :<?= $_SESSION['phone'] ?></h3>
                                     </div>
-                                    <img class="img-fluid" src="uploads/signature/<?= $profile['signature'] ?>" alt="">
+                                    <img class="img-fluid" src="uploads/signature/<?= $_SESSION['signature'] ?>" alt="">
                                 </div>
                             </div>
                                                             

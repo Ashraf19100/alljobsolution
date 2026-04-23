@@ -1,15 +1,6 @@
 <?php 
 require_once 'database/database.php';
-    $userinfo = new datamodel();
-    $condition = " WHERE id ='".$_SESSION['id']."'";
-    $userprofile = $userinfo->getData('users', ' * ', $condition);
-    if(isset($userprofile)){
-    foreach($userprofile as $row){
-        foreach($row as $key => $val){
-            $profile[$key] = $val;
-        }
-    }
-}
+    
 
 ?>
 
@@ -19,7 +10,7 @@ require_once 'database/database.php';
     </div>    
     <div class="shadow card user_info bg-light p-1">
         <div class="profile-img w-50 ">
-            <img src="uploads/img/<?= $profile['profile_image'] ?>" style="" class="img-fluid rounded-circle" alt="">
+            <img src="uploads/img/<?php print($_SESSION['profile_image']);  ?>" class="img-fluid rounded-circle" alt="">
         </div>
         <div class="user-id p-1">
             <p class="text-info text-capitalize fw-bold"><?php print($_SESSION['name']);  ?></p>

@@ -39,6 +39,23 @@
                 
                 return $infodata;
             }    
+
+            return null;
+        }
+
+        public function getSingleData($table, $field=' * ', $condition=''){
+            $sql = "SELECT $field FROM $table";
+            
+            if($condition != '' ){
+                $sql .= $condition;
+            }
+            $result = $this->connect()->query($sql);
+            
+            if($result){
+               return $result -> fetch_object();
+            } 
+
+            return null;
  
         }
 

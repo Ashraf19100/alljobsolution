@@ -3,14 +3,8 @@
     $eduinfo = new datamodel();
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
 
-    $result = $eduinfo->getData('user_education',' * ', $condition );
-    if(isset($result)){
-        foreach($result as $row){
-            foreach($row as $key => $val){
-                $education[$key] = $val;
-            }
-        }
-    }
+    $educationinfo = $eduinfo->getData('user_education',' * ', $condition );
+    
     
     
 ?>
@@ -101,18 +95,21 @@
                             
                             
                         <?php 
-                            if(isset($education)){
+                            if(isset($educationinfo)){
+                                foreach($educationinfo as $educationinfo){
+                                    
+                               
                          ?>
                             <div class="card shadow p-1">
                                 <div class="row mb-3">
                                 <div class="col-md-6">
                                     <strong>Exam Name:</strong>
-                                    <p id="exam_name"><?= $education['exam_name'] ?></p>
+                                    <p id="exam_name"><?= $educationinfo['exam_name'] ?></p>
                                 </div>
 
                                 <div class="col-md-6">
                                     <strong>University / Board:</strong>
-                                    <p id="uni_board"><?= $education['uni_board'] ?></p>
+                                    <p id="uni_board"><?= $educationinfo['uni_board'] ?></p>
                                 </div>
                             </div>
 
@@ -133,7 +130,7 @@
                                 </div>
                             </div>
                             </div>
-                            <?php  }?>
+                            <?php } }?>
                         </div>
                     </div>
                     
