@@ -16,7 +16,7 @@
 	<!-- Counter Up ======================= -->
 	<script src="assets/js/plugin/counterup/counterup.min.js"></script>
 	<script src="assets/js/plugin/waypoints/jquery.waypoints.min.js"></script>
-
+<!-- modal -->
 	<!--Isotope-->
 	<script src="assets/js/plugin/iso_top/isotopev3.0.6.pkgd.min.js"></script>
 

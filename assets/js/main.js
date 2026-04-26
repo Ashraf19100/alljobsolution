@@ -9,35 +9,9 @@ $(document).ready(function ($) {
 	  });
       
 });
-const btn2 = document.getElementById("nav-btn2");
-const sub_nav2 = document.getElementById("sub_nav2");
 
-btn2.addEventListener('click', function (){
-	if(sub_nav2.style.display === 'none' || sub_nav2.style.display === '' ){
-		sub_nav2.style.display = 'block';
-		sub_nav2.style.height = '80px';
-		btn2.innerText='X';
-	}else{
-		sub_nav2.style.display = 'none';
-		sub_nav2.style.height = '0px';
-		btn2.innerText='+';
-	}
 
-});
-const btn = document.getElementById("nav-btn");
-const sub_nav = document.getElementById("sub_nav");
-btn.addEventListener('click', function (){
-	if(sub_nav.style.display === 'none' || sub_nav.style.display === '' ){
-		sub_nav.style.display = 'block';
-		sub_nav.style.height = '150px';
-		btn.innerText='X';
-	}else{
-		sub_nav.style.display = 'none';
-		sub_nav.style.height = '0px';
-		btn.innerText='+';
-	}
 
-});
 
 const adddegree = document.getElementById('edit_btn');
 const formdiv= document.getElementById('add_degree');

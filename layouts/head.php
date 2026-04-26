@@ -15,9 +15,9 @@
 	<!-- Icofont -->
 	<link rel="stylesheet" href="assets/icofont/icofont.min.css">
 	<!--=== Bootstrap ===-->
-	<!--<link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
-	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<!--=== Fontawesome icon ===-->
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<!-- ================= *** Icofont CSS *** ================== -->
@@ -42,7 +42,7 @@
 	<link rel="stylesheet" href="assets/css/responsive.css">
 	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 	  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+ 	 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

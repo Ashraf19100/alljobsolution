@@ -8,7 +8,7 @@ $result = $alljob->getData('jobs');
 ?>
 <div class="jobs ">
     <div class="job-head">
-        <h1 class="text-center text-capitalize text-success py-3 ">ALL JOB</h1>
+        <h1 class="text-center text-capitalize text-success py-3 mb-4 fw-bold ">All Jobs</h1>
     </div>
     <div class="row">
     <?php foreach($result as $job) {?>

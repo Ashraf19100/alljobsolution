@@ -2,7 +2,7 @@
 require_once 'database/database.php';
 
 $applicationsubmit = new datamodel();
-if(isset($_POST)){
+if(!empty($_POST)){
     
     $user_id = $_SESSION['id'];
     
@@ -11,15 +11,15 @@ if(isset($_POST)){
         $column[$key] = $val;
     }
     
-    $condition = " WHERE user_id ='".$_SESSION['id']."'";
-    $user_info = $personalinfo->getData('user_details',' * ', $condition );
-    if(isset($user_info)){
-        $result = $personalinfo->updateData('user_details', $_POST, $condition);
-        header("Location: ../alljobsolution/index.php?page=personalinfo&message='successfully updated'");
+    $condition_application_application = " WHERE job_id = '".$_POST['job_id']."' AND user_id ='".$_SESSION['id']."'";
+    $jobapplied = $applicationsubmit->getsingleData('user_details',' * ', $condition_application );
+    
+    if(!empty($jobapplied)){
+        header("Location: ../alljobsolution/index.php?page=&message='You have all ready applied for this poaition'");
 
     }else{
-        $result = $personalinfo->insertData('user_details', $column);
-        header("Location: ../alljobsolution/index.php?page=personalinfo&message='successfully inserted'");
+        $application_insert = $applicationsubmit->insertData('user_details', $column);
+        header("Location: ../alljobsolution/index.php?page=application_recheck");
 
     }
 
