@@ -2,6 +2,7 @@
     require_once 'database/database.php';
     $application = new datamodel();
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
+    $condition_resume = " WHERE user_id = '".$_SESSION['id']."'";
     $conditionjob = " WHERE id ='".$_SESSION['id']."'";
     $conditionssc = " WHERE user_id ='".$_SESSION['id']."' and exam_name = 'SSC'";
     $conditionhsc = " WHERE user_id ='".$_SESSION['id']."' and exam_name = 'HSC'";
@@ -22,7 +23,7 @@
 
 
     $job_details = $application->getSingleData('jobs',' * ', $conditionjob );
-
+    $user_resume = $application->getSingleData('resumes', ' * ', $condition_resume);
 
     $app_experience_info = $application->getData('user_experience',' * ', $condition );
     $app_personal_info = $application->getSingleData('user_details',' * ', $condition );
@@ -43,17 +44,16 @@
         <div class="col-md-10">
             <div class="content  container">
                 <div class="search_area">
-                    <form action="">
-                        <input class="w-75 p-2 shadow-sm border-0 text-start text-uppercase text-info" type="text" name="search" placeholder="search your desire position">
-                        <button type="submit" class="btn btn-info shadow-sm border-0 text-start text-uppercase text-white ">Search</button>
-                    </form>
+                    <?php require "layouts/searcharea.php" ?>
                 </div>
                 <div class="information-section">
                     <div class="container mt-2 " >
                         <div class="card shadow p-4">
-                            <h4 class="mb-3">Applying for the  </h4>
+                            <h4 class="mb-3 text-success fs-3 text-center">Applying for the Position <?= $job_details->title?> </h4>
 
                             <form action="index.php?page=education-submit" method="POST">
+                                <input type="hidden" name="job_id" value =<?= $job_details->id ?>>
+                                <input type="hidden" name="resume_id" value =<?= $user_resume->id ?>>
                                 <div class="personal-information shadow p-4 mt-4">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
@@ -379,9 +379,22 @@
 
                                     </div>
                                 </div> 
+                                <div class="skills-section p-4 shadow">
+                                    <h3 class="text-success fs-3 text-capitalize" >Your Skills area</h3>
+                                    <ol>
+                                        <?php $skills = explode( ",", $user_resume->skills );
+                                            foreach($skills as $skills){
+                                                ?>
+                                                <li><?= $skills ?></li>
+                                                <?php
+                                            }
+                                        ?>
+                                    </ol>
+                                    
+                                </div>
                                 <!-- Submit Button -->
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success px-4">Save</button>
+                                <div class="text-center py-2">
+                                    <button type="submit" class="btn btn-success px-4">Submit</button>
                                 </div>
 
                             </form>

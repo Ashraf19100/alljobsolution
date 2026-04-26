@@ -3,48 +3,104 @@ require_once 'database/database.php';
     
 
 ?>
+<div class="col-md-3 col-lg-2 bg-light min-vh-100 p-3 shadow-sm">
 
-<div class="col-md-2">
-    <div class="logo">
-        <img src="assets/img/logo.png" alt="">
-    </div>    
-    <div class="shadow card user_info bg-light p-1">
-        <div class="profile-img w-50 ">
-            <img src="uploads/img/<?php print($_SESSION['profile_image']);  ?>" class="img-fluid rounded-circle" alt="">
-        </div>
-        <div class="user-id p-1">
-            <p class="text-info text-capitalize fw-bold"><?php print($_SESSION['name']);  ?></p>
-            <p class="text-gray fw-light"><?php print($_SESSION['email']);  ?></p>
+    <!-- 🔷 Logo -->
+    <div class="text-center mb-4">
+        <img src="assets/img/logo.png" class="img-fluid" style="max-height:50px;">
+    </div>
+
+    <!-- 👤 User Info -->
+    <div class="card border-0 shadow-sm mb-4 text-center">
+        <div class="card-body">
+            <img src="uploads/img/<?php echo $_SESSION['profile_image']; ?>" 
+                 class="rounded-circle mb-2" width="80" height="80">
+
+            <h6 class="text-info mb-0 text-capitalize">
+                <?php echo $_SESSION['name']; ?>
+            </h6>
+
+            <small class="text-muted">
+                <?php echo $_SESSION['email']; ?>
+            </small>
         </div>
     </div>
-    <div class="side-navbar  bg-light">
-        <ul>
-            <li><a href="index.php?page=home">Home</a></li>
-            <li><a href="index.php?page=dashboard">Dashboard</a></li>
-            <li class="nasted-nav"><a href="" >User Information</a><button id='nav-btn' class="btn btn-info  navbutton">+</button>
-                <ul class="side-subnav " id="sub_nav">
-                    <li><a href="index.php?page=personalinfo">Perrsonal Inforrmation</a></li>
-                    <li><a href="index.php?page=educationalinfo">Education</a></li>
-                    <li><a href="index.php?page=profileinfo">profile</a></li>
-                    <li><a href="index.php?page=experience">Experience</a></li>
+
+    <!-- 📋 Navigation -->
+    <ul class="nav flex-column">
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php?page=home">
+                <i class="fa fa-home me-2 text-info"></i> Home
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php?page=dashboard">
+                <i class="fa fa-dashboard me-2 text-info"></i> Dashboard
+            </a>
+        </li>
+
+        <!-- 👇 User Info Collapse -->
+        <li class="nav-item">
+            <a class="nav-link text-dark d-flex justify-content-between align-items-center"
+               data-bs-toggle="collapse" href="#userMenu">
+                <span><i class="fa fa-user me-2 text-info"></i> User Info</span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+
+            <div class="collapse ps-3" id="userMenu">
+                <ul class="nav flex-column">
+                    <li><a class="nav-link text-muted" href="index.php?page=personalinfo">Personal Info</a></li>
+                    <li><a class="nav-link text-muted" href="index.php?page=educationalinfo">Education</a></li>
+                    <li><a class="nav-link text-muted" href="index.php?page=profileinfo">Profile</a></li>
+                    <li><a class="nav-link text-muted" href="index.php?page=experience">Experience</a></li>
                 </ul>
-            </li>
-            <li><a href="index.php?page=resumeupload">my resume</a></li>
-            <li><a href="">Admit Card</a></li>
-            <li><a href="">Notice</a></li>
-            
-            <li class="nasted-nav"><a href="">find job</a><button id='nav-btn2'class="btn btn-info navbutton">+</button>
-                <ul class="side-subnav" id="sub_nav2">
-                    <li><a href="">Government Job</a></li>
-                    <li><a href="">Private Job</a></li>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php?page=resumeupload">
+                <i class="fa fa-file me-2 text-info"></i> My Resume
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="#">
+                <i class="fa fa-id-card me-2 text-info"></i> Admit Card
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="#">
+                <i class="fa fa-bell me-2 text-info"></i> Notice
+            </a>
+        </li>
+
+        <!-- 👇 Job Collapse -->
+        <li class="nav-item">
+            <a class="nav-link text-dark d-flex justify-content-between align-items-center"
+               data-bs-toggle="collapse" href="#jobMenu">
+                <span><i class="fa fa-briefcase me-2 text-info"></i> Find Job</span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+
+            <div class="collapse ps-3" id="jobMenu">
+                <ul class="nav flex-column">
+                    <li><a class="nav-link text-muted" href="#">Government Job</a></li>
+                    <li><a class="nav-link text-muted" href="#">Private Job</a></li>
                 </ul>
-            </li>
-            <li><a href="index.php?page=logout">logout</a></li>
-        </ul>
-    </div>
+            </div>
+        </li>
+
+        <li class="nav-item mt-3">
+            <a class="nav-link text-danger" href="index.php?page=logout">
+                <i class="fa fa-sign-out me-2"></i> Logout
+            </a>
+        </li>
+
+    </ul>
 </div>
-
-
 
 <!-- ALTER TABLE jobs
 ADD COLUMN jsc_active TINYINT,

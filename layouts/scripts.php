@@ -4,6 +4,7 @@
 			preload.style.display='none';
 		}
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-3.2.0.min.js"></script>
 	<script>
 		window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')

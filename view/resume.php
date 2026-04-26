@@ -2,8 +2,8 @@
     require_once 'database/database.php';
     $resumes = new datamodel();
     $skill = new datamodel();
-    $condition = " WHERE user_id ='".$_SESSION['id']."'";
-    $resumeinfo = $resumes->getSingleData('resumes', ' * ', $condition);
+    $resume_condition = " WHERE user_id ='".$_SESSION['id']."'";
+    $resumeinfo = $resumes->getSingleData('resumes', ' * ', $resume_condition);
     $skill_list = $skill->getData('skills', ' * ', '');
     if(isset($resumeinfo->skills)){
         $cvskills = explode(",", $resumeinfo->skills);
