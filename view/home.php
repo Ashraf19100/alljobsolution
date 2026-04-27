@@ -23,8 +23,8 @@
 						<h3 class="fs-3 fw-bold text-capitalize pb-5">Empowering Futures Through Opportunity</h3>
 						<p class="fs-6 fw-light ">JobSolution by Teletalk – Bridging Aspirations with Excellence represents a dynamic platform designed to connect job seekers with meaningful career opportunities across the country. It empowers individuals to turn their ambitions into reality by providing reliable, up-to-date job information and a seamless application experience.</p>
 						<div class="joblink-box mt-5">
-							<a href="" class="gov-job p-3 text-capitalize ">goverment job</a>
-							<a href="" class="priv-job p-3 text-capitalize">private job</a>
+							<a href="index.php?search=gov" class="gov-job p-3 text-capitalize ">goverment job</a>
+							<a href="index.php?search=non_gov" class="priv-job p-3 text-capitalize">private job</a>
 						</div>
 					</div>
 					<div class="banner-right w-50">

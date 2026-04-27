@@ -61,7 +61,11 @@
                                     <?php if(!empty($job_details->id)) {?>
                                 <input type="hidden" name="job_id" value =<?= $job_details->id ?>>
                                 <?php }?>
+                                <?php if(!empty($user_resume->id)) {?>
                                 <input type="hidden" name="resume_id" value =<?= $user_resume->id ?>>
+                                 <?php }else{
+                                    echo "<h5 class='text-danger text-center alert alert-danger' > you must upload a updated  resume before apply</h5>";
+                                 } ?>
                                 <div class="personal-information shadow p-4 mt-4">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">

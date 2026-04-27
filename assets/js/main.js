@@ -12,24 +12,41 @@ $(document).ready(function ($) {
 
 
 
+// document.addEventListener("DOMContentLoaded", function () {
 
-const adddegree = document.getElementById('edit_btn');
-const formdiv= document.getElementById('add_degree');
+//     const degreeSelect = document.getElementById("degree");
+//     const subjectSelect = document.getElementById("subject");
 
-adddegree.addEventListener('click', function(){
-	if(formdiv.classList.contains('add-btn-action')){
-		formdiv.classList.remove('add-btn-action');
-		formdiv.classList.add('mb-2');
-		formdiv.classList.add('p-4');
-	
-	}else{
-		formdiv.classList.add('add-btn-action');
-		formdiv.classList.remove('mb-2');
-		formdiv.classList.remove('p-4');
-	}
-});
+//     degreeSelect.addEventListener("change", function () {
+
+//         let degreeId = this.value;
+
+//         if (degreeId === "") {
+//             subjectSelect.innerHTML = "<option value=''>Select Subject</option>";
+//             return;
+//         }
+
+//         let xhr = new XMLHttpRequest();
+//         xhr.open("GET", "index.php?page=educationalinfo&degree_id=" + degreeId, true);
+
+//         xhr.onload = function () {
+//             if (this.status === 200) {
+//                 subjectSelect.innerHTML = this.responseText;
+//             } else {
+//                 subjectSelect.innerHTML = "<option value=''>Error loading data</option>";
+//             }
+//         };
+
+//         xhr.onerror = function () {
+//             subjectSelect.innerHTML = "<option value=''>Request failed</option>";
+//         };
+
+//         xhr.send();
+//     });
+
+// });
 
 
 
-//product show js
+// //product show js
 

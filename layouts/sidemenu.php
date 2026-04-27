@@ -87,8 +87,8 @@ require_once 'database/database.php';
 
             <div class="collapse ps-3" id="jobMenu">
                 <ul class="nav flex-column">
-                    <li><a class="nav-link text-muted" href="#">Government Job</a></li>
-                    <li><a class="nav-link text-muted" href="#">Private Job</a></li>
+                    <li><a class="nav-link text-muted" href="index.php?search=gov">Government Job</a></li>
+                    <li><a class="nav-link text-muted" href="index.php?search=nonn_gov">Private Job</a></li>
                 </ul>
             </div>
         </li>

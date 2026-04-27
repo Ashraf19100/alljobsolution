@@ -23,15 +23,13 @@
         <div class="col-md-10">
             <div class="content  container">
                 <div class="search_area">
-                    <form action="">
-                        <input name=""class="w-75 p-2 shadow-sm border-0 text-start text-uppercase text-info" type="text" name="search" placeholder="search your desire position">
-                        <button type="submit" class="btn btn-info shadow-sm border-0 text-start text-uppercase text-white ">Search</button>
-                    </form>
+                  <?php require "layouts/searcharea.php" ?>
+
                 </div>
                 <div class="information-section">
                     
                     <div class="container ">
-                        <div class="card shadow p-4">
+                        <div class="card shadow p-4 mt-4">
                             <div class="bg-primary text-white text-center p-4 rounded-top">
                                 <div class="information_header d-flex align-item-center justify-content-between">
                                     <h4 class="mb-4">Educational Information</h4>

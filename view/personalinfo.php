@@ -22,10 +22,8 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
             <div class="col-md-10">
                 <div class="content container">
                     <div class="search_area">
-                        <form action="">
-                            <input class="w-75 p-2 shadow-sm border-0 text-start text-uppercase text-info" type="text" name="search" placeholder="search your desire position">
-                            <button type="submit" class="btn btn-info shadow-sm border-0 text-start text-uppercase text-white ">Search</button>
-                        </form>
+                    <?php require "layouts/searcharea.php" ?>
+
                     </div>
                     <div class="information-section container">
                                 
@@ -53,7 +51,7 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
 
                                         } ?>
                                     <div class="row g-2">
-                                        <?php if(isset($personal_info)){ ?>
+                                        <?php if(!empty($personal_info)){ ?>
                                         <!-- Father Name -->
                                         <div class="col-md-6">
                                             <div class="p-3 bg-light rounded-3 h-100">
@@ -74,7 +72,7 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                         <div class="col-md-4">
                                             <div class="p-3 border rounded-3 text-center">
                                                 <small class="text-muted">Date of Birth</small>
-                                                <h6 class="mt-1"><?= $personal_info->dob   ?></h6>
+                                                <h6 class="mt-1"><?= $personal_info->dob  ?></h6>
                                             </div>
                                         </div>
 
@@ -165,13 +163,13 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                             <!-- Father Name -->
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Father Name</label>
-                                                <input type="text" name="father_name" class="form-control" value=<?= $personal_info->father_name ?>  required>
+                                                <input type="text" name="father_name" class="form-control" value="<?= $personal_info->father_name ?? '' ?>"  required>
                                             </div>
 
                                             <!-- Mother Name -->
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Mother Name</label>
-                                                <input type="text" name="mother_name" class="form-control" value=<?= $personal_info->mother_name ?> required>
+                                                <input type="text" name="mother_name" class="form-control" value="<?= $personal_info->mother_name ?? '' ?>" required>
                                             </div>
                                         </div>
 
@@ -179,19 +177,19 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                             <!-- Date of Birth -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Date of Birth</label>
-                                                <input type="date" name="dob" class="form-control" value=<?= $personal_info->dob ?>  required>
+                                                <input type="date" name="dob" class="form-control" value="<?= $personal_info->dob ?? '' ?>"  required>
                                             </div>
 
                                             <!-- Nationality -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Nationality</label>
-                                                <input type="text" name="nationality" value=<?= $personal_info->nationality ?>  class="form-control">
+                                                <input type="text" name="nationality" value="<?= $personal_info->nationality ?? '' ?>"  class="form-control">
                                             </div>
 
                                             <!-- Religion -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Religion</label>
-                                                <input type="text" name="religion"  class="form-control" value=<?= $personal_info->religion ?> >
+                                                <input type="text" name="religion"  class="form-control" value="<?= $personal_info->religion ?? '' ?>" >
                                             </div>
                                         </div>
 
@@ -200,11 +198,11 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label d-block">Gender</label>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="gender" value="Male" <?php if($personal_info->gender == 'male'){ echo " checked "; } ?>>
+                                                    <input class="form-check-input" type="radio" name="gender" value="Male" <?php if(!empty($personal_info)){  if($personal_info->gender == 'male'){ echo " checked "; } }?>>
                                                     <label class="form-check-label">Male</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="gender" value="Female" <?php if($personal_info->gender == 'female'){ echo " checked "; } ?>>
+                                                    <input class="form-check-input" type="radio" name="gender" value="Female" <?php if(!empty($personal_info)){  if($personal_info->gender == 'female'){ echo " checked "; } }?>>
                                                     <label class="form-check-label">Female</label>
                                                 </div>
                                             </div>
@@ -222,7 +220,7 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                             <!-- NID -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">NID</label>
-                                                <input type="text" name="nid" class="form-control" value=<?= $personal_info->nid ?> >
+                                                <input type="text" name="nid" class="form-control" value="<?= $personal_info->nid ?? '' ?>" >
                                             </div>
                                         </div>
 
@@ -230,20 +228,20 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                             <!-- Birth Registration -->
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Birth Registration No</label>
-                                                <input type="text" name="birth_registration" class="form-control" value=<?= $personal_info->birth_registration ?>>
+                                                <input type="text" name="birth_registration" class="form-control" value="<?= $personal_info->birth_registration ?? '' ?>">
                                             </div>
 
                                             <!-- Passport -->
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Passport No</label>
-                                                <input type="text" name="passport_no" class="form-control" value=<?= $personal_info->passport_no ?>>
+                                                <input type="text" name="passport_no" class="form-control" value="<?= $personal_info->passport_no ?? '' ?>">
                                             </div>
                                         </div>
 
                                         <!-- Address -->
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
-                                            <textarea name="address" class="form-control" rows="3" >value=<?= $personal_info->address ?></textarea>
+                                            <textarea name="address" class="form-control" rows="3" ><?= $personal_info->address ?? '' ?></textarea>
                                         </div>
 
                                         <!-- Submit -->
