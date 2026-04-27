@@ -61,6 +61,13 @@ switch ($page) {
     case 'application':
         require_once 'view/application.php';
         break;
+    case 'application_submit':
+        require_once 'actions/applicationController.php';
+        break;
+    
+    case 'application_preview':
+        require_once 'view/application_preview.php';
+        break;
     case 'resumeupload':
         require_once 'view/resume.php';
         break;
