@@ -4,11 +4,12 @@
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
     $all_degree = $eduinfo->getData('bachelor_degrees',' * ', '' );
 
+  
+    
 
     $educationinfo = $eduinfo->getData('user_education',' * ', $condition );
     
-    
-    
+   
 ?>
 
 <!doctype html>
@@ -101,12 +102,12 @@
                         <!-- Exam Name -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Exam Name</label>
-                            <select name="exam_name" class="form-control" required >
-                                                <option value="">--------select exam Name--------</option>
-                                                <?php foreach($all_degree as $all_degree){?>  
-                                                <option value="<?=$all_degree['degree_name'] ?>" ><?=$all_degree['degree_name'] ?></option>
-                                                <?php } ?>
-                                            </select>
+                            <select id="formdegree" name="exam_name" class="form-control" required >
+                                <option value="">--------select exam Name--------</option>
+                                <?php foreach($all_degree as $all_degree){?>  
+                                <option value="<?=$all_degree['id'] ?>" ><?=$all_degree['degree_name'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
 
                         <!-- University / Board -->
@@ -124,7 +125,9 @@
                         <!-- Subject -->
                         <div class="col-md-4">
                             <label class="form-label fw-semibold">Subject</label>
-                            <input name="subject" type="text" class="form-control" placeholder="e.g. Science">
+                            <select id="degreeSubject" name="subject" class="form-control" required >
+                                <option value="">--------select subject--------</option>
+                            </select>
                         </div>
 
                         <!-- Result -->

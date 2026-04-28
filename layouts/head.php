@@ -5,7 +5,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>job solution</title>
 	<meta name="description" content="">
-	<link rel="shortcut icon" href="assets/img/logos/Electro_logo-only-logo_New1.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="" type="image/x-icon" />
 	<!--=== Reset Css ===-->
 	<link rel="stylesheet" href="assets/css/normalize.css">
 	<!--=== Animate ===-->

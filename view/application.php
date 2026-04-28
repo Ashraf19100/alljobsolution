@@ -58,14 +58,12 @@
                                 echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
                             } ?>
                                 <form action="index.php?page=application_submit" method="POST">
-                                    <?php if(!empty($job_details->id)) {?>
-                                <input type="hidden" name="job_id" value =<?= $job_details->id ?>>
-                                <?php }?>
-                                <?php if(!empty($user_resume->id)) {?>
-                                <input type="hidden" name="resume_id" value =<?= $user_resume->id ?>>
-                                 <?php }else{
-                                    echo "<h5 class='text-danger text-center alert alert-danger' > you must upload a updated  resume before apply</h5>";
-                                 } ?>
+                
+                                <input type="hidden" name="job_id" value =<?= $job_details->id  ?? '' ?>>
+                                
+                                
+                                <input type="hidden" name="resume_id" value =<?= $user_resume->id ?? '' ?>>
+                                 
                                 <div class="personal-information shadow p-4 mt-4">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
@@ -77,13 +75,13 @@
                                         <!-- Father Name -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Father Name</label>
-                                            <input type="text" name="father_name" class="form-control" <?php if(isset($app_personal_info->father_name)){?> value="<?= $app_personal_info->father_name?> " <?php  } ?>  required>
+                                            <input type="text" name="father_name" class="form-control"  value="<?= $app_personal_info->father_name ?? '' ?> "  required>
                                         </div>
 
                                         <!-- Mother Name -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Mother Name</label>
-                                            <input type="text" name="mother_name" class="form-control" <?php if(isset($app_personal_info->mother_name)){?> value="<?= $app_personal_info->mother_name ?> " <?php  } ?> required>
+                                            <input type="text" name="mother_name" class="form-control"  value="<?= $app_personal_info->mother_name ?? '' ?> "  required>
                                         </div>
                                     </div>
 
@@ -91,19 +89,19 @@
                                         <!-- Date of Birth -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Date of Birth</label>
-                                            <input type="date" name="dob" class="form-control" <?php if(isset($app_personal_info->dob)){?> value=" <?= $app_personal_info->dob ?> " <?php  } ?> required>
+                                            <input type="date" name="dob" class="form-control" value="<?= isset($app_personal_info->dob) ? $app_personal_info->dob : ''; ?>" required>
                                         </div>
 
                                         <!-- Nationality -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Nationality</label>
-                                            <input type="text" name="nationality" <?php if(isset($app_personal_info->nationality)){?> value="<?= $app_personal_info->nationality?> " <?php  } ?> class="form-control">
+                                            <input type="text" name="nationality"  value="<?= $app_personal_info->nationality ?? '' ?> "  class="form-control">
                                         </div>
 
                                         <!-- Religion -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Religion</label>
-                                            <input type="text" name="religion" <?php if(isset($app_personal_info->religion)){?> value="<?= $app_personal_info->religion?> " <?php  } ?> class="form-control">
+                                            <input type="text" name="religion"  value="<?= $app_personal_info->religion ?? ''?> " class="form-control">
                                         </div>
                                     </div>
 
@@ -112,11 +110,11 @@
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label d-block">Gender</label>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="Male" <?php if($app_personal_info->gender == 'male')echo " checked "; ?>>
+                                                <input class="form-check-input" type="radio" name="gender" value="Male" <?= ($app_personal_info->gender ?? '') === 'male' ? 'checked' : '' ?>>
                                                 <label class="form-check-label">Male</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="Female" <?php if($app_personal_info->gender == 'female')echo " checked "; ?>>
+                                                <input class="form-check-input" type="radio" name="gender" value="Female" <?= ($app_personal_info->gender ?? '') === 'female' ? 'checked' : '' ?>>
                                                 <label class="form-check-label">Female</label>
                                             </div>
                                         </div>
@@ -134,7 +132,7 @@
                                         <!-- NID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">NID</label>
-                                            <input type="text" name="nid" class="form-control" <?php if(isset($app_personal_info->nid)){?> value="<?= $app_personal_info->nid?> " <?php  } ?> >
+                                            <input type="text" name="nid" class="form-control"  value="<?= $app_personal_info->nid ?? ''?> "  >
                                         </div>
                                     </div>
 
@@ -142,20 +140,20 @@
                                         <!-- Birth Registration -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Birth Registration No</label>
-                                            <input type="text" name="birth_registration" class="form-control" <?php if(isset($app_personal_info->birth_registration)){?> value="<?= $app_personal_info->birth_registration?> " <?php  } ?>>
+                                            <input type="text" name="birth_registration" class="form-control"  value="<?= $app_personal_info->birth_registration ?? '' ?> " >
                                         </div>
 
                                         <!-- Passport -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Passport No</label>
-                                            <input type="text" name="passport_no" class="form-control" <?php if(isset($app_personal_info->passport_no)){?> value="<?= $app_personal_info->passport_no?> " <?php  } ?>>
+                                            <input type="text" name="passport_no" class="form-control"  value="<?= $app_personal_info->passport_no ?? '' ?> " >
                                         </div>
                                     </div>
 
                                     <!-- Address -->
                                     <div class="mb-3">
                                         <label class="form-label">Address</label>
-                                        <textarea name="address" class="form-control" rows="3" ><?php if(isset($app_personal_info->address)){?> <?= $app_personal_info->address?> <?php  } ?></textarea>
+                                        <textarea name="address" class="form-control" rows="3" > <?= $app_personal_info->address ?? '' ?> </textarea>
                                     </div>
                                 </div>
                                 <div class="SSC shadow p-4 mt-4">
@@ -175,7 +173,7 @@
                                         <!-- University / Board -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">University / Board</label>
-                                            <input type="text" name="ssc_uni_board" class="form-control" placeholder="e.g. Dhaka Board" <?php if(isset($ssc->uni_board)) { echo "value = '".$ssc->uni_board."'";   } ?> <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="ssc_uni_board" class="form-control" placeholder="e.g. Dhaka Board"   value = "<?=$ssc->uni_board ?? '' ?>" <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
 
@@ -183,26 +181,26 @@
                                         <!-- Roll ID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Roll / ID</label>
-                                            <input type="text" name="ssc_roll_id" class="form-control" <?php if(isset($ssc->roll_id)) { echo "value = '".$ssc->roll_id."'";   } ?> <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="ssc_roll_id" class="form-control" value = "<?=$ssc->roll_id ?? '' ?>"  <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
                                         </div>
                                         
 
                                         <!-- Subject -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Subject</label>
-                                            <input type="text" name="ssc_subject" class="form-control" <?php if(isset($ssc->subject)) { echo "value = '".$ssc->subject."'";   } ?> <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="ssc_subject" class="form-control" value = "<?=$ssc->subject ?? '' ?>"  <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
                                         </div>
                                         <!-- result -->
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Result</label>
-                                            <input type="text" name="ssc_result" class="form-control" <?php if(isset($ssc->result)) { echo "value = '".$ssc->result."'";   } ?> <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="ssc_result" class="form-control" value = "<?=$ssc->result ?? '' ?>"  <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
                                         </div>
 
                                         <!-- Passing Year -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Passing Year</label>
-                                            <input type="number" name="ssc_passing_year" class="form-control" min="1950" max="2099" <?php if(isset($ssc->passing_year)) { echo "value = '".$ssc->passing_year."'";   } ?> <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
+                                            <input type="number" name="ssc_passing_year" class="form-control" min="1950" max="2099" value = "<?=$ssc->passing_year ?? '' ?>"  <?php if($job_details->ssc_required == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
                                 </div>
@@ -223,7 +221,7 @@
                                         <!-- University / Board -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">University / Board</label>
-                                            <input type="text" name="hsc_uni_board" class="form-control" placeholder="e.g. Dhaka Board" <?php if(isset($hsc->uni_board)) { echo "value = '".$hsc->uni_board."'";   } ?> <?php if($job_details->hsc_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="hsc_uni_board" class="form-control" placeholder="e.g. Dhaka Board" value="<?=$hsc->uni_board ?? '' ?>" <?php if($job_details->hsc_required == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
 
@@ -231,26 +229,26 @@
                                         <!-- Roll ID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Roll / ID</label>
-                                            <input type="text" name="hsc_roll_id" class="form-control" <?php if(isset($hsc->roll_id)) { echo "value = '".$hsc->roll_id."'";   } ?> <?php if($job_details->hsc_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="hsc_roll_id" class="form-control" value="<?=$hsc->roll_id ?? '' ?>" <?php if($job_details->hsc_required == 1){?> required <?php } ?>>
                                         </div>
                                         
 
                                         <!-- Subject -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Subject</label>
-                                            <input type="text" name="hsc_subject" class="form-control" <?php if(isset($hsc->subject)) { echo "value = '".$hsc->subject."'";   } ?> <?php if($job_details->hsc_required == 1){?> required <?php } ?> >
+                                            <input type="text" name="hsc_subject" class="form-control" value="<?=$hsc->subject ?? '' ?>" <?php if($job_details->hsc_required == 1){?> required <?php } ?> >
                                         </div>
                                         <!-- result -->
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Result</label>
-                                            <input type="text" name="hsc_result" class="form-control" <?php if(isset($hsc->result)) { echo "value = '".$hsc->result."'";   } ?> <?php if($job_details->hsc_required == 1){?> required <?php } ?> >
+                                            <input type="text" name="hsc_result" class="form-control" value="<?=$hsc->result ?? '' ?>" <?php if($job_details->hsc_required == 1){?> required <?php } ?> >
                                         </div>
 
                                         <!-- Passing Year -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Passing Year</label>
-                                            <input type="number" name="hsc_passing_year" class="form-control" min="1950" max="2099" <?php if(isset($hsc->passing_year)) { echo "value = '".$hsc->passing_year."'";   } ?> <?php if($job_details->hsc_required == 1){?> required <?php } ?> >
+                                            <input type="number" name="hsc_passing_year" class="form-control" min="1950" max="2099" value="<?=$hsc->passing_year ?? '' ?>" <?php if($job_details->hsc_required == 1){?> required <?php } ?> >
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +271,7 @@
                                         <!-- University / Board -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">University / Board</label>
-                                            <input type="text" name="gra_uni_board" class="form-control" placeholder="e.g. Dhaka Board" <?php if(isset($gra->uni_board)) { echo "value = '".$gra->uni_board."'";   } ?> <?php if($job_details->gra_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="gra_uni_board" class="form-control" placeholder="e.g. Dhaka Board" value="<?=$gra->uni_board ?? '' ?>" <?php if($job_details->gra_required == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
 
@@ -281,26 +279,26 @@
                                         <!-- Roll ID -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Roll / ID</label>
-                                            <input type="text" name="gra_roll_id" class="form-control" <?php if(isset($gra->roll_id)) { echo "value = '".$gra->roll_id."'";   } ?> <?php if($job_details->gra_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="gra_roll_id" class="form-control" value="<?=$gra->roll_id ?? '' ?>" <?php if($job_details->gra_required == 1){?> required <?php } ?>>
                                         </div>
                                         
 
                                         <!-- Subject -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Subject</label>
-                                            <input type="text" name="gra_subject" class="form-control" <?php if(isset($gra->subject)) { echo "value = '".$gra->subject."'";   } ?> <?php if($job_details->gra_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="gra_subject" class="form-control" value="<?=$gra->subject ?? '' ?>" <?php if($job_details->gra_required == 1){?> required <?php } ?>>
                                         </div>
                                         <!-- result -->
 
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Result</label>
-                                            <input type="text" name="gra_result" class="form-control" <?php if(isset($gra->result)) { echo "value = '".$gra->result."'";   } ?> <?php if($job_details->gra_required == 1){?> required <?php } ?>>
+                                            <input type="text" name="gra_result" class="form-control" value="<?=$gra->result ?? '' ?>" <?php if($job_details->gra_required == 1){?> required <?php } ?>>
                                         </div>
 
                                         <!-- Passing Year -->
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Passing Year</label>
-                                            <input type="number" name="gra_passing_year" class="form-control" min="1950" max="2099" <?php if(isset($gra->passing_year)) { echo "value = '".$gra->passing_year."'";   } ?> <?php if($job_details->gra_required == 1){?> required <?php } ?>>
+                                            <input type="number" name="gra_passing_year" class="form-control" min="1950" max="2099" value="<?=$gra->passing_year ?? '' ?>" <?php if($job_details->gra_required == 1){?> required <?php } ?>>
                                         </div>
                                     </div>
                                 </div>
@@ -394,12 +392,14 @@
                                 <div class="skills-section p-4 shadow">
                                     <h3 class="text-success fs-3 text-capitalize" >Your Skills area</h3>
                                     <ol>
-                                        <?php $skills = explode( ",", $user_resume->skills );
+                                        <?php if(!empty($skills)){
+                                            $skills = explode( ",", $user_resume->skills );
                                             foreach($skills as $skills){
                                                 ?>
                                                 <li><?= $skills ?></li>
                                                 <?php
                                             }
+                                        }
                                         ?>
                                     </ol>
                                     

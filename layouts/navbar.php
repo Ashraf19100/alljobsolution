@@ -1,8 +1,22 @@
-<nav class="navbar navbar-expand-lg shadow-sm sticky-top">
-  <div class="container">
+<style>
+  .navbar-nav li{
+     
+      margin: 0px 5px;
+      border: 2px solid #fff;
+      border-radius: 20px;
+  }
+  .navbar-nav li a{
+     color: #fff;
+     font-weight: 400;
+      
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background: linear-gradient(135deg, #1e3c72, #2a5298, #ff7e00); " >
+  <div class="container" >
     
     <a class="navbar-brand" href="#">
-      <img src="assets/img/logo.png" height="40">
+      <img src="assets/img/whitelogo.png" height="50">
     </a>
 
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navBar">

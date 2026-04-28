@@ -58,22 +58,27 @@ require_once 'database/database.php';
                 </ul>
             </div>
         </li>
-
+        <?php if($_SESSION['role'] == 'employer'){?>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php?employer=">
+                <i class="fa fa-file me-2 text-info"></i> user list
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php?employer=">
+                <i class="fa fa-file me-2 text-info"></i> post jobs
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="index.php?employer=">
+                <i class="fa fa-file me-2 text-info"></i>active Admit card
+            </a>
+        </li>
+        <?php }  ?>
+        <?php if($_SESSION['role'] == 'job_seeker'){?>
         <li class="nav-item">
             <a class="nav-link text-dark" href="index.php?page=resumeupload">
                 <i class="fa fa-file me-2 text-info"></i> My Resume
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="#">
-                <i class="fa fa-id-card me-2 text-info"></i> Admit Card
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="#">
-                <i class="fa fa-bell me-2 text-info"></i> Notice
             </a>
         </li>
 
@@ -91,6 +96,18 @@ require_once 'database/database.php';
                     <li><a class="nav-link text-muted" href="index.php?search=nonn_gov">Private Job</a></li>
                 </ul>
             </div>
+        </li>
+        <?php }  ?>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="#">
+                <i class="fa fa-id-card me-2 text-info"></i> Admit Card
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="#">
+                <i class="fa fa-bell me-2 text-info"></i> Notice
+            </a>
         </li>
 
         <li class="nav-item mt-3">

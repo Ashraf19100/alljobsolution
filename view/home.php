@@ -7,17 +7,18 @@
 <body>
 	<div class="wrapper">
 		<?php require "layouts/navbar.php" ?>
-		<div class="container">
-			<div class="search_area">
+		<div class="">
+			<div class="container search_area">
 				<form action="">
 					<?php require "layouts/searcharea.php" ?>
 				</form>
 			</div>
+			
 			<div class="home-content-wrapper">
 				<?php if(!empty($_GET['search'])){
 					require_once 'view/searchpost.php'; 
 				}else{?>
-				<div class="banner">
+				<div class="banner container ">
 					<div class="banner-left w-50">
 						<h1 class=" fw-bold text-capitalize pt-5">JobSolution by Teletalk</h1>
 						<h3 class="fs-3 fw-bold text-capitalize pb-5">Empowering Futures Through Opportunity</h3>
@@ -31,13 +32,137 @@
 						<img src="assets/img/banner.png" alt="">
 					</div>
 				</div>
-				<div class="job-post">
+				<section class="py-5" style="background: linear-gradient(135deg, #1e3c72, #2a5298, #ff7e00);">
+					<div class="container">
+
+						<!-- Header -->
+						<div class="text-center text-white mb-5">
+							<h2 class="fw-bold">Explore Job Categories</h2>
+							<p class="mx-auto" style="max-width:600px;">
+								Discover opportunities across multiple industries. Choose your field and take the next step toward your dream career with JobSolution.
+							</p>
+						</div>
+
+						<!-- Categories -->
+						<div class="row g-4">
+
+							<!-- Category Card -->
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-laptop-code fa-2x text-primary mb-3"></i>
+									<h6>IT & Software</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-briefcase fa-2x text-warning mb-3"></i>
+									<h6>Banking & Finance</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-user-graduate fa-2x text-info mb-3"></i>
+									<h6>Education & Training</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-heartbeat fa-2x text-danger mb-3"></i>
+									<h6>Healthcare</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-building fa-2x text-secondary mb-3"></i>
+									<h6>Government Jobs</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-bullhorn fa-2x text-warning mb-3"></i>
+									<h6>Marketing & Sales</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-cogs fa-2x text-primary mb-3"></i>
+									<h6>Engineering</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-hotel fa-2x text-info mb-3"></i>
+									<h6>Hospitality</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-truck fa-2x text-warning mb-3"></i>
+									<h6>Logistics</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-chart-line fa-2x text-success mb-3"></i>
+									<h6>Business Development</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-paint-brush fa-2x text-danger mb-3"></i>
+									<h6>Design & Creative</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-balance-scale fa-2x text-secondary mb-3"></i>
+									<h6>Legal</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-user-tie fa-2x text-primary mb-3"></i>
+									<h6>Human Resources</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-industry fa-2x text-dark mb-3"></i>
+									<h6>Manufacturing</h6>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-sm-6">
+								<div class="card shadow border-0 text-center p-4 h-100">
+									<i class="fas fa-globe fa-2x text-info mb-3"></i>
+									<h6>NGO & Development</h6>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</section>
+				<div class="job-post container">
 					<?php require_once 'view/allpost.php' ?>
 				</div>
 				<?php } ?>
 			</div>
             
 		</div>
+		
 		<section class="py-5 bg-light">
 			<div class="container text-center">
 

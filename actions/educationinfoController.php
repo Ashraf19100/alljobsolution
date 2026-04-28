@@ -3,6 +3,7 @@ require_once 'database/database.php';
 
 $educationinfo = new datamodel();
 
+
 if(isset($_POST)){
     
     $user_id = $_SESSION['id'];
