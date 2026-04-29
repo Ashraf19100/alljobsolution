@@ -9,30 +9,33 @@
 		<?php require "layouts/navbar.php" ?>
 		<div class="">
 			<div class="container search_area">
-				<form action="">
+				
 					<?php require "layouts/searcharea.php" ?>
-				</form>
+				
 			</div>
 			
 			<div class="home-content-wrapper">
 				<?php if(!empty($_GET['search'])){
 					require_once 'view/searchpost.php'; 
 				}else{?>
-				<div class="banner container ">
-					<div class="banner-left w-50">
-						<h1 class=" fw-bold text-capitalize pt-5">JobSolution by Teletalk</h1>
-						<h3 class="fs-3 fw-bold text-capitalize pb-5">Empowering Futures Through Opportunity</h3>
-						<p class="fs-6 fw-light ">JobSolution by Teletalk – Bridging Aspirations with Excellence represents a dynamic platform designed to connect job seekers with meaningful career opportunities across the country. It empowers individuals to turn their ambitions into reality by providing reliable, up-to-date job information and a seamless application experience.</p>
-						<div class="joblink-box mt-5">
-							<a href="index.php?search=gov" class="gov-job p-3 text-capitalize ">goverment job</a>
-							<a href="index.php?search=non_gov" class="priv-job p-3 text-capitalize">private job</a>
+				
+				<section class="" style="background: linear-gradient(105deg, #c1c5cd, #fff, #fff);">
+					<div class="banner container ">
+						<div class="banner-left w-50">
+							<h1 class=" fw-bold text-capitalize pt-5">JobSolution by Teletalk</h1>
+							<h3 class="fs-3 fw-bold text-capitalize pb-5">Empowering Futures Through Opportunity</h3>
+							<p class="fs-6 fw-light ">JobSolution by Teletalk – Bridging Aspirations with Excellence represents a dynamic platform designed to connect job seekers with meaningful career opportunities across the country. It empowers individuals to turn their ambitions into reality by providing reliable, up-to-date job information and a seamless application experience.</p>
+							<div class="joblink-box mt-5">
+								<a href="index.php?search=gov" class="gov-job p-3 text-capitalize ">goverment job</a>
+								<a href="index.php?search=non_gov" class="priv-job p-3 text-capitalize">private job</a>
+							</div>
+						</div>
+						<div class="banner-right w-50">
+							<img src="assets/img/banner.png" alt="">
 						</div>
 					</div>
-					<div class="banner-right w-50">
-						<img src="assets/img/banner.png" alt="">
-					</div>
-				</div>
-				<section class="py-5" style="background: linear-gradient(135deg, #1e3c72, #2a5298, #ff7e00);">
+				</section>
+				<section class="py-5" style="background: linear-gradient(135deg, #ff7e00, #2a5298, #ff7e00);">
 					<div class="container">
 
 						<!-- Header -->
@@ -166,7 +169,7 @@
 		<section class="py-5 bg-light">
 			<div class="container text-center">
 
-				<h3 class="fw-bold mb-5">How It Works</h3>
+				<h3 class="fw-bold mb-5 " style="color:#1e3c72">How It Works</h3>
 
 				<div class="row g-4">
 

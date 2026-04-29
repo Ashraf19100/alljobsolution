@@ -1,5 +1,7 @@
 
 <?php 
+require_once 'actions/pdfController.php';
+
 session_start();
 
 $page = $_GET['page'] ?? 'home';
@@ -157,7 +159,15 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
             exit;
         }
-        
+    case 'pdf':
+        if(isset($_SESSION['email'])){
+        $controller = new PdfController();
+        $controller->generate($_GET['user_id']);
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
+            exit;
+        }    
     case 'logout':
         require_once 'actions/logoutController.php';
         break;

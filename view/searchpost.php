@@ -18,9 +18,9 @@ if(!empty($_GET['search'])){
     
 ?>
 
-<div class="jobs ">
+<div class="jobs my-5 ">
     <div class="job-head">
-        <h1 class="text-center text-capitalize text-success py-3"> Result for  <?php if($_GET['search'] == 'gov'){
+        <h1 class="text-center text-capitalize  py-3" style="color:#1e3c72"> Result for  <?php if($_GET['search'] == 'gov'){
             echo"Governnment Jobs";
         }elseif($_GET['search'] == 'non_gov'){
             echo "Non Governnment Jobs";
@@ -28,11 +28,11 @@ if(!empty($_GET['search'])){
             echo $_GET['search'];
         }   ?></h1>
     </div>
-    <div class="row">
+    <div class="row m-5">
         
         <?php if(!empty($searchresult)){  foreach($searchresult as $searchresult) {?>
         <div class="col-md-4 py-2">
-            <div class="card border-0 shadow-sm h-100">
+            <div class="card border-2 shadow-sm h-100">
                 <div class="card-body">
 
                     <div class="d-flex align-items-center mb-3">
@@ -54,7 +54,7 @@ if(!empty($_GET['search'])){
                     <p class="mb-1"><i class="fa fa-briefcase text-info"></i>  <?= $searchresult['emp_status'] ?></p>
                     <p class="text-danger mb-2">Deadline:  <?= $searchresult['deadline'] ?></p>
 
-                    <a href="index.php?page=jobdetails&job_id=<?= $searchresult['id']?>" class="btn btn-info w-100 text-white">View Details</a>
+                    <a href="index.php?page=jobdetails&job_id=<?= $searchresult['id']?>" class="btn btn-info w-100 text-white" style="background: linear-gradient(135deg, #8aa6da, #ff7e00, #ff7e00); ">View Details</a>
 
                 </div>
             </div>

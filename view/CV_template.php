@@ -14,7 +14,7 @@
     }
 
     .cv-container {
-        max-width: 900px;
+        max-width: 800px;
         margin: 30px auto;
         background: #fff;
         box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -86,10 +86,10 @@
 
     <!-- LEFT SIDE -->
     <div class="left">
-        <img src="uploads/img/<?=$_SESSION['profile_image'] ?>" alt="Profile Photo">
+        <img src='<?= $_SERVER['DOCUMENT_ROOT']."/alljobsolution/uploads/img/"  . $_SESSION['profile_image'] ?>' alt="Profile Photo">
 
         <h3><?=$_SESSION['name']?></h3>
-        <p>Web Developer</p>
+        <p><?=$_SERVER['DOCUMENT_ROOT']?></p>
         <h4>Contact</h4>
         <p>Email: <?=$_SESSION['email']?></p>
         <p>Phone: <?=$_SESSION['phone']?></p>

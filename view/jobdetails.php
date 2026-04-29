@@ -49,12 +49,8 @@ $responsibility= explode('.', $single_job->description);
         <?php require "layouts/sidemenu.php" ?>
         <div class="col-md-10">
             <div class="content  container">
-                <div class="search_area">
-                    <form action="">
-                        <input class="w-75 p-2 shadow-sm border-0 text-start text-uppercase text-info" type="text" name="search" placeholder="search your desire position">
-                        <button type="submit" class="btn btn-info shadow-sm border-0 text-start text-uppercase text-white ">Search</button>
-                    </form>
-                </div>
+                <?php require "layouts/searcharea.php" ?>
+
                 <div class="information-section">
                     <div class="container mt-2">
                         <div class="card shadow p-4">

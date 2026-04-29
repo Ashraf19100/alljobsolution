@@ -70,9 +70,9 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-success btn-sm" onclick="generatePDF('john')">
+                                                    <a class="btn btn-success btn-sm" href="index.php?page=pdf&user_id=<?= $resumeinfo->user_id ?>">
                                                         Generate PDF
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

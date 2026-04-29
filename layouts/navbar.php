@@ -10,6 +10,31 @@
      font-weight: 400;
       
   }
+  .navbar-nav li:hover{
+    border: 2px solid #1e3c72;
+  }
+  .navbar-nav li:hover a{
+   color: #1e3c72;
+  }
+  .dropdown-menu{
+    background:linear-gradient(135deg, #1e3c72, #ff7e00, #ff7e00);
+  }
+  .dropdown-menu li{
+   border: none;
+  }
+  .dropdown-menu li:hover{
+   border: none;
+  }
+
+  .social-nav li{
+      
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height:50px;
+      padding:5px;
+      text-align:center;
+  }
 </style>
 
 <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background: linear-gradient(135deg, #1e3c72, #2a5298, #ff7e00); " >
@@ -22,8 +47,15 @@
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navBar">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
 
     <div class="collapse navbar-collapse justify-content-end" id="navBar">
+      <form method="GET" class="d-flex justify-content-center px-4">
+        <div class="input-group w-100 shadow-sm">
+          <input style="" type="text" name="search" class=" form-control bg-transparent text-light border" placeholder="Search jobs (e.g. gov, Dhaka, remote)">
+          <button class="btn btn-transparent border-1 border-light text-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
       <ul class="navbar-nav">
 
         <li class="nav-item">
@@ -39,20 +71,20 @@
         </li>
 
         <li class="nav-item dropdown" >
-			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""><?php if(isset($_SESSION['email'])){
-							print($_SESSION['name']);
-						}else{
-							echo "user name";
-						} ?></a>
-          <ul class="dropdown-menu ">
-			<?php if(isset($_SESSION['email'])){ ?>
-            <li><a class="dropdown-item" href="index.php?page=dashboard">Dashboard</a></li>
-            <li><a class="dropdown-item" href="index.php?page=logout">logout</a></li>
-			<?php }else{ ?>
-			<li><a class="dropdown-item"  href="index.php?page=login">login</a></li>
-            <li><a class="dropdown-item" href="index.php?page=register">register</a></li>
-			<?php	} ?>
-          </ul>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""><?php if(isset($_SESSION['email'])){
+                print($_SESSION['name']);
+              }else{
+                echo "user name";
+              } ?></a>
+            <ul class="dropdown-menu ">
+        <?php if(isset($_SESSION['email'])){ ?>
+              <li><a class="dropdown-item" href="index.php?page=dashboard">Dashboard</a></li>
+              <li><a class="dropdown-item" href="index.php?page=logout">logout</a></li>
+        <?php }else{ ?>
+        <li><a class="dropdown-item"  href="index.php?page=login">login</a></li>
+              <li><a class="dropdown-item" href="index.php?page=register">register</a></li>
+        <?php	} ?>
+            </ul>
         </li>
 
       </ul>
