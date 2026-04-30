@@ -98,15 +98,25 @@
                 <form action="index.php?page=education-submit" method="POST">
 
                     <div class="row g-3">
-
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Exam Level</label>
+                            <select id="degreelevel" name="exam_name" class="form-control" required >
+                                <option value="">--------select exam Name--------</option>
+                                <option value="1">SSC</option>
+                                <option value="2">HSC</option>
+                                <option value="3">Bechelor</option>
+                                <option value="4">Post Graduation</option>
+                                <option value="5">Phd</option>
+                                <option value="6">MPhil</option>
+                                
+                            </select>
+                        </div>
                         <!-- Exam Name -->
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Exam Name</label>
                             <select id="formdegree" name="exam_name" class="form-control" required >
                                 <option value="">--------select exam Name--------</option>
-                                <?php foreach($all_degree as $all_degree){?>  
-                                <option value="<?=$all_degree['id'] ?>" ><?=$all_degree['degree_name'] ?></option>
-                                <?php } ?>
+                                
                             </select>
                         </div>
 

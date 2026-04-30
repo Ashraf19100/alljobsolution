@@ -25,6 +25,12 @@ class PdfController {
 
         // Generate PDF
         $dompdf = new Dompdf();
+        $options = $dompdf->getOptions();
+        $options->set('isRemoteEnabled', true); 
+        $options->set('chroot', realpath('')); // Allows access to local directories
+        $dompdf->setOptions($options);
+
+
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();

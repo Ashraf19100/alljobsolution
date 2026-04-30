@@ -1,157 +1,184 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Classy CV</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Template</title>
 
 <style>
     body {
-        background: #e9ecef;
-        font-family: 'Segoe UI', sans-serif;
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        color: #333;
     }
 
-    .cv-container {
-        max-width: 800px;
-        margin: 30px auto;
-        background: #fff;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        display: flex;
+    h2 {
+        margin-bottom: 5px;
     }
 
-    /* LEFT SIDE */
-    .left {
-        width: 35%;
-        background: #1f3c88;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
+    .header {
+        border-bottom: 2px solid #198754;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
     }
-
-    .left img {
-        width: 130px;
-        height: 130px;
+    .header p{
+        padding: 1px;
+        margin:0px;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        border: 4px solid #fff;
         object-fit: cover;
-        margin-bottom: 15px;
+        border: 3px solid #198754;
     }
 
-    .left h4 {
-        border-bottom: 1px solid rgba(255,255,255,0.4);
-        padding-bottom: 5px;
-        margin-top: 20px;
+    .section {
+        margin-bottom: 25px;
     }
 
-    .left p, .left li {
-        font-size: 14px;
-        margin: 5px 0;
-    }
-
-    /* RIGHT SIDE */
-    .right {
-        width: 65%;
-        padding: 30px;
-    }
-
-    .name {
-        color: #1f3c88;
-        font-weight: bold;
-    }
-
-    .section-title {
-        color: #1f3c88;
-        border-bottom: 2px solid #1f3c88;
-        margin-top: 20px;
+    .section h3 {
+        border-left: 5px solid #198754;
+        padding-left: 10px;
         margin-bottom: 10px;
-        font-weight: 600;
     }
 
-    .job-title {
-        font-weight: bold;
+    table {
+        width: 100%;
+        border-collapse: collapse;
     }
 
-    .small-text {
-        color: #777;
-        font-size: 13px;
+    table, th, td {
+        border: 1px solid #ccc;
     }
+
+    th {
+        background-color: #f2f2f2;
+        text-align: left;
+        padding: 8px;
+        width: 30%;
+    }
+
+    td {
+        padding: 8px;
+    }
+
+    .signature {
+        margin-top: 40px;
+        text-align: right;
+    }
+
+    .signature img {
+        width: 120px;
+    }
+
 </style>
 </head>
 
 <body>
-
-<div class="cv-container">
-
-    <!-- LEFT SIDE -->
-    <div class="left">
-        <img src='<?= $_SERVER['DOCUMENT_ROOT']."/alljobsolution/uploads/img/"  . $_SESSION['profile_image'] ?>' alt="Profile Photo">
-
-        <h3><?=$_SESSION['name']?></h3>
-        <p><?=$_SERVER['DOCUMENT_ROOT']?></p>
-        <h4>Contact</h4>
-        <p>Email: <?=$_SESSION['email']?></p>
-        <p>Phone: <?=$_SESSION['phone']?></p>
-        <p><?=$personal->address?></p>
-
-        <h4>Skills</h4>
-        <ul class="list-unstyled">
-            <li>HTML, CSS, Bootstrap</li>
-            <li>PHP & MySQL</li>
-            <li>JavaScript</li>
-            <li>Problem Solving</li>
-        </ul>
-
-        <h4>Languages</h4>
-        <p>English</p>
-        <p>Bangla</p>
+<div class="" style="width:25%;">
+        <img 
+            src="<?= $_SERVER['DOCUMENT_ROOT'] ?>/alljobsolution/uploads/img/<?=$_SESSION['profile_image'] ?>"
+            alt="Profile Image" 
+            class="profile-img "
+        >
+</div>
+<div class="header">
+    <h2>Carriculam Viate of</h2>
+    <p style="text-transform: uppercase"><strong> <?=$_SESSION['name']  ?></strong></p>
+    <p class=""><strong>Email:</strong><?=$_SESSION['email']  ?></p>
+    <p class=""><strong>Phone:</strong><?= $_SESSION['phone'] ?></p>
+</div>
+        <div class="" style="width:100%;">
+        <h5 class=" ">Career Objective</h5>
+        <p>To build a rewarding career in a dynamic and growth-oriented organization where I can effectively utilize my skills, gain new knowledge, and contribute to the success of the company while continuously improving myself both professionally and personally.</p>
+        
+        
     </div>
+    
 
-    <!-- RIGHT SIDE -->
-    <div class="right">
 
-        <h2 class="name">John Doe</h2>
-        <p class="small-text">Professional Web Developer</p>
+<!-- Personal Info -->
+<div class="section">
+    <h3>Personal Information</h3>
+    <table>
+        <tr><th>Full Name</th><td><?= $_SESSION['name'] ?></td></tr>
+        <tr><th>Father Name</th><td><?= $personal->father_name ?></td></tr>
+        <tr><th>Mother Name</th><td><?= $personal->mother_name ?></td></tr>
+        <tr><th>Date of Birth</th><td><?= $personal->dob ?></td></tr>
+        <tr><th>Nationality</th><td><?= $personal->nationality ?></td></tr>
+        <tr><th>Religion</th><td><?= $personal->religion ?></td></tr>
+        <tr><th>Gender</th><td><?= $personal->gender ?></td></tr>
+        <tr><th>Marital Status</th><td><?= $personal->marital_status ?></td></tr>
+        <tr><th>NID</th><td><?= $personal->nid ?></td></tr>
+        <tr><th>Birth Reg.</th><td><?= $personal->birth_registration ?></td></tr>
+        <tr><th>Passport</th><td><?= $personal->passport_no ?></td></tr>
+        <tr><th>Address</th><td><?= $personal->address ?></td></tr>
+    </table>
+</div>
 
-        <div>
-            <div class="section-title">Career Objective</div>
-            <p>
-                Passionate and detail-oriented developer seeking to build scalable web applications
-                and contribute to innovative projects.
-            </p>
-        </div>
+<!-- Education -->
+<div class="section">
+    <h3>Educational Information</h3>
+    <table>
+        <tr>
+            <th>Exam</th>
+            <th>Board</th>
+            <th>Roll</th>
+            <th>Subject</th>
+            <th>Result</th>
+            <th>Year</th>
+        </tr>
+        <tr>
+            <td>SSC</td>
+            <td>Dhaka</td>
+            <td>12345</td>
+            <td>Science</td>
+            <td>5.00</td>
+            <td>2016</td>
+        </tr>
+        <tr>
+            <td>HSC</td>
+            <td>Dhaka</td>
+            <td>67890</td>
+            <td>Science</td>
+            <td>5.00</td>
+            <td>2018</td>
+        </tr>
+    </table>
+</div>
 
-        <div>
-            <div class="section-title">Experience</div>
+<!-- Experience -->
+<div class="section">
+    <h3>Experience</h3>
+    <table>
+        <tr><th>Company</th><td>ABC Company</td></tr>
+        <tr><th>Job Title</th><td>Web Developer</td></tr>
+        <tr><th>Type</th><td>IT</td></tr>
+        <tr><th>Start</th><td>Jan 2022</td></tr>
+        <tr><th>End</th><td>Present</td></tr>
+        <tr><th>Location</th><td>Dhaka</td></tr>
+        <tr><th>Description</th><td>Worked on web applications using PHP and JavaScript.</td></tr>
+    </table>
+</div>
 
-            <p class="job-title">Web Developer - ABC Company</p>
-            <p class="small-text">2024 - Present</p>
-            <p>Developed dynamic websites and improved system performance.</p>
-
-            <p class="job-title">Intern - Tech Firm</p>
-            <p class="small-text">2023</p>
-            <p>Worked on frontend UI and debugging tasks.</p>
-        </div>
-
-        <div>
-            <div class="section-title">Education</div>
-
-            <p class="job-title">BSc in Computer Science</p>
-            <p class="small-text">Dhaka University (2020 - 2024)</p>
-
-            <p class="job-title">HSC</p>
-            <p class="small-text">XYZ College (2018 - 2020)</p>
-        </div>
-
-        <div>
-            <div class="section-title">Projects</div>
-            <p><strong>Job Portal System:</strong> Built using PHP OOP with full CRUD features.</p>
-        </div>
-
-    </div>
-
+<!-- Signature -->
+<div class="signature">
+    <img src="<?= $_SERVER['DOCUMENT_ROOT'] ?>/alljobsolution/uploads/signature/<?=$_SESSION['signature'] ?>">
+    <p>Signature</p>
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

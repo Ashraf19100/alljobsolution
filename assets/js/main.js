@@ -10,24 +10,21 @@ $(document).ready(function ($) {
       
 });
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const degreeSelect = document.getElementById("formdegree");
-    const subjectSelect = document.getElementById("degreeSubject");
+function DependentDropDown(sourceId, targetId, url, paramName){
+    const degreeSelect = document.getElementById(sourceId);
+    const subjectSelect = document.getElementById(targetId);
 
     degreeSelect.addEventListener("change", function () {
 
-        let degreeId = this.value;
+        let sourcvalue = this.value;
 
-        if (degreeId === "") {
+        if (sourcvalue === "") {
             subjectSelect.innerHTML = "<option value=''>Select Subject</option>";
             return;
         }
-			console.log(degreeId)
+			console.log(sourcvalue)
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", "layouts/degreeselect.php?degree_id=" + degreeId, true);
+        xhr.open("GET", `${url}?${paramName}=` + sourcvalue, true);
 
         xhr.onload = function () {
             if (this.status === 200) {
@@ -42,9 +39,15 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.onerror = function () {
             subjectSelect.innerHTML = "<option value=''>Request failed</option>";
         };
-
+        
         xhr.send();
     });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    DependentDropDown("degreelevel", "formdegree", "layouts/degreelevel.php", "degree_level");
+    DependentDropDown("formdegree", "degreeSubject", "layouts/degreeselect.php", "degree_id");
+    
 
 });
 

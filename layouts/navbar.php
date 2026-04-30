@@ -71,7 +71,8 @@
         </li>
 
         <li class="nav-item dropdown" >
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""><?php if(isset($_SESSION['email'])){
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="">
+            <?php if(isset($_SESSION['email'])){
                 print($_SESSION['name']);
               }else{
                 echo "user name";

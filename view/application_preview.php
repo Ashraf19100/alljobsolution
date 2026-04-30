@@ -3,9 +3,12 @@
     $applicationpreview = new datamodel();
     
     $application_data = $_SESSION['application_data'];
+    $applicant_personalinfo =  $applicationpreview->getSingleData('user_details', ' * ', ' WHERE user_id = '.$_SESSION['id'] );
+    $applicant_education=  $applicationpreview->getData('user_education', ' * ', ' WHERE user_id = '.$_SESSION['id'] );
     $applicant_experience =  $applicationpreview->getData('user_experience', ' * ', ' WHERE user_id = '.$_SESSION['id'] );
-    // print('<pre>');
+    $applicant_data= extract($application_data);
     // print_r($application_data);
+    // die;
     
 ?>
 <!doctype html>
@@ -32,6 +35,8 @@
         letter-spacing: 1px;
     }
     .profile-wrapper {
+        width: 260px;
+        height: 260px;
         display: inline-block;
         padding: 5px;
         border-radius: 50%;
@@ -39,8 +44,8 @@
     }
 
     .profile-img {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         object-fit: cover;
         border-radius: 50%;
         border: 4px solid #fff;
@@ -57,16 +62,27 @@
                                 Application Preview
                             </h2>
                             <span class="badge bg-success badge-title text-capitalize px-3 py-2">
-                                <?= $application_data['name'] ?? '' ?>
+                                <?= $_SESSION['name'] ?>
                             </span>
                         </div>
-                        <div class="text-center mb-4">
-                            <div class="profile-wrapper">
+                        <div class="mb-4 row">
+                            <div class="profile-wrapper col-md-3">
                                 <img 
                                     src="uploads/img/<?= $_SESSION['profile_image'] ?>" 
                                     alt="Profile Image" 
-                                    class="profile-img shadow"
+                                    class="profile-img shadow img-fluid"
                                 >
+                            </div>
+                            <div class="col-md-9 p-4">
+                                <div class="row">
+                                    <h5 class=" fs-3 fw-bold ">Career Objective</h5>
+                                    <p class=" fs-5 fw-light py-2 "><?= $cover_letter ?></p>
+                                    <p class=" fs-5 fw-light  "><strong>Email:</strong><?=$_SESSION['email']  ?></p>
+                                    <p class=" fs-5 fw-light  "><strong>Phone:</strong><?= $_SESSION['phone'] ?></p>
+                                    
+                                    <h5>Expected Salary</h5>
+                                    <p><?=$expected_salary ?></p>
+                                </div>
                             </div>
                         </div>
                 <!-- PERSONAL INFO -->
@@ -74,82 +90,44 @@
                     <h5 class="text-success section-title mb-3">Personal Information</h5>
                     <div class="table-responsive">
                         <table class="table table-bordered align-middle info-table">
-                            <tr><th>Full Name</th><td><?= $application_data['name'] ?></td></tr>
-                            <tr><th>Father Name</th><td><?= $application_data['father_name'] ?></td></tr>
-                            <tr><th>Mother Name</th><td><?= $application_data['mother_name'] ?></td></tr>
-                            <tr><th>Date of Birth</th><td><?= $application_data['dob'] ?></td></tr>
-                            <tr><th>Nationality</th><td><?= $application_data['nationality'] ?></td></tr>
-                            <tr><th>Religion</th><td><?= $application_data['religion'] ?></td></tr>
-                            <tr><th>Gender</th><td><?= $application_data['gender'] ?></td></tr>
-                            <tr><th>Marital Status</th><td><?= $application_data['marital_status'] ?></td></tr>
-                            <tr><th>NID</th><td><?= $application_data['nid'] ?></td></tr>
-                            <tr><th>Birth Reg.</th><td><?= $application_data['birth_registration'] ?></td></tr>
-                            <tr><th>Passport</th><td><?= $application_data['passport_no'] ?></td></tr>
-                            <tr><th>Address</th><td><?= $application_data['address'] ?></td></tr>
+                            <tr><th>Full Name</th><td><?= $_SESSION['name'] ?></td></tr>
+                            <tr><th>Father Name</th><td><?= $applicant_personalinfo->father_name ?></td></tr>
+                            <tr><th>Mother Name</th><td><?= $applicant_personalinfo->mother_name ?></td></tr>
+                            <tr><th>Date of Birth</th><td><?= $applicant_personalinfo->dob ?></td></tr>
+                            <tr><th>Nationality</th><td><?= $applicant_personalinfo->nationality ?></td></tr>
+                            <tr><th>Religion</th><td><?= $applicant_personalinfo->religion ?></td></tr>
+                            <tr><th>Gender</th><td><?= $applicant_personalinfo->gender ?></td></tr>
+                            <tr><th>Marital Status</th><td><?= $applicant_personalinfo->marital_status ?></td></tr>
+                            <tr><th>NID</th><td><?= $applicant_personalinfo->nid ?></td></tr>
+                            <tr><th>Birth Reg.</th><td><?= $applicant_personalinfo->birth_registration ?></td></tr>
+                            <tr><th>Passport</th><td><?= $applicant_personalinfo->passport_no ?></td></tr>
+                            <tr><th>Address</th><td><?= $applicant_personalinfo->address ?></td></tr>
                         </table>
                     </div>
                 </div>
-
+                <?php foreach($applicant_education as $education_level) {?>
                 <!-- SSC -->
                 <div class="mb-5">
-                    <h5 class="text-success section-title mb-3">SSC Information</h5>
+                    <h5 class="text-success section-title mb-3"><?= $education_level['exam_name'] ?> Information</h5>
                     <div class="table-responsive">
                         <table class="table table-bordered align-middle info-table">
-                            <tr><th>Exam</th><td><?= $application_data['ssc_exam_name'] ?></td></tr>
-                            <tr><th>Board</th><td><?= $application_data['ssc_uni_board'] ?></td></tr>
-                            <tr><th>Roll</th><td><?= $application_data['ssc_roll_id'] ?></td></tr>
-                            <tr><th>Subject</th><td><?= $application_data['ssc_subject'] ?></td></tr>
-                            <tr><th>Result</th><td><?= $application_data['ssc_result'] ?></td></tr>
-                            <tr><th>Year</th><td><?= $application_data['ssc_passing_year'] ?></td></tr>
+                            <tr><th>Exam</th><td><?= $education_level['exam_name'] ?></td></tr>
+                            <tr><th>Board</th><td><?= $education_level['uni_board'] ?></td></tr>
+                            <tr><th>Roll</th><td><?= $education_level['roll_id'] ?></td></tr>
+                            <tr><th>Subject</th><td><?= $education_level['subject'] ?></td></tr>
+                            <tr><th>Result</th><td><?= $education_level['result'] ?></td></tr>
+                            <tr><th>Year</th><td><?= $education_level['passing_year'] ?></td></tr>
                         </table>
                     </div>
                 </div>
-                <!-- SSC -->
-                <div class="mb-5">
-                    <h5 class="text-success section-title mb-3">HSC Information</h5>
-                    <div class="table-responsive">
-                        <table class="table table-bordered align-middle info-table">
-                            <tr><th>Exam</th><td><?= $application_data['hsc_exam_name'] ?></td></tr>
-                            <tr><th>Board</th><td><?= $application_data['hsc_uni_board'] ?></td></tr>
-                            <tr><th>Roll</th><td><?= $application_data['hsc_roll_id'] ?></td></tr>
-                            <tr><th>Subject</th><td><?= $application_data['hsc_subject'] ?></td></tr>
-                            <tr><th>Result</th><td><?= $application_data['hsc_result'] ?></td></tr>
-                            <tr><th>Year</th><td><?= $application_data['hsc_passing_year'] ?></td></tr>
-                        </table>
-                    </div>
-                </div>
-                <!-- gra -->
-                <div class="mb-5">
-                    <h5 class="text-success section-title mb-3">Graduation Information</h5>
-                    <div class="table-responsive">
-                        <table class="table table-bordered align-middle info-table">
-                            <tr><th>Exam</th><td><?= $application_data['gra_exam_name'] ?></td></tr>
-                            <tr><th>Board</th><td><?= $application_data['gra_uni_board'] ?></td></tr>
-                            <tr><th>Roll</th><td><?= $application_data['gra_roll_id'] ?></td></tr>
-                            <tr><th>Subject</th><td><?= $application_data['gra_subject'] ?></td></tr>
-                            <tr><th>Result</th><td><?= $application_data['gra_result'] ?></td></tr>
-                            <tr><th>Year</th><td><?= $application_data['gra_passing_year'] ?></td></tr>
-                        </table>
-                    </div>
-                </div>
+                <?php } ?>
+                
 
                 <!-- EXPERIENCE -->
                 <div class="mb-5">
                     <h5 class="text-success section-title mb-3">Experience</h5>
-                     <?php if(!empty($application_data['company_name'])) {
-                        ?>
-                    <div class="table-responsive">
-                        <table class="table table-bordered align-middle info-table">
-                            <tr><th>Company</th><td><?= $application_data['company_name'] ?></td></tr>
-                            <tr><th>Job Title</th><td><?= $application_data['job_title'] ?></td></tr>
-                            <tr><th>Type</th><td><?= $application_data['company_type'] ?></td></tr>
-                            <tr><th>Start</th><td><?= $application_data['start_date'] ?></td></tr>
-                            <tr><th>End</th><td><?= $application_data['end_date'] ?? 'Running' ?></td></tr>
-                            <tr><th>Location</th><td><?= $application_data['location'] ?></td></tr>
-                            <tr><th>Description</th><td><?= $application_data['description'] ?></td></tr>
-                        </table>
-                    </div>
-                     <?php } foreach ($applicant_experience as $applicant_experience) {
+                     
+                     <?php foreach ($applicant_experience as $applicant_experience) {
                         ?>
                         
                     <div class="table-responsive">
@@ -184,13 +162,9 @@
                     <!-- SUBMIT -->
                     <form action="index.php?page=application_submit&apply=apply" method="POST" style="display:inline;">
                         
-                            <input type="hidden" name="job_id" value="<?= htmlspecialchars($application_data['job_id']) ?>">
-                            <input type="hidden" name="user_id" value="<?= htmlspecialchars($application_data['user_id']) ?>">
-                            <input type="hidden" name="resume_id" value="<?= htmlspecialchars($application_data['resume_id']) ?>">
-                         <div class="mb-3">
-                            <label for="cover_letter" class="form-label">Write Short Cover letter</label>
-                            <textarea class="form-control" id="cover_letter" name="cover_letter" rows="4"></textarea>
-                        </div>
+                            <input type="hidden" name="job_id" value="<?= htmlspecialchars($applicant_personalinfo->job_id) ?>">
+                            <input type="hidden" name="user_id" value="<?= htmlspecialchars($applicant_personalinfo->user_id) ?>">
+                            <input type="hidden" name="resume_id" value="<?= htmlspecialchars($applicant_personalinfo->resume_id) ?>">
                         <button class="btn btn-success px-4 shadow">
                             ✔ Confirm & Submit
                         </button>
