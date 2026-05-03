@@ -60,17 +60,17 @@ require_once 'database/database.php';
         </li>
         <?php if($_SESSION['role'] == 'employer'){?>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="index.php?employer=">
+            <a class="nav-link text-dark" href="index.php?page=">
                 <i class="fa fa-file me-2 text-info"></i> user list
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="index.php?employer=">
+            <a class="nav-link text-dark" href="index.php?page=postjob">
                 <i class="fa fa-file me-2 text-info"></i> post jobs
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="index.php?employer=">
+            <a class="nav-link text-dark" href="index.php?page=">
                 <i class="fa fa-file me-2 text-info"></i>active Admit card
             </a>
         </li>

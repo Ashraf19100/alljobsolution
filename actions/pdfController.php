@@ -13,8 +13,8 @@ class PdfController {
 
         $data = [
             'personal'   => $userModel->getSingleData('user_details',' * ', ' WHERE user_id ='.$user_id),
-            'education'  => $userModel->getSingleData('user_education',' * ', ' WHERE user_id ='.$user_id),
-            'experience' => $userModel->getSingleData('user_experience',' * ', ' WHERE user_id ='.$user_id),
+            'education'  => $userModel->getData('user_education',' * ', ' WHERE user_id ='.$user_id),
+            'experience' => $userModel->getData('user_experience',' * ', ' WHERE user_id ='.$user_id),
         ];
 
         // Load HTML template

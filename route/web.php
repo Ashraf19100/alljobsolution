@@ -167,7 +167,15 @@ switch ($page) {
         }else{
             header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
             exit;
-        }    
+        }
+        case 'postjob':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/jobpostupload.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }   
     case 'logout':
         require_once 'actions/logoutController.php';
         break;
@@ -177,6 +185,8 @@ switch ($page) {
         require_once 'view/home.php'; 
         break;
 }
+
+
 
                 
 ?>

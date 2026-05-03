@@ -166,7 +166,7 @@
             
 		</div>
 		
-		<section class="py-5 bg-light">
+		<section class="py-5 " style="background: linear-gradient(105deg, #2a5298, #fff, #2a5298);">
 			<div class="container text-center">
 
 				<h3 class="fw-bold mb-5 " style="color:#1e3c72">How It Works</h3>
@@ -201,7 +201,7 @@
 
 			</div>
 		</section>
-		<section class="py-5 bg-light">
+		<section class="py-5 " style="background: linear-gradient(105deg, #fff, #d4d9e0, #fff);">
 			<div class="container text-center">
 
 				<h3 class="mb-4 fw-bold">Our Achievements</h3>

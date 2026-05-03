@@ -15,19 +15,30 @@
     h2 {
         margin-bottom: 5px;
     }
-
+    .top-table{
+        border:none;
+    }
     .header {
-        border-bottom: 2px solid #198754;
+        
         margin-bottom: 20px;
         padding-bottom: 10px;
+    }
+    .career-obj{
+        border-bottom: 2px solid #198754;
     }
     .header p{
         padding: 1px;
         margin:0px;
     }
+    .image-column{
+        width:100%;    
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
     .profile-img {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         object-fit: cover;
         border: 3px solid #198754;
@@ -66,35 +77,51 @@
     .signature {
         margin-top: 40px;
         text-align: right;
-    }
+        font-weight: 700;
 
+        
+    }
+    
     .signature img {
         width: 120px;
+    }
+    .edu-section{
+        margin-top: 120px; 
     }
 
 </style>
 </head>
 
 <body>
-<div class="" style="width:25%;">
-        <img 
-            src="<?= $_SERVER['DOCUMENT_ROOT'] ?>/alljobsolution/uploads/img/<?=$_SESSION['profile_image'] ?>"
-            alt="Profile Image" 
-            class="profile-img "
-        >
-</div>
-<div class="header">
-    <h2>Carriculam Viate of</h2>
-    <p style="text-transform: uppercase"><strong> <?=$_SESSION['name']  ?></strong></p>
-    <p class=""><strong>Email:</strong><?=$_SESSION['email']  ?></p>
-    <p class=""><strong>Phone:</strong><?= $_SESSION['phone'] ?></p>
-</div>
-        <div class="" style="width:100%;">
-        <h5 class=" ">Career Objective</h5>
-        <p>To build a rewarding career in a dynamic and growth-oriented organization where I can effectively utilize my skills, gain new knowledge, and contribute to the success of the company while continuously improving myself both professionally and personally.</p>
-        
-        
-    </div>
+    <table border="0">
+        <tr>
+            <td>
+                <div class="image-column" style="width:100%;">
+                    <img 
+                        src="<?= $_SERVER['DOCUMENT_ROOT'] ?>/alljobsolution/uploads/img/<?=$_SESSION['profile_image'] ?>"
+                        alt="Profile Image" 
+                        class="profile-img "
+                    >
+                </div>
+            </td>
+            <td>
+                <div class="header">
+                    <h2>Carriculam Viate of</h2>
+                    <p style="text-transform: uppercase"><strong> <?=$_SESSION['name']  ?></strong></p>
+                    <p class=""><strong>Email:</strong><?=$_SESSION['email']  ?></p>
+                    <p class=""><strong>Phone:</strong><?= $_SESSION['phone'] ?></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+        <div class=" section " style="width:100%;">
+            <h3 class=" " >Career Objective</h3>
+            <p>To build a rewarding career in a dynamic and growth-oriented organization where I can effectively utilize my skills, gain new knowledge, and contribute to the success of the company while continuously improving myself both professionally and personally.</p>
+            
+            
+        </div>
     
 
 
@@ -118,7 +145,7 @@
 </div>
 
 <!-- Education -->
-<div class="section">
+<div class="edu-section">
     <h3>Educational Information</h3>
     <table>
         <tr>
@@ -129,22 +156,17 @@
             <th>Result</th>
             <th>Year</th>
         </tr>
+        <?php foreach($education as $education){?> 
         <tr>
-            <td>SSC</td>
-            <td>Dhaka</td>
-            <td>12345</td>
-            <td>Science</td>
-            <td>5.00</td>
-            <td>2016</td>
+            <td><?= $education['exam_name'] ?></td>
+            <td><?= $education['uni_board'] ?></td>
+            <td><?= $education['roll_id'] ?></td>
+            <td><?= $education['subject'] ?></td>
+            <td><?= $education['result'] ?></td>
+            <td><?= $education['passing_year'] ?></td>
         </tr>
-        <tr>
-            <td>HSC</td>
-            <td>Dhaka</td>
-            <td>67890</td>
-            <td>Science</td>
-            <td>5.00</td>
-            <td>2018</td>
-        </tr>
+        <?php } ?>
+        
     </table>
 </div>
 
@@ -152,6 +174,7 @@
 <div class="section">
     <h3>Experience</h3>
     <table>
+        <?php foreach($experience as $experience){?> 
         <tr><th>Company</th><td>ABC Company</td></tr>
         <tr><th>Job Title</th><td>Web Developer</td></tr>
         <tr><th>Type</th><td>IT</td></tr>
@@ -159,6 +182,7 @@
         <tr><th>End</th><td>Present</td></tr>
         <tr><th>Location</th><td>Dhaka</td></tr>
         <tr><th>Description</th><td>Worked on web applications using PHP and JavaScript.</td></tr>
+        <?php } ?>
     </table>
 </div>
 
