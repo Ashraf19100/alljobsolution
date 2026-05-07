@@ -59,7 +59,7 @@ $responsibility= explode('.', $single_job->description);
                                     <div class="job-heading">
                                         <h4 class=""><?= $company_name->company_name ?></h4>
                                         <h3 class=""><?= $single_job->title ?></h3>
-                                        <h6 class="">Application Deadline: <span class="text-danger"><?= $single_job->deadline ?></span> </h6>
+                                        <h6 class="">Application Deadline: <span class="text-danger"><?= date(" d F Y", strtotime($single_job->deadline)); ?></span> </h6>
 
                                     </div>
                                     <div class="text-center">
@@ -83,7 +83,7 @@ $responsibility= explode('.', $single_job->description);
                                     </div>
                                     <div class="col-4">
                                         <p><strong>Location:</strong><?=$single_job->location ?></p>
-                                        <p><strong>Application Starting from:</strong><?=$single_job->app_start_time ?></p>
+                                        <p><strong>Application Starting from:<br></strong><?=($single_job->app_start_time) ? (new DateTime($single_job->app_start_time))->format('d F Y') : 'N/A'; ?></p>
                                     </div>
                                 </div>
                             </div>

@@ -23,11 +23,18 @@
    
 
     class datamodel extends database{
-        public function getData($table, $field=' * ', $condition=''){
+        public function getData($table, $field=' * ', $condition='',$limit= null, $offset=null){
             $sql = "SELECT $field FROM $table";
             
             if($condition != '' ){
                 $sql .= $condition;
+            }
+            if($limit !== null){
+                $sql .= " LIMIT " . intval($limit);
+                
+                if($offset !== null){
+                    $sql .= " OFFSET " . intval($offset);
+                }
             }
             $result = $this->connect()->query($sql);
             
