@@ -1,5 +1,5 @@
 {
-    "name": "doel/alljobsolution",
+    "name": "pc/alljobsolution",
     "require": {
         "dompdf/dompdf": "^3.1"
     }

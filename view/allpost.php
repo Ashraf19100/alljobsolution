@@ -1,8 +1,17 @@
 <?php
 require_once 'database/database.php';
-
+$allpostlimit=10;
+    $allpostpagn = isset($_GET['pagination']) ? (int)$_GET['pagination'] : 1;
+    $allpostoffset = ($allpostpagn - 1)*$allpostlimit;
 $alljob = new datamodel();
-$result = $alljob->getData('jobs');
+
+    $totalpost = $alljob->getData('jobs',' COUNT(*) as total ');
+    $postRows = $totalpost[0]['total'];
+    $totalpgn= ceil( $postRows / $allpostlimit);
+$result = $alljob->getData('jobs',' * ', '', $allpostlimit, $allpostoffset);
+$crnt_page= $_GET['page'];
+
+
 
 
 ?>
@@ -10,6 +19,30 @@ $result = $alljob->getData('jobs');
     <div class="job-head">
         <h1 class="text-center text-capitalize  py-3 mb-4 fw-bold " style="color:#1e3c72">All Jobs</h1>
     </div>
+    <nav>
+        <ul class="pagination justify-content-center py-3">
+
+            <!-- Prev Button -->
+            <li class="pagination-item <?= ($allpostpagn <= 1) ? 'disabled' : '' ?>">
+                <a class="pagination-link " href="index.php?page=<?=$crnt_page?>&pagination=<?= ($allpostpagn <= 1) ? 1 : $allpostpagn - 1 ?>" >Prev</a>
+            </li>
+
+            <!-- pagination Numbers -->
+            <?php for($i = 1; $i <= $totalpgn; $i++): ?>
+                <li class="pagination-item <?= ($allpostpagn == $i) ? 'active' : '' ?>">
+                    <a class="pagination-link" href="index.php?page=<?=$crnt_page?>&pagination=<?= $i ?>">
+                        <?= $i ?>
+                    </a>
+                </li>
+            <?php endfor; ?>
+
+            <!-- Next Button -->
+            <li class="pagination-item <?= ($allpostpagn >= $totalpgn) ? 'disabled' : '' ?>">
+                <a class="pagination-link" href="index.php?page=<?=$crnt_page?>&pagination=<?= ($allpostpagn >= $totalpgn) ? $totalpgn: $allpostpagn + 1 ?>">Next</a>
+            </li>
+
+        </ul>
+    </nav>
     <div class="row">
     <?php foreach($result as $job) {?>
         <div class="col-md-4 py-2" >
