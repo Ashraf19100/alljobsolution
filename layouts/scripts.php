@@ -49,3 +49,25 @@
 		ga('create', 'UA-XXXXX-X', 'auto');
 		ga('send', 'pageview');
 	</script>
+	<script>
+    const filter = document.getElementById('statusFilter');
+    const rows = document.querySelectorAll('#employeeTable tbody tr');
+
+    filter.addEventListener('change', function () {
+
+        const value = this.value;
+
+        rows.forEach(row => {
+
+            const status = row.cells[3].innerText.trim();
+
+            if (value === 'all' || status === value) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+
+        });
+
+    });
+</script>

@@ -1,6 +1,6 @@
 <?php
 require_once 'database/database.php';
-$allpostlimit=10;
+$allpostlimit=8;
     $allpostpagn = isset($_GET['pagination']) ? (int)$_GET['pagination'] : 1;
     $allpostoffset = ($allpostpagn - 1)*$allpostlimit;
 $alljob = new datamodel();
@@ -9,16 +9,16 @@ $alljob = new datamodel();
     $postRows = $totalpost[0]['total'];
     $totalpgn= ceil( $postRows / $allpostlimit);
 $result = $alljob->getData('jobs',' * ', '', $allpostlimit, $allpostoffset);
-$crnt_page= $_GET['page'];
+$crnt_page= isset($_GET['page']) ?  $_GET['page'] : '' ;
 
 
 
 
 ?>
-<div class="jobs my-5">
-    <div class="job-head">
-        <h1 class="text-center text-capitalize  py-3 mb-4 fw-bold " style="color:#1e3c72">All Jobs</h1>
+<div class="job-head">
+        <h1 class="text-center text-capitalize  py-1 mb-4 fw-bold " style="color:#1e3c72">All Jobs</h1>
     </div>
+    <?php if(!empty($_GET['page']) && $_GET['page'] != 'home'){ ?> 
     <nav>
         <ul class="pagination justify-content-center py-3">
 
@@ -43,9 +43,17 @@ $crnt_page= $_GET['page'];
 
         </ul>
     </nav>
+    <?php } else{ ?> 
+                <div class="d-flex align-item-center justify-content-between my-2">
+                    <h3 class="text-capitalize " style="color:#1e3c72">Apply for your desire position</h3>
+                    <a href="index.php?page=dashboard" class="btn btn-success px-4 text-capitalize">See all <i class="fa fa-arrow-right me-2   text-light"></i> </a>
+                </div>
+    <?php } ?>
+<div class="jobs">
+    
     <div class="row">
     <?php foreach($result as $job) {?>
-        <div class="col-md-4 py-2" >
+        <div class="col-md-3 py-2" >
             <div class="card border-2 shadow-sm h-100" style="background: linear-gradient(105deg, #fff, #d4d9e0, #fff);">
                 <div class="card-body">
 

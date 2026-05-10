@@ -168,9 +168,25 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
             exit;
         }
-        case 'postjob':
+    case 'userslist':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/userlist.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'postjob':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
         require_once 'view/jobpostupload.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'jobpost_upload_submit':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/jobController.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
@@ -186,7 +202,7 @@ switch ($page) {
         break;
 }
 
-
+// 
 
                 
 ?>

@@ -180,7 +180,7 @@
                         <div class="modal fade" id="jobpostModal" tabindex="-1">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                 <div class="modal-content rounded-4">
-                                        <form action="#" method="POST" class="container my-5">
+                                        <form action="index.php?page=jobpost_upload_submit" method="POST" class="container my-5">
 
                                             <div class="card shadow-lg border-0 rounded-4">
                                                 
@@ -196,44 +196,44 @@
                                                         <!-- Title -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Job Title</label>
-                                                            <input type="text" name="title" class="form-control" placeholder="Enter job title">
+                                                            <input type="text" name="title" class="form-control" placeholder="Enter job title" required>
                                                         </div>
 
                                                         <!-- Salary -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Salary</label>
-                                                            <input type="text" name="salary" class="form-control" placeholder="e.g. 25000">
+                                                            <input type="text" name="salary" class="form-control" placeholder="e.g. 25000" required>
                                                         </div>
 
                                                         <!-- Description -->
                                                         <div class="col-12">
                                                             <label class="form-label fw-semibold">Description</label>
-                                                            <textarea name="description" rows="4" class="form-control" placeholder="Write job description"></textarea>
+                                                            <textarea name="description" rows="4" class="form-control" placeholder="Write job description" required></textarea>
                                                         </div>
 
                                                         <!-- Requirements -->
                                                         <div class="col-12">
                                                             <label class="form-label fw-semibold">Requirements</label>
-                                                            <textarea name="requirements" rows="4" class="form-control" placeholder="Write requirements"></textarea>
+                                                            <textarea name="requirements" rows="4" class="form-control" placeholder="Write requirements" required></textarea>
                                                         </div>
 
                                                         <!-- Location -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Location</label>
-                                                            <input type="text" name="location" class="form-control" placeholder="e.g. Dhaka">
+                                                            <input type="text" name="location" class="form-control" placeholder="e.g. Dhaka" required>
                                                         </div>
 
                                                         <!-- Deadline -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Deadline</label>
-                                                            <input type="date" name="deadline" class="form-control">
+                                                            <input type="date" name="deadline" class="form-control" required>
                                                         </div>
 
                                                         <!-- Job Type -->
                                                         <div class="col-md-4">
                                                             <label class="form-label fw-semibold">Job Type</label>
 
-                                                            <select name="job_type" class="form-select">
+                                                            <select name="job_type" class="form-select" required>
                                                                 <option value="">Select Job Type</option>
                                                                 <option value="gov">Government</option>
                                                                 <option value="non_gov">Non Government</option>
@@ -243,8 +243,8 @@
                                                         <!-- Category -->
                                                          
                                                         <div class="col-md-4">
-                                                            <label class="form-label fw-semibold">Category ID</label>
-                                                            <select name="category_id " id="category_id " class="form-select">
+                                                            <label class="form-label fw-semibold" >Category ID</label>
+                                                            <select name="category_id" id="category_id" class="form-select" required>
                                                                 <option value="">----select job category----</option>
                                                                 <?php foreach($jobcategories as $jobcategory){?>
                                                                     <option value="<?= $jobcategory['id'] ?? '' ?>"><?= $jobcategory['category_name'] ?? '' ?></option>
@@ -256,7 +256,7 @@
                                                          
                                                         <div class="col-md-4">
                                                             <label class="form-label fw-semibold">Company</label>
-                                                            <select name="company_id " id="company_id " class="form-select">
+                                                            <select name="company_id" id="company_id" class="form-select" required>
                                                                 <option value="">----select job category----</option>
                                                                 <?php foreach($jobcompanies as $jobcompany){?>
                                                                     <option value="<?= $jobcompany['id'] ?? '' ?>"><?= $jobcompany['company_name'] ?? '' ?></option>
@@ -266,26 +266,26 @@
                                                         <!-- Min Age -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Minimum Age</label>
-                                                            <input type="number" name="min_age" class="form-control">
+                                                            <input type="number" name="min_age" class="form-control" required>
                                                         </div>
 
                                                         <!-- Max Age -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Maximum Age</label>
-                                                            <input type="number" name="max_age" class="form-control">
+                                                            <input type="number" name="max_age" class="form-control" required>
                                                         </div>
 
                                                         <!-- Company Benefits -->
                                                         <div class="col-12">
                                                             <label class="form-label fw-semibold">Company Benefits</label>
-                                                            <textarea name="comp_benifits" rows="3" class="form-control"></textarea>
+                                                            <textarea name="comp_benifits" rows="3" class="form-control" required></textarea>
                                                         </div>
 
                                                         <!-- Employment Status -->
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Employment Status</label>
 
-                                                            <select name="emp_status" class="form-select">
+                                                            <select name="emp_status" class="form-select" required>
                                                                 <option value="">Select Status</option>
                                                                 <option value="Full time">Full Time</option>
                                                                 <option value="Contractual">Contractual</option>
@@ -296,7 +296,7 @@
                                                         <div class="col-md-6">
                                                             <label class="form-label fw-semibold">Work Type</label>
 
-                                                            <select name="emp_work_place" class="form-select">
+                                                            <select name="emp_work_place" class="form-select" required>
                                                                 <option value="">Select Work Type</option>
                                                                 <option value="Work on office">Work on Office</option>
                                                                 <option value="Remote">Remote</option>
@@ -320,7 +320,7 @@
                                                                 <label class="fw-bold d-block mb-2">JSC Active</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="jsc_active" value="1">
+                                                                    <input class="form-check-input" type="radio" name="jsc_active" value="1" required>
                                                                     <label class="form-check-label">Yes</label>
                                                                 </div>
 
@@ -334,7 +334,7 @@
                                                                 <label class="fw-bold d-block mb-2">JSC Required</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="jsc_required" value="1">
+                                                                    <input class="form-check-input" type="radio" name="jsc_required" value="1" required>
                                                                     <label class="form-check-label">Required</label>
                                                                 </div>
 
@@ -349,7 +349,7 @@
                                                                 <label class="fw-bold d-block mb-2">SSC Active</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="ssc_active" value="1">
+                                                                    <input class="form-check-input" type="radio" name="ssc_active" value="1" required>
                                                                     <label class="form-check-label">Yes</label>
                                                                 </div>
 
@@ -363,7 +363,7 @@
                                                                 <label class="fw-bold d-block mb-2">SSC Required</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="ssc_required" value="1">
+                                                                    <input class="form-check-input" type="radio" name="ssc_required" value="1" required>
                                                                     <label class="form-check-label">Required</label>
                                                                 </div>
 
@@ -378,7 +378,7 @@
                                                                 <label class="fw-bold d-block mb-2">HSC Active</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="hsc_active" value="1">
+                                                                    <input class="form-check-input" type="radio" name="hsc_active" value="1" required>
                                                                     <label class="form-check-label">Yes</label>
                                                                 </div>
 
@@ -392,7 +392,7 @@
                                                                 <label class="fw-bold d-block mb-2">HSC Required</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="hsc_required" value="1">
+                                                                    <input class="form-check-input" type="radio" name="hsc_required" value="1" required>
                                                                     <label class="form-check-label">Required</label>
                                                                 </div>
 
@@ -407,7 +407,7 @@
                                                                 <label class="fw-bold d-block mb-2">Graduation Active</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="gra_active" value="1">
+                                                                    <input class="form-check-input" type="radio" name="gra_active" value="1" required>
                                                                     <label class="form-check-label">Yes</label>
                                                                 </div>
 
@@ -421,7 +421,7 @@
                                                                 <label class="fw-bold d-block mb-2">Graduation Required</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="gra_required" value="1">
+                                                                    <input class="form-check-input" type="radio" name="gra_required" value="1" required>
                                                                     <label class="form-check-label">Required</label>
                                                                 </div>
 
@@ -436,7 +436,7 @@
                                                                 <label class="fw-bold d-block mb-2">Masters Active</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="mas_active" value="1">
+                                                                    <input class="form-check-input" type="radio" name="mas_active" value="1" required>
                                                                     <label class="form-check-label">Yes</label>
                                                                 </div>
 
@@ -450,12 +450,12 @@
                                                                 <label class="fw-bold d-block mb-2">Masters Required</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="mas_required" value="1">
+                                                                    <input class="form-check-input" type="radio" name="mas_required" value="1" required>
                                                                     <label class="form-check-label">Required</label>
                                                                 </div>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="mas_required" value="0">
+                                                                    <input class="form-check-input" type="radio" name="mas_required" value="0" >
                                                                     <label class="form-check-label">Not Required</label>
                                                                 </div>
                                                             </div>
@@ -465,7 +465,7 @@
                                                                 <label class="fw-bold d-block mb-2">MPhil Active</label>
 
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="mph_active" value="1">
+                                                                    <input class="form-check-input" type="radio" name="mph_active" value="1" required>
                                                                     <label class="form-check-label">Yes</label>
                                                                 </div>
 
