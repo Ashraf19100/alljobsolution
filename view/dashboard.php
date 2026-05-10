@@ -54,7 +54,7 @@ $totalcompanies = $admin_dashboard->getData('companies',' COUNT(*) as total ');
                             <div class="card-body">
                                 <h6 class="text-muted">Jobs</h6>
                                 <h3 class="fw-bold"><?=$totaljobs[0]['total']?></h3>
-                                <a href="" class="mb-0 text-info">See Uploaded Jobs <i class="fa fa-arrow-right me-2  "></i></a>
+                                <a href="index.php?page=postjob" class="mb-0 text-info">See Uploaded Jobs <i class="fa fa-arrow-right me-2  "></i></a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ $totalcompanies = $admin_dashboard->getData('companies',' COUNT(*) as total ');
                             <div class="card-body">
                                 <h6 class="text-muted">Companies</h6>
                                 <h3 class="fw-bold"><?=$totalcompanies[0]['total']?></h3>
-                                <a href="" class="mb-0 text-warning">See Companies <i class="fa fa-arrow-right me-2  "></i></a>
+                                <a href="index.php?page=companyList" class="mb-0 text-warning">See Companies <i class="fa fa-arrow-right me-2  "></i></a>
                             </div>
                         </div>
                     </div>

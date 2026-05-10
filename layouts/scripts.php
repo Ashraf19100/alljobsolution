@@ -50,18 +50,26 @@
 		ga('send', 'pageview');
 	</script>
 	<script>
-    const filter = document.getElementById('statusFilter');
-    const rows = document.querySelectorAll('#employeeTable tbody tr');
+  
+	function tableFilter(filterId, tableId, columnIndex) {
 
+    const filter = document.getElementById(filterId);
+	// Prevent error if element does not exist
+    if (!filter) return;
     filter.addEventListener('change', function () {
 
-        const value = this.value;
+        const value = this.value.toLowerCase();
+
+        const rows = document.querySelectorAll(`#${tableId} tbody tr`);
 
         rows.forEach(row => {
 
-            const status = row.cells[3].innerText.trim();
+            const cellValue = row.cells[columnIndex]
+                .innerText
+                .trim()
+                .toLowerCase();
 
-            if (value === 'all' || status === value) {
+            if (value === 'all' || cellValue.includes(value)) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
@@ -70,4 +78,9 @@
         });
 
     });
+
+}
+	tableFilter('statusFilter', 'employeeTable', 3); //usertable
+	tableFilter('typeFilter', 'companyTable', 4); //company table
+	// 
 </script>

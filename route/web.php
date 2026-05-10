@@ -176,6 +176,14 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'companyList':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/companylist.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
     case 'postjob':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
         require_once 'view/jobpostupload.php';
