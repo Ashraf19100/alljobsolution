@@ -53,33 +53,33 @@
   
 	function tableFilter(filterId, tableId, columnIndex) {
 
-    const filter = document.getElementById(filterId);
-	// Prevent error if element does not exist
-    if (!filter) return;
-    filter.addEventListener('change', function () {
+		const filter = document.getElementById(filterId);
+		
+		if (!filter) return;
+		filter.addEventListener('change', function () {
 
-        const value = this.value.toLowerCase();
+			const value = this.value.toLowerCase();
 
-        const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+			const rows = document.querySelectorAll(`#${tableId} tbody tr`);
 
-        rows.forEach(row => {
+			rows.forEach(row => {
 
-            const cellValue = row.cells[columnIndex]
-                .innerText
-                .trim()
-                .toLowerCase();
+				const cellValue = row.cells[columnIndex]
+					.innerText
+					.trim()
+					.toLowerCase();
 
-            if (value === 'all' || cellValue.includes(value)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
+				if (value === 'all' || cellValue === value) {
+					row.style.display = '';
+				} else {
+					row.style.display = 'none';
+				}
 
-        });
+			});
 
-    });
+		});
 
-}
+	}
 	tableFilter('statusFilter', 'employeeTable', 3); //usertable
 	tableFilter('typeFilter', 'companyTable', 4); //company table
 	// 

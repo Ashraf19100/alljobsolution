@@ -178,7 +178,23 @@ switch ($page) {
         }
     case 'companyList':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
-        require_once 'view/admin/companylist.php';
+        require_once 'view/admin/company/companylist.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'showcompany':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/company/showcompany.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'addcompany':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/companyController.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
