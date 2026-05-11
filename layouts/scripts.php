@@ -81,6 +81,6 @@
 
 	}
 	tableFilter('statusFilter', 'employeeTable', 3); //usertable
-	tableFilter('typeFilter', 'companyTable', 4); //company table
+	tableFilter('typeFilter', 'companyTable', 5); //company table
 	// 
 </script>

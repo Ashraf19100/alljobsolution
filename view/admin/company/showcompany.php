@@ -33,7 +33,7 @@
                             <div class="row justify-content-center">
                                 <div class="d-flex justify-content-between align-items-center mb-1 card-header bg-dark text-white">
                                     
-                                    <h4 class="mb-0">Organisation List</h4>
+                                    <h4 class="mb-0">Organisation Details</h4>
                                     <a href="add_job.php" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#organisationModal">
                                         Edit
                                     </a>
@@ -43,10 +43,10 @@
                                     <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
 
                                         <!-- Top Banner -->
-                                        <div class="bg-light text-white p-4 text-center">
+                                        <div class="bg-light text-dark p-4 text-center">
 
                                             <img 
-                                                src="uploads/company/<?= $singlecompany->logo ?>" 
+                                                src="uploads/organisations/<?= $singlecompany->logo ?>" 
                                                 alt="Company Logo"
                                                 class="rounded-circle border border-4 border-white shadow"
                                                 width="120"
@@ -54,11 +54,11 @@
                                                 style="object-fit: cover;"
                                             >
 
-                                            <h2 class="mt-3 mb-1 fw-bold">
+                                            <h2 class="mt-3 mb-1 fw-bold ">
                                                 <?= $singlecompany->company_name ?>
                                             </h2>
 
-                                            <span class="badge bg-light text-dark px-3 py-2">
+                                            <span class="badge bg-light bg-dark text-light px-3 py-2">
                                                 <?= $singlecompany->company_type ?>
                                             </span>
 
@@ -127,12 +127,12 @@
                                     <div class="card shadow border-0 rounded-4">
 
                                         <div class="card-header bg-primary text-white py-3">
-                                            <h3 class="mb-0">Add Company Information</h3>
+                                            <h3 class="mb-0">Edit Company Information</h3>
                                         </div>
 
                                         <div class="card-body p-4">
 
-                                            <form action="index.php?page=addcompany" method="POST" enctype="multipart/form-data">
+                                            <form action="index.php?page=addcompany&cmppass_i=<?=$singlecompany->id ?>" method="POST" enctype="multipart/form-data">
 
                                                 <!-- Company Name -->
                                                 <div class="mb-3">
@@ -173,10 +173,9 @@
                                                     </label>
 
                                                     <input 
-                                                        type="url" 
+                                                        type="text" 
                                                         name="website" 
                                                         class="form-control"
-                                                        placeholder="https://example.com"
                                                         value ="<?= $singlecompany->website ?>"
                                                     >
                                                 </div>

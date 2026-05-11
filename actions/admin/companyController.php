@@ -3,15 +3,14 @@
 require_once 'database/database.php';
 
 $comapnyinfo = new datamodel();
-print('<pre>');
-print_r($_POST);
+
 
 $countcomany =count($_FILES);
 print($countcomany);
 foreach($_POST as $key => $val){
     $company[$key] = $val;
 }
-print_r($company);
+
 
 if(isset($_FILES)){
     foreach($_FILES as $key => $val){   
@@ -29,8 +28,8 @@ if($logo['name']!=''){
         die();
     }
 }
-if(isset($_GET['cmp_i'])){
-    $condition= " WHERE id = '". $_GET['cmp_i']."'";
+if(isset($_GET['cmppass_i'])){
+    $condition= " WHERE id = '". $_GET['cmppass_i']."'";
     $check_company = $comapnyinfo->getSingleData('companies',' * ', $condition );
 }
 
@@ -40,8 +39,6 @@ if(isset($check_company)){
 
 }else{
         $cmpresult = $comapnyinfo->insertData('companies', $company);
-        
-
         header("Location: ../alljobsolution/index.php?page=companyList&message='successfully inserted'");
 
 }
