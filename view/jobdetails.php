@@ -70,7 +70,7 @@ $responsibility= explode('.', $single_job->description);
 
                             <div class="job-summary p-4 rounded-top shadow mt-4 d-flex align-item-center justify-content-between">
                                 <div class="company-logo w-25">
-                                    <img src="assets/img/bang-gov-logo.png" alt="" style="width:100px; height:100px">
+                                    <img src="uploads/organisations/<?= $company_name->logo ?>" alt="" style="width:100px; height:100px">
                                 </div>
                                 <div class="w-75 company-details p-2 text-left row">
                                     <div class="col-4">

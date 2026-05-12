@@ -27,7 +27,7 @@
                 <section> 
                     <div class=" py-5">
                                     <?php if(isset($_GET['message'])){ 
-                                        echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
+                                        echo '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
 
                                         } ?>
                             <div class="row justify-content-center">
@@ -48,10 +48,10 @@
                                             <img 
                                                 src="uploads/organisations/<?= $singlecompany->logo ?>" 
                                                 alt="Company Logo"
-                                                class="rounded-circle border border-4 border-white shadow"
-                                                width="120"
-                                                height="120"
-                                                style="object-fit: cover;"
+                                                class=" border border-4 border-white shadow img-fluid"
+                                                width="500px"
+                                                height="200"
+                                                
                                             >
 
                                             <h2 class="mt-3 mb-1 fw-bold ">
@@ -59,7 +59,7 @@
                                             </h2>
 
                                             <span class="badge bg-light bg-dark text-light px-3 py-2">
-                                                <?= $singlecompany->company_type ?>
+                                                <?= ($singlecompany->company_type == 'gov') ? 'Government Organisations' : 'Private Organistaions' ?>
                                             </span>
 
                                         </div>
@@ -75,7 +75,7 @@
                                                 </h5>
 
                                                 <a 
-                                                    href="https://<?= $singlecompany->website ?>" 
+                                                    href="<?= $singlecompany->website ?>" 
                                                     target="_blank"
                                                     class="text-decoration-none"
                                                 >

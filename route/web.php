@@ -202,7 +202,7 @@ switch ($page) {
         }
     case 'postjob':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
-        require_once 'view/jobpostupload.php';
+        require_once 'view/admin/jobpostupload.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");

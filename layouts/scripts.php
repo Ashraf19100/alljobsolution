@@ -84,3 +84,78 @@
 	tableFilter('typeFilter', 'companyTable', 5); //company table
 	// 
 </script>
+<!-- Charts scripts -->
+ <?php 
+	if(isset($admin_dashboard)){
+	$allMusers = $admin_dashboard->getData('user_details','  COUNT(*) as total ', ' WHERE gender = "male" ');
+	$allFusers = $admin_dashboard->getData('user_details','  COUNT(*) as total ', ' WHERE gender = "female" ');
+	$nm[]= ($allFusers[0]['total']/$totalusers[0]['total'])*100;
+	$nm[]= ($allMusers[0]['total']/$totalusers[0]['total'])*100;
+	
+	}
+ ?>
+<script>
+    // Example Data
+    const positions = [
+        'FeMale',
+        'Male',    
+    ];
+
+    const percentages = <?= json_encode($nm); ?>;
+
+    // Chart
+    const ctx = document.getElementById('applicationChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: positions,
+            datasets: [{
+                label: 'Application Percentage (%)',
+                data: percentages,
+                backgroundColor: [
+                    '#198754',
+                    '#6f42c1',
+                ],
+                borderRadius: 8,
+                borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.raw + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Positions'
+                    }
+                }
+            }
+        }
+    });
+</script>

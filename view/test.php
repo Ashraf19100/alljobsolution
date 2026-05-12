@@ -1,157 +1,103 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Classy CV</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Statistics</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-    body {
-        background: #e9ecef;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    .cv-container {
-        max-width: 900px;
-        margin: 30px auto;
-        background: #fff;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        display: flex;
-    }
-
-    /* LEFT SIDE */
-    .left {
-        width: 35%;
-        background: #1f3c88;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-    }
-
-    .left img {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        border: 4px solid #fff;
-        object-fit: cover;
-        margin-bottom: 15px;
-    }
-
-    .left h4 {
-        border-bottom: 1px solid rgba(255,255,255,0.4);
-        padding-bottom: 5px;
-        margin-top: 20px;
-    }
-
-    .left p, .left li {
-        font-size: 14px;
-        margin: 5px 0;
-    }
-
-    /* RIGHT SIDE */
-    .right {
-        width: 65%;
-        padding: 30px;
-    }
-
-    .name {
-        color: #1f3c88;
-        font-weight: bold;
-    }
-
-    .section-title {
-        color: #1f3c88;
-        border-bottom: 2px solid #1f3c88;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-    .job-title {
-        font-weight: bold;
-    }
-
-    .small-text {
-        color: #777;
-        font-size: 13px;
-    }
-</style>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<body class="bg-light">
 
-<body>
+<div class="container py-5">
 
-<div class="cv-container">
-
-    <!-- LEFT SIDE -->
-    <div class="left">
-        <img src="uploads/img/<?=$_SESSION['profile_image'] ?>" alt="Profile Photo">
-
-        <h3><?=$_SESSION['name']?></h3>
-        <p>Web Developer</p>
-        <h4>Contact</h4>
-        <p>Email: <?=$_SESSION['email']?></p>
-        <p>Phone: <?=$_SESSION['phone']?></p>
-        <p><?=$personal->address?></p>
-
-        <h4>Skills</h4>
-        <ul class="list-unstyled">
-            <li>HTML, CSS, Bootstrap</li>
-            <li>PHP & MySQL</li>
-            <li>JavaScript</li>
-            <li>Problem Solving</li>
-        </ul>
-
-        <h4>Languages</h4>
-        <p>English</p>
-        <p>Bangla</p>
-    </div>
-
-    <!-- RIGHT SIDE -->
-    <div class="right">
-
-        <h2 class="name">John Doe</h2>
-        <p class="small-text">Professional Web Developer</p>
-
-        <div>
-            <div class="section-title">Career Objective</div>
-            <p>
-                Passionate and detail-oriented developer seeking to build scalable web applications
-                and contribute to innovative projects.
-            </p>
+    <div class="card shadow border-0 rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h4 class="mb-0">Application Percentage by Position</h4>
         </div>
 
-        <div>
-            <div class="section-title">Experience</div>
-
-            <p class="job-title">Web Developer - ABC Company</p>
-            <p class="small-text">2024 - Present</p>
-            <p>Developed dynamic websites and improved system performance.</p>
-
-            <p class="job-title">Intern - Tech Firm</p>
-            <p class="small-text">2023</p>
-            <p>Worked on frontend UI and debugging tasks.</p>
+        <div class="card-body">
+            <canvas id="applicationChart" height="100"></canvas>
         </div>
-
-        <div>
-            <div class="section-title">Education</div>
-
-            <p class="job-title">BSc in Computer Science</p>
-            <p class="small-text">Dhaka University (2020 - 2024)</p>
-
-            <p class="job-title">HSC</p>
-            <p class="small-text">XYZ College (2018 - 2020)</p>
-        </div>
-
-        <div>
-            <div class="section-title">Projects</div>
-            <p><strong>Job Portal System:</strong> Built using PHP OOP with full CRUD features.</p>
-        </div>
-
     </div>
 
 </div>
+
+<script>
+    // Example Data
+    const positions = [
+        'Data Entry Operator',
+        'Software Engineer',
+        'Accountant',
+        'Graphic Designer',
+        'HR Officer'
+    ];
+
+    const percentages = [35, 25, 15, 10, 15];
+
+    // Chart
+    const ctx = document.getElementById('applicationChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: positions,
+            datasets: [{
+                label: 'Application Percentage (%)',
+                data: percentages,
+                backgroundColor: [
+                    '#0d6efd',
+                    '#198754',
+                    '#ffc107',
+                    '#dc3545',
+                    '#6f42c1'
+                ],
+                borderRadius: 8,
+                borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.raw + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Positions'
+                    }
+                }
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

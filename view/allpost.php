@@ -56,19 +56,19 @@ $crnt_page= isset($_GET['page']) ?  $_GET['page'] : '' ;
         <div class="col-md-3 py-2" >
             <div class="card border-2 shadow-sm h-100" style="background: linear-gradient(105deg, #fff, #d4d9e0, #fff);">
                 <div class="card-body">
-
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/bang-gov-logo.png" width="60" class="me-3">
-                        <div>
-                        <h6 class="mb-0"><?= $job['title'] ?></h6>
-                        <?php
+                    <?php
                                     $condition = " WHERE id = ". $job['company_id'] ;
                                     
-                                    $companies = $alljob->getData('companies',' * ', $condition ); 
-                                    foreach($companies as $companie){
+                                    $companies = $alljob->getSingleData('companies',' * ', $condition ); 
+                                    
                                     ?>
-                        <small class="text-muted"><?= $companie['company_name'] ?></small>
-                        <?php } ?>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="uploads/organisations/<?= $companies->logo ?>" width="60" class="me-3">
+                        <div>
+                        <h6 class="mb-0"><?= $job['title'] ?></h6>
+                       
+                        <small class="text-muted"><?= $companies->company_name ?></small>
+                        
                         </div>
                     </div>
 

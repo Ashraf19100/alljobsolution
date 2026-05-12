@@ -279,3 +279,8 @@ a:hover {
 .pagination .disabled .pagination-link {
     opacity: 0.5;
 }
+.content{
+    height: 100vh;
+    overflow: scroll;
+    scrollbar-width: none;
+}
