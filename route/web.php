@@ -131,7 +131,14 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
             exit;
         }
-        
+    case 'application_download':
+        if(isset($_SESSION['email'])){
+        require_once 'view/application_download.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
+            exit;
+        }  
     
     case 'application_preview':
         if(isset($_SESSION['email'])){
@@ -226,7 +233,7 @@ switch ($page) {
         break;
 }
 
-// 
+// application_download
 
                 
 ?>

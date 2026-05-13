@@ -111,10 +111,13 @@
                     <h5 class="text-success section-title mb-3"><?= $education_level['exam_name'] ?> Information</h5>
                     <div class="table-responsive">
                         <table class="table table-bordered align-middle info-table">
-                            <tr><th>Exam</th><td><?= $education_level['exam_name'] ?></td></tr>
+                            <tr><th>Exam</th><td>
+                                <?php $exam_name =  $applicationpreview->getSingleData('bachelor_degrees', ' * ', ' WHERE id ='.$education_level['exam_name'])?>
+                                    <?= $exam_name->degree_name ?? ' '?></td></tr>
                             <tr><th>Board</th><td><?= $education_level['uni_board'] ?></td></tr>
                             <tr><th>Roll</th><td><?= $education_level['roll_id'] ?></td></tr>
-                            <tr><th>Subject</th><td><?= $education_level['subject'] ?></td></tr>
+                            <tr><th>Subject</th><td><?php $subject_name =  $applicationpreview->getSingleData('bachelor_departments', ' * ', ' WHERE id ='.$education_level['subject'])?>
+                                    <?= $subject_name->department_name ?? ' '?></td></tr>
                             <tr><th>Result</th><td><?= $education_level['result'] ?></td></tr>
                             <tr><th>Year</th><td><?= $education_level['passing_year'] ?></td></tr>
                         </table>
@@ -160,12 +163,12 @@
                     
 
                     <!-- SUBMIT -->
-                    <form action="index.php?page=application_submit&apply=apply" method="POST" style="display:inline;">
-                        
-                            <input type="hidden" name="job_id" value="<?= htmlspecialchars($applicant_personalinfo->job_id) ?>">
-                            <input type="hidden" name="user_id" value="<?= htmlspecialchars($applicant_personalinfo->user_id) ?>">
-                            <input type="hidden" name="resume_id" value="<?= htmlspecialchars($applicant_personalinfo->resume_id) ?>">
-                        <button class="btn btn-success px-4 shadow">
+                    <form action="index.php?page=application_submit&apply=<?=$application_data['job_id']?>" method="POST" style="display:inline;">
+                            <?php foreach($application_data as $key => $value){ ?>
+                                <input type="hidden" name="<?= $key ?>" value="<?= htmlspecialchars($value) ?>">
+                            <?php } ?>
+                            
+                        <button type="submit" class="btn btn-success px-4 shadow">
                             ✔ Confirm & Submit
                         </button>
                     </form>

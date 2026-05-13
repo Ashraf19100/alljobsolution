@@ -51,7 +51,8 @@
                                 <div class="row mb-3">
                                 <div class="col-md-6">
                                     <strong>Exam Name:</strong>
-                                    <p id="exam_name"><?= $educationinfo['exam_name'] ?></p>
+                                    <p id="exam_name"><?php $exam_name =  $eduinfo->getSingleData('bachelor_degrees', ' * ', ' WHERE id ='.$educationinfo['exam_name'])?>
+                                    <?= $exam_name->degree_name ?? ' '?></p>
                                 </div>
 
                                 <div class="col-md-6">
@@ -63,17 +64,18 @@
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <strong>Roll / ID:</strong>
-                                    <p id="roll_id">123456</p>
+                                    <p id="roll_id"><?= $educationinfo['roll_id'] ?></p>
                                 </div>
 
                                 <div class="col-md-4">
                                     <strong>Subject:</strong>
-                                    <p id="subject">Science</p>
+                                    <p id="subject"><?php $subject_name =  $eduinfo->getSingleData('bachelor_departments', ' * ', ' WHERE id ='.$educationinfo['subject'])?>
+                                    <?= $subject_name->department_name ?? ' '?></p>
                                 </div>
 
                                 <div class="col-md-4">
                                     <strong>Passing Year:</strong>
-                                    <p id="passing_year">2020</p>
+                                    <p id="passing_year"><?= $educationinfo['passing_year'] ?></p>
                                 </div>
                             </div>
                             </div>
