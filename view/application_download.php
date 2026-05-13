@@ -100,15 +100,21 @@
         border-radius: 50%;
         border: 4px solid #fff;
     }
+    .paper_top{
+        width: 100%;
+        height: 70px;
+        
+    }
 </style>
-
-
-        <div class="container mt-5">
-            <div class="card shadow-lg p-4 card-custom">
-                        <?php if(isset($_GET['message'])){ 
+         <?php if(isset($_GET['message'])){ 
                                         echo  '<div class="alert alert-danger text-center">'.$_GET['message'].'</div>';
                                     } ?>
+
+            <div class="">            
+                <div class="container p-4 ">
+                       
                         <!-- HEADER -->
+                         
                         <div class="text-center mb-4">
                             <h2 class="text-success fw-bold">
                                 Application Preview
