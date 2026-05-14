@@ -8,18 +8,49 @@
 	<div class="wrapper">
 		<?php require "layouts/navbar.php" ?>
 		<div class="">
-			<div class="container search_area">
-				
-					<?php require "layouts/searcharea.php" ?>
-				
+			    <!-- Hero Section -->
+			<section class="hero-section text-center">
+				<div class="container">
+					<h1 class="display-4 fw-bold">Find Your Dream Job</h1>
+					<p class="lead mt-3">
+						Search thousands of jobs from top companies
+					</p>
+				</div>
+			</section>
+
+			<!-- Search Box -->
+			<div class="container">
+				<div class="search-box">
+					<div class="row g-3">
+						<div class="col-md-5">
+							<input type="text" class="form-control bg-transparent text-white" placeholder="Job title or keyword">
+						</div>
+
+						<div class="col-md-4">
+							<select class="form-select bg-transparent">
+								<option >Select Category</option>
+								<option >IT & Software</option>
+								<option >Marketing</option>
+								<option >Banking</option>
+								<option > Government</option>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<button class="btn btn-primary bg-transparent w-100">
+								<i class="fa-solid fa-magnifying-glass"></i> Search Jobs
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
-			
+
 			<div class="home-content-wrapper">
 				<?php if(!empty($_GET['search'])){
 					require_once 'view/searchpost.php'; 
 				}else{?>
 				
-				<section class="" style="background: linear-gradient(105deg, #c1c5cd, #fff, #fff);">
+				<section class="" style="background: linear-gradient(105deg, #ffffff, #fff, #fff);">
 					<div class="banner container ">
 						<div class="banner-left w-50">
 							<h1 class=" fw-bold text-capitalize pt-5">JobSolution by Teletalk</h1>
@@ -158,6 +189,50 @@
 						</div>
 					</div>
 				</section>
+				<!-- Categories -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Popular Categories</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fa-solid fa-laptop-code fa-2x mb-3"></i>
+                        <h5>IT & Software</h5>
+                        <p>120 Jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fa-solid fa-chart-line fa-2x mb-3"></i>
+                        <h5>Marketing</h5>
+                        <p>85 Jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fa-solid fa-building-columns fa-2x mb-3"></i>
+                        <h5>Banking</h5>
+                        <p>40 Jobs</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fa-solid fa-user-tie fa-2x mb-3"></i>
+                        <h5>Government</h5>
+                        <p>25 Jobs</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 				<div class="job-post container">
 					<?php require_once 'view/allpost.php' ?>
 				</div>

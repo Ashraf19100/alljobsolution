@@ -89,27 +89,27 @@ $totalcompanies = $admin_dashboard->getData('companies',' COUNT(*) as total ');
                                 <div class="row g-3">
 
                                     <div class="col-md-3">
-                                        <button class="btn btn-primary w-100 quick-btn">
-                                            Create New
-                                        </button>
+                                        <a href="index.php?page=userslist" class="btn btn-primary text-light w-100 quick-btn">
+                                            Manage Users
+                                        </a>
                                     </div>
 
                                     <div class="col-md-3">
-                                        <button class="btn btn-success w-100 quick-btn">
+                                        <a class="btn btn-success  text-light w-100 quick-btn">
                                             View Reports
-                                        </button>
+                                        </a>
                                     </div>
 
                                     <div class="col-md-3">
-                                        <button class="btn btn-warning w-100 quick-btn">
-                                            Manage Settings
-                                        </button>
+                                        <a class="btn btn-warning text-dark w-100 quick-btn">
+                                            Manage Job post
+                                        </a>
                                     </div>
 
                                     <div class="col-md-3">
-                                        <button class="btn btn-dark w-100 quick-btn">
+                                        <a class="btn btn-dark text-light w-100 quick-btn">
                                             Notifications
-                                        </button>
+                                        </a>
                                     </div>
 
                                 </div>

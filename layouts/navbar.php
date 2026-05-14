@@ -36,6 +36,7 @@
       text-align:center;
   }
 </style>
+<!-- Navbar -->
 
 <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background: linear-gradient(135deg, #1e3c72, #2a5298, #ff7e00); " >
   <div class="container" >
@@ -44,7 +45,7 @@
       <img src="assets/img/whitelogo.png" height="50">
     </a>
 
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navBar">
+    <button class="navbar-toggler text-light border" data-bs-toggle="collapse" data-bs-target="#navBar">
       <span class="navbar-toggler-icon"></span>
     </button>
     

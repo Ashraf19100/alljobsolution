@@ -177,13 +177,21 @@ switch ($page) {
         }
     case 'userslist':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
-        require_once 'view/admin/userlist.php';
+        require_once 'view/admin/users/userlist.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
-    case 'companyList':
+    case 'showuser':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/users/showuser.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+        case 'companyList':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
         require_once 'view/admin/company/companylist.php';
         break;
