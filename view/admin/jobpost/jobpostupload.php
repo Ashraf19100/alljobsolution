@@ -169,7 +169,7 @@
 
                                     <div class="col-md-3">
                                         <a href="index.php?page=jobdetails&job_id=<?= $allpost['id']?>" class="btn btn-sm btn-info mb-1">Show</a>
-                                        <a href="" class="btn btn-sm btn-warning mb-1">Edit</a>
+                                        <a href="index.php?page=jobpostmanage&manage=<?= $allpost['id']?>" class="btn btn-sm btn-warning mb-1">Manage</a>
                                         <a href="" class="btn btn-sm btn-success mb-1">Active</a>
                                         <a href="" class="btn btn-sm btn-danger mb-1">Delete</a>
                                     </div>

@@ -217,7 +217,15 @@ switch ($page) {
         }
     case 'postjob':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
-        require_once 'view/admin/jobpostupload.php';
+        require_once 'view/admin/jobpost/jobpostupload.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'jobpostmanage':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/jobpost/jobpostmanage.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");

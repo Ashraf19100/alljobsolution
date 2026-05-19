@@ -9,7 +9,16 @@
     $WHEREid = " WHERE user_id =".$_GET['actvui'];
     $userinfo = $showuser->getSingleData('users',' * ', $WHERE);
     $userdetail = $showuser->getSingleData('user_details',' * ', $WHEREid);
-    
+    if(isset($_GET['status'])){
+        if($_GET['state']== 1){
+            $state = 0;
+        }else{
+            $state = 1;
+        }
+        $status['status'] = $state;
+        $statusui = " WHERE id =".$_GET['status'];
+        $showuser->updateData('users', $status, $statusui );
+    }
     
     
 
@@ -70,8 +79,8 @@
 
                     <div class="card shadow-sm border-0 rounded-4">
 
-                        <div class="card-body p-4">
-
+                        <div class="card-body p-4 my-4">
+                            
                             <!-- Header -->
                             <div class="d-flex align-items-center mb-4">
 
@@ -197,15 +206,15 @@
                             <!-- Action Buttons -->
                             <div class="mt-4 d-flex flex-wrap gap-2">
 
-                                <button class="btn btn-success">
+                                <a class="p-2 btn-success" href="index.php?page=showuser&status=<?=$userinfo->id ?>&<?=uniqid();?>&state=0&actvui=<?=$_GET['actvui']?>">
                                     <i class="fa-solid fa-user-check"></i>
                                     Activate
-                                </button>
+                                </a>
 
-                                <button class="btn btn-warning text-white">
+                                <a class="p-2 btn-danger" href="index.php?page=showuser&status=<?=$userinfo->id ?>&<?=uniqid();?>&state=1&actvui=<?=$_GET['actvui']?>">
                                     <i class="fa-solid fa-user-lock"></i>
                                     Deactivate
-                                </button>
+</a>
 
                                 <button class="btn btn-danger">
                                     <i class="fa-solid fa-ban"></i>

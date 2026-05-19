@@ -192,7 +192,6 @@
                                                 </td>
                                                 <td>
                                                     <a href="index.php?page=showuser&actvui=<?=$user['id']?>&<?=uniqid();?>" class="btn btn-sm btn-info mb-1">Show</a>
-                                                    <a href="" class="btn btn-sm btn-warning mb-1">Edit</a>
                                                     <a href="index.php?page=userslist&status=<?=$user['id']?>&<?=uniqid();?>&state=<?=$user['status']?>" class="btn btn-sm <?= ($user['status'] == 1) ? 'btn-success' : 'btn-danger' ?> mb-1"><?= ($user['status'] == 1) ? 'Activate' : 'Deactivate' ?></a>
                                                     <a href="" class="btn btn-sm btn-danger mb-1">Delete</a>
                                                 </td>
