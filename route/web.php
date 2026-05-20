@@ -238,7 +238,15 @@ switch ($page) {
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
-        }   
+        }
+    case 'jobedu':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/jobController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }      
     case 'logout':
         require_once 'actions/logoutController.php';
         break;
@@ -249,7 +257,7 @@ switch ($page) {
         break;
 }
 
-// application_download
+// application_download 
 
                 
 ?>

@@ -2,9 +2,50 @@
 require_once 'database/database.php';
 
 $admin_job = new datamodel();
+if($GET['page']='jobedu'){
+print("<pre>");
 
-if(isset($_POST)){
-    
+    if(isset($_POST)){ 
+        foreach($_POST as $key => $val){
+            if (in_array($key, [
+                'ssc_allowed_exam',
+                'hsc_allowed_exam',
+                'gra_allowed_exam',
+                'mas_allowed_exam',
+                'mph_allowed_exam',
+                'phd_allowed_exam',
+                'ssc_allowed_sub',
+                'hsc_allowed_sub',
+                'gra_allowed_sub',
+                'mas_allowed_sub',
+                'mph_allowed_sub',
+                'phd_allowed_sub'
+            ])) {
+                    $val =implode(', ', $_POST[$key]);  
+            }
+            $jobeducolumn[$key] = $val;
+        }
+        print_r($jobeducolumn);
+        if(isset($_POST['job_code'])){
+        $jobedu = " WHERE job_code ='".$_POST['job_code']."'";
+        $job_manageinfo = $admin_job->getData('job_post_edu',' * ', $jobedu );
+        }
+        
+        
+        if(isset($job_manageinfo)){
+            $job_manage = $admin_job->updateData('job_post_edu', $jobeducolumn, $jobedu);
+            header("Location: ../alljobsolution/index.php?page=postjob&message='successfully updated'");
+            exit;
+
+        }else{
+            $job_manage = $admin_job->insertData('job_post_edu', $jobeducolumn);
+            header("Location: ../alljobsolution/index.php?page=postjob&message='successfully inserted the information'");
+            exit;
+
+        }  
+    }
+}
+if(isset($_POST)){ 
     foreach($_POST as $key => $val){
         $jobcolumn[$key] = $val;
     }
@@ -22,9 +63,7 @@ if(isset($_POST)){
         $job_result = $admin_job->insertData('jobs', $jobcolumn);
         header("Location: ../alljobsolution/index.php?page=postjob&message='successfully inserted'");
 
-    }
-
-    
+    }  
 }
 
 

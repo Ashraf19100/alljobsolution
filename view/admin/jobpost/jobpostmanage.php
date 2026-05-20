@@ -21,22 +21,9 @@
         <?php require "layouts/sidemenu.php" ?>
             <div class="col-md-10">
                 <div class="content  container">
-                    <div class="top-content text-center">
-                        <h2>📋 List of Uploaded Jobs</h2>
-                        
-                        <div class="date-badge">
-                            <?= date("F Y"); ?>
-                        </div>
-
-                        <p>
-                            🌐 <a href="https://www.teletalk.com" target="_blank">
-                                www.teletalk.com
-                            </a>
-                        </p>
-                    </div>
                     <section> 
                         <div class="container mt-4">
-                            <form method="POST" action="" class="container mt-4">
+                            <form method="POST" action="index.php?page=jobedu" class="container mt-4">
 
                                 <div class="card shadow">
                                     <div class="card-header bg-dark text-white">
@@ -50,23 +37,15 @@
                                             <!-- Post Info -->
                                             <div class="col-md-4">
                                                 <label class="form-label">Post Code</label>
-                                                <input type="number" name="post_code" class="form-control" value="<?=$post_details->id?>" disabled>
+                                                <input type="number" name="job_code" class="form-control" value="<?=$post_details->id?>" >
                                             </div>
 
                                             <div class="col-md-8">
                                                 <label class="form-label">Post Name</label>
-                                                <input type="text" name="post_name" class="form-control" value="<?=$post_details->title?>" disabled>
+                                                <input type="text" name="job_title" class="form-control" value="<?=$post_details->title?>" >
                                             </div>
 
                                             <!-- Allowed Exams -->
-                                            <div class="col-md-4 border">
-                                                <label class="form-label" for="" >JSC Allowed Exam</label><br>
-                                                <div class="form-check">
-                                                    <input type="checkbox" id="jsc_allowed_exam" name="jsc_allowed_exam[]" class="form-check-input">
-                                                    <label class="form-check-label" for="jsc_allowed_exam" >JSC</label>
-                                                </div>
-                                            </div>
-
                                             <div class="col-md-4 border" >
                                                 <label class="form-label">SSC Allowed Exam</label>
                                                 <div style="height:200px;overflow:scroll; scrollbar-width:none;">
@@ -74,7 +53,7 @@
                                                     foreach($ssc_allowed as $ssc_allowed_exam){ ?>
                                                 <div class="form-check">
                                                      
-                                                    <input type="checkbox" id="ssc_allowed_exam" name="ssc_allowed_exam[]" class="form-check-input">
+                                                    <input type="checkbox" id="ssc_allowed_exam" name="ssc_allowed_exam[]" class="form-check-input" value="<?= $ssc_allowed_exam['id'] ?>" >
                                                     <label class="form-check-label" for="ssc_allowed_exam" ><?= $ssc_allowed_exam['degree_name'] ?></label>
                                                     
                                                 </div>
@@ -90,7 +69,7 @@
                                                     foreach($hsc_allowed as $hsc_allowed_exam){ ?>
                                                 <div class="form-check">
                                                     
-                                                    <input type="checkbox" id="hsc_allowed_exam" name="hsc_allowed_exam[]" class="form-check-input">
+                                                    <input type="checkbox" id="hsc_allowed_exam" name="hsc_allowed_exam[]" class="form-check-input" value="<?= $hsc_allowed_exam['id'] ?>">
                                                     <label class="form-check-label" for="hsc_allowed_exam" ><?= $hsc_allowed_exam['degree_name'] ?></label>
                                                     
                                                 </div>
@@ -105,7 +84,7 @@
                                                 <?php $gra_allowed = $jobpost_details->getData('bachelor_degrees',' * ', ' WHERE degree_level= 3'); 
                                                 foreach($gra_allowed as $gra_allowed_exam){ ?>
                                                 <div class="form-check">
-                                                    <input type="checkbox" id="gra_allowed_exam" name="gra_allowed_exam[]" class="form-check-input">
+                                                    <input type="checkbox" id="gra_allowed_exam" name="gra_allowed_exam[]" class="form-check-input" value="<?= $gra_allowed_exam['id'] ?>">
                                                     <label class="form-check-label" for="gra_allowed_exam" ><?= $gra_allowed_exam['degree_name'] ?></label>
                                                 </div>
                                                 <?php } ?>
@@ -119,7 +98,7 @@
                                                 <?php $mas_allowed = $jobpost_details->getData('bachelor_degrees',' * ', ' WHERE degree_level= 4'); 
                                                 foreach($mas_allowed as $mas_allowed_exam){ ?>
                                                 <div class="form-check">
-                                                    <input type="checkbox" id="mas_allowed_exam" name="mas_allowed_exam[]" class="form-check-input">
+                                                    <input type="checkbox" id="mas_allowed_exam" name="mas_allowed_exam[]" class="form-check-input" value="<?= $mas_allowed_exam['id'] ?>">
                                                     <label class="form-check-label" for="mas_allowed_exam" ><?= $mas_allowed_exam['degree_name'] ?></label>
                                                 </div>
                                                 <?php } ?>
@@ -128,51 +107,152 @@
 
                                             <div class="col-md-4 border">
                                                 <label class="form-label">MPH Allowed Exam</label>
+                                                <div style="height:200px;overflow:scroll; scrollbar-width:none;">
+                                                <?php $mph_allowed = $jobpost_details->getData('bachelor_degrees',' * ', ' WHERE degree_level= 5'); 
+                                                foreach($mph_allowed as $mph_allowed_exam){ ?>
                                                 <div class="form-check">
-                                                    <input type="checkbox" id="mph_allowed_exam" name="mph_allowed_exam[]" class="form-check-input">
-                                                    <label class="form-check-label" for="mph_allowed_exam" >JSC Allowed Exam</label>
+                                                    <input type="checkbox" id="mph_allowed_exam" name="mph_allowed_exam[]" class="form-check-input" value="<?= $mph_allowed_exam['id'] ?>">
+                                                    <label class="form-check-label" for="mph_allowed_exam" ><?= $mph_allowed_exam['degree_name'] ?></label>
                                                 </div>
-                                                
+                                                <?php } ?>
+                                                </div>   
                                             </div>
 
                                             <div class="col-md-4 border">
                                                 <label class="form-label">PhD Allowed Exam</label>
-                                                <div class="form-check">
-                                                    <input type="checkbox" id="phd_allowed_exam" name="phd_allowed_exam[]" class="form-check-input">
-                                                    <label class="form-check-label" for="phd_allowed_exam" >JSC Allowed Exam</label>
-                                                </div>
-                                                
+                                                <div style="height:200px;overflow:scroll; scrollbar-width:none;">
+                                                    <?php $phd_allowed = $jobpost_details->getData('bachelor_degrees',' * ', ' WHERE degree_level= 5'); 
+                                                    foreach($phd_allowed as $phd_allowed_exam){ ?>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" id="phd_allowed_exam" name="phd_allowed_exam[]" class="form-check-input" value="<?= $phd_allowed_exam['id'] ?>">
+                                                        <label class="form-check-label" for="phd_allowed_exam" ><?= $phd_allowed_exam['degree_name'] ?></label>
+                                                    </div>
+                                                    <?php } ?>
+                                                </div> 
                                             </div>
 
                                             <!-- Allowed Subjects -->
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 border">
                                                 <label class="form-label">SSC Allowed Subject</label>
-                                                <textarea name="ssc_allowed_sub" class="form-control" rows="2"></textarea>
+                                                
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="ssc_allowed_sub[]" id="ssc_allowed_sub" class="form-check-input" vlaue="ssc_science, ssc_business, ssc_humanities">
+                                                        <label class="form-check-label" for="ssc_allowed_sub">All</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="ssc_allowed_sub[]" id="ssc_allowed_sub" class="form-check-input" value="ssc_science">
+                                                        <label class="form-check-label" for="ssc_allowed_sub">SCience</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="ssc_allowed_sub[]" id="ssc_allowed_sub" class="form-check-input" value="ssc_business">
+                                                        <label class="form-check-label" for="ssc_allowed_sub">Business</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="ssc_allowed_sub[]" id="ssc_allowed_sub" class="form-check-input" value="ssc_humanities">
+                                                        <label class="form-check-label" for="ssc_allowed_sub">Humanities</label>
+                                                    </div>
+                                                
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 border">
                                                 <label class="form-label">HSC Allowed Subject</label>
-                                                <textarea name="hsc_allowed_sub" class="form-control" rows="2"></textarea>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="hsc_allowed_sub[]" id="hsc_allowed_sub" class="form-check-input" value="hsc_science, hsc_business, hsc_humanities">
+                                                        <label class="form-check-label" for="hsc_allowed_sub">All</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="hsc_allowed_sub[]" id="hsc_allowed_sub" class="form-check-input" value="hsc_science">
+                                                        <label class="form-check-label" for="hsc_allowed_sub">SCience</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="hsc_allowed_sub[]" id="hsc_allowed_sub" class="form-check-input" value="hsc_business">
+                                                        <label class="form-check-label" for="hsc_allowed_sub">Business</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="hsc_allowed_sub[]" id="hsc_allowed_sub" class="form-check-input" value="hsc_humanities">
+                                                        <label class="form-check-label" for="hsc_allowed_sub">Humanities</label>
+                                                    </div>
+                                                
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 border">
                                                 <label class="form-label">Graduation Allowed Subject</label>
-                                                <textarea name="gra_allowed_sub" class="form-control" rows="2"></textarea>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="gra_allowed_sub[]" id="gra_allowed_sub" class="form-check-input" value="gra_science, gra_business, gra_arts">
+                                                    <label class="form-check-label" for="gra_allowed_sub">All</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="gra_allowed_sub[]" id="gra_allowed_sub" class="form-check-input" value="gra_science">
+                                                    <label class="form-check-label" for="gra_allowed_sub">science</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="gra_allowed_sub[]" id="gra_allowed_sub" class="form-check-input" value="gra_business">
+                                                    <label class="form-check-label" for="gra_allowed_sub">Business</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="gra_allowed_sub[]" id="gra_allowed_sub" class="form-check-input" value="gra_arts">
+                                                    <label class="form-check-label" for="gra_allowed_sub">Arts</label>
+                                                </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 border">
                                                 <label class="form-label">Masters Allowed Subject</label>
-                                                <textarea name="mas_allowed_sub" class="form-control" rows="2"></textarea>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mas_allowed_sub[]" id="mas_allowed_sub" class="form-check-input" value="Msc , MBA, MA">
+                                                    <label class="form-check-label" for="mas_allowed_sub">All</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mas_allowed_sub[]" id="mas_allowed_sub" class="form-check-input" value="MSc">
+                                                    <label class="form-check-label" for="mas_allowed_sub">science</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mas_allowed_sub[]" id="mas_allowed_sub" class="form-check-input" value="MBA">
+                                                    <label class="form-check-label" for="mas_allowed_sub">Business</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mas_allowed_sub[]" id="mas_allowed_sub" class="form-check-input" value="MA">
+                                                    <label class="form-check-label" for="mas_allowed_sub">Arts</label>
+                                                </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 border">
                                                 <label class="form-label">MPH Allowed Subject</label>
-                                                <textarea name="mph_allowed_sub" class="form-control" rows="2"></textarea>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mph_allowed_sub[]" id="mph_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="mph_allowed_sub">All</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mph_allowed_sub[]" id="mph_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="mph_allowed_sub">science</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mph_allowed_sub[]" id="mph_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="mph_allowed_sub">Business</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="mph_allowed_sub[]" id="mph_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="mph_allowed_sub">Arts</label>
+                                                </div>
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-4 border">
                                                 <label class="form-label">PhD Allowed Subject</label>
-                                                <textarea name="phd_allowed_sub" class="form-control" rows="2"></textarea>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="phd_allowed_sub[]" id="phd_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="phd_allowed_sub">All</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="phd_allowed_sub[]" id="phd_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="phd_allowed_sub">science</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="phd_allowed_sub[]" id="phd_allowed_sub" class="form-check-input" value="">
+                                                    <label class="form-check-label" for="phd_allowed_sub">Business</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="phd_allowed_sub[]" id="phd_allowed_sub" class="form-check-input" value="" value="">
+                                                    <label class="form-check-label" for="phd_allowed_sub">Arts</label>
+                                                </div>
                                             </div>
 
                                             <!-- Minimum Result -->
