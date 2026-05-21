@@ -80,7 +80,8 @@
 		});
 
 	}
-	tableFilter('statusFilter', 'employeeTable', 3); //usertable
+	tableFilter('rolefilter', 'employeeTable', 2); //usertable
+	tableFilter('statusFilter', 'employeeTable', 4); //usertable
 	tableFilter('typeFilter', 'companyTable', 5); //company table
 	// 
 </script>
@@ -158,4 +159,35 @@
             }
         }
     });
+
+</script>
+<script>
+function tablerowlimit(tableId){
+	const rowLimit = document.getElementById('rowlimit');
+	const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+
+	function showLimitedRows() {
+
+		const limit = parseInt(rowLimit.value);
+
+		rows.forEach((row, index) => {
+
+			if(index < limit){
+				row.style.display = '';
+			}else{
+				row.style.display = 'none';
+			}
+
+		});
+
+	}
+
+	// Run on dropdown change
+	rowLimit.addEventListener('change', showLimitedRows);
+
+	// Initial load
+	showLimitedRows();
+}
+tablerowlimit('categorytable');
+
 </script>

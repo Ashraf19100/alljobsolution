@@ -239,6 +239,37 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'applications':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/applications/applications.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'jobcategory':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/category/jobcategory.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'addcategory':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/cateExmDegController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        } case 'jobedu':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/jobController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        } 
     case 'jobedu':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
         require_once 'actions/admin/jobController.php';

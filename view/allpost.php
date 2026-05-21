@@ -53,35 +53,52 @@ $crnt_page= isset($_GET['page']) ?  $_GET['page'] : '' ;
     
     <div class="row">
     <?php foreach($result as $job) {?>
-        <div class="col-md-3 py-2" >
-            <div class="card border-2 shadow-sm h-100" style="background: linear-gradient(105deg, #fff, #d4d9e0, #fff);">
-                <div class="card-body">
-                    <?php
+                <div class="col-md-3 my-2">
+                    <div class="card job-card h-100 border">
+                        <div class="card-body">
+                            <?php
                                     $condition = " WHERE id = ". $job['company_id'] ;
                                     
                                     $companies = $alljob->getSingleData('companies',' * ', $condition ); 
                                     
                                     ?>
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="uploads/organisations/<?= $companies->logo ?>" width="60" class="me-3">
-                        <div>
-                        <h6 class="mb-0"><?= $job['title'] ?></h6>
-                       
-                        <small class="text-muted"><?= $companies->company_name ?></small>
-                        
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="uploads/organisations/<?= $companies->logo ?>" class="company-logo me-3">
+
+                                <div>
+                                    <h5 class="mb-0"><?= $job['title'] ?></h5>
+                                    <small class="text-muted"><?= $companies->company_name ?></small>
+                                </div>
+                            </div>
+
+                            <p>
+                               <?= substr($job['description'],0,50)?>............
+                            </p>
+
+                            <div class="mb-3">
+                                <span class="badge bg-danger"><?= $job['emp_status'] ?></span>
+                                <span class="badge bg-success"><?= $job['emp_work_place'] ?></span>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <span>
+                                    <i class="fa-solid fa-location-dot"></i> <?= $job['location'] ?>
+                                </span>
+
+                                <span class="fw-bold text-primary">
+                                    ৳<?= $job['salary'] ?>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer bg-white border-0">
+                            <a href="index.php?page=jobdetails&job_id=<?= $job['id']?>" class="btn btn-primary w-100">
+                                Apply Now
+                            </a>
                         </div>
                     </div>
-
-                    <p class="mb-1"><i class="fa fa-map-marker-alt text-info"></i><?= $job['location'] ?></p>
-                    <p class="mb-1"><i class="fa fa-briefcase text-info"></i>  <?= $job['emp_status'] ?></p>
-                    <p class="text-danger mb-2">Deadline:  <?= $job['deadline'] ?></p>
-
-                    <a href="index.php?page=jobdetails&job_id=<?= $job['id']?>" class="btn w-100 text-white" style="background: linear-gradient(135deg, #8aa6da, #ff7e00, #ff7e00); ">View Details</a>
-
                 </div>
-            </div>
-        
-        </div>
     <?php } ?>
     </div>
         

@@ -160,7 +160,7 @@ $totalcompanies = $admin_dashboard->getData('companies',' COUNT(*) as total ');
 
                                 <div class="card shadow border-0 rounded-4">
                                     <div class="card-header bg-dark text-white rounded-top-4">
-                                        <h4 class="mb-0">Application Percentage by Position</h4>
+                                        <h4 class="mb-0">User Percentage by Gender</h4>
                                     </div>
 
                                     <div class="card-body">

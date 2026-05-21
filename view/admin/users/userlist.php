@@ -111,36 +111,20 @@
                                 <i class="fa-solid fa-filter"></i>
                                 Search / Filter Users
                             </h5>
-                            <form method="POST" >
                                 <div class="row g-3">
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <input name="email" type="text" class="form-control"
                                             placeholder="Search by name or email">
                                     </div>
 
                                     <div class="col-md-2">
-                                        <select name="role" class="form-select">
+                                        <select name="role" class="form-select" id="rolefilter">
                                             <option selected>Filter by Role</option>
-                                            <option value="admin" >Admin</option>
+                                            <option value="all" >all</option>
                                             <option value="employer">employee</option>
                                             <option value="job_seeker"> Job seeker</option>
                                         </select>
-                                    </div>
-
-                                    
-
-                                    <div class="col-md-2 d-grid">
-                                        <button class="btn btn-success">
-                                            <i class="fa-solid fa-magnifying-glass"></i>
-                                            Search
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2 d-grid">
-                                        <a href="index.php?page=userslist" class="btn btn-primary">
-                                            <i class="fa-solid fa-down-arrow"></i>
-                                            Reset
-                                        </a>
                                     </div>
                                     <div class="col-md-2">
                                         <select class="form-select " id="statusFilter">
@@ -150,9 +134,16 @@
                                             <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
+                                    <div class="col-md-2 d-grid">
+                                        <a href="index.php?page=userslist" class="btn btn-primary">
+                                            <i class="fa-solid fa-down-arrow"></i>
+                                            Reset
+                                        </a>
+                                    </div>
+                                    
 
                                 </div>
-                            </form>
+
                         </div>
                     </div>
 
@@ -176,6 +167,7 @@
                                                 <th>#Sl</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
+                                                <th>Role</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -187,6 +179,7 @@
                                                 <td><?= ++$sl ?></td>
                                                 <td><?= $user['name']?></td>
                                                 <td><?= $user['email']?></td>
+                                                <td><?= $user['role']?></td>
                                                 <td>
                                                     <span class="badge <?= ($user['status'] == 1) ? 'bg-success' : 'bg-danger' ?>"><?= ($user['status'] == 1) ? 'Active' : 'Inactive' ?></span>
                                                 </td>
