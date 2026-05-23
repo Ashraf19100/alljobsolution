@@ -3,7 +3,8 @@ require_once 'database/database.php';
 
 $personalinfo = new datamodel();   
 $condition = " WHERE user_id ='".$_SESSION['id']."'";
-$personal_info = $personalinfo->getSingleData('user_details',' * ', $condition );   
+$personal_info = $personalinfo->getSingleData('user_details',' * ', $condition );
+$age = $personalinfo->calculateFullAge($personal_info->dob);   
 
 
 
@@ -72,7 +73,7 @@ $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition )
                                         <div class="col-md-4">
                                             <div class="p-3 border rounded-3 text-center">
                                                 <small class="text-muted">Date of Birth</small>
-                                                <h6 class="mt-1"><?= $personal_info->dob  ?></h6>
+                                                <h6 class="mt-1"><?= $personal_info->dob  ?><br><span class="fs-6 fw-light">(<?=$age['years']?> years <?= $age['months']?> months <?=$age['days']?> days)</span></h6>
                                             </div>
                                         </div>
 

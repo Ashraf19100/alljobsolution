@@ -4,9 +4,6 @@
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
     $all_degree = $eduinfo->getData('bachelor_degrees',' * ', '' );
 
-  
-    
-
     $educationinfo = $eduinfo->getData('user_education',' * ', $condition );
     
    

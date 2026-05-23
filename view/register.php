@@ -15,7 +15,7 @@
 
                 <div class="card_from">
                     <h3 class="text-center mb-3">Create Account</h3>
-
+                    <h5 class="text-danger" ><?= $_GET['message'] ?? '' ?></h5>
                     <!-- Social Register Buttons -->
                     <div class="mb-3">
                         <button type="button" class="btn w-100 mb-2 d-flex align-items-center justify-content-center" style="border:1px solid #ddd;">
@@ -31,7 +31,7 @@
 
                     <div class="text-center my-2 text-muted">or</div>
 
-                    <form action="index.php?page=register-submit" method="POST">
+                    <form action="index.php?page=register-submit" method="POST" id="registerForm">
                         
                         <div class="name mb-3 d-flex">
                             <label for="name">Full Name</label>

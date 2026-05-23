@@ -12,9 +12,6 @@ if(isset($_POST)){
     foreach($_POST as $key => $val){
         $column[$key] = $val;
     }
-    
-    
-    
     $result = $educationinfo->insertData('user_education', $column);
     if(isset($result)){
         header("Location: ../alljobsolution/index.php?page=educationalinfo&message='successfully inserted'");

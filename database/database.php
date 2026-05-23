@@ -142,6 +142,32 @@
             }
         }
 
+        public function calculateFullAge($birthdate)
+        {
+            
+            try {
+                $birthDate = new DateTime($birthdate);
+                $today = new DateTime();
+
+                // Prevent future date
+                if ($birthDate > $today) {
+                    return "Invalid birthdate.";
+                }
+
+                // Calculate difference
+                $age = $today->diff($birthDate);
+
+                return [
+                    'years' => $age->y,
+                    'months' => $age->m,
+                    'days' => $age->d
+                ];
+
+            } catch (Exception $e) {
+                return "Invalid date format.";
+            }
+        }
+
     }
 
 ?>

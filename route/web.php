@@ -262,9 +262,10 @@ switch ($page) {
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
-        } case 'jobedu':
+        }
+    case 'examanddegree':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
-        require_once 'actions/admin/jobController.php';
+        require_once 'view/admin/examanddegree/examname.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");

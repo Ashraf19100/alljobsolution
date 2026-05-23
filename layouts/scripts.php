@@ -31,6 +31,7 @@
 	<script src="assets/js/plugin/jquery.sticky.js"></script>
 	<!--=== All Active ===-->
 	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/validator/validator.js"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
