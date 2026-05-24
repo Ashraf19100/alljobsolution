@@ -2,9 +2,9 @@
    require_once 'database/database.php';
     
     
-    $exam_degree = new datamodel();
+    $subDep = new datamodel();
 
-    $all_degrees = $exam_degree->getData('bachelor_degrees',' * ');
+    $all_sub= $subDep->getData('bachelor_departments',' * ');
     
     
     
@@ -76,7 +76,7 @@
                                 <!-- Header -->
                                 <div class="d-flex justify-content-between align-items-center mb-1 card-header bg-dark text-white">
                                     
-                                        <h4 class="mb-0">Exam Name List</h4>
+                                        <h4 class="mb-0">Subject Name List</h4>
                                         <a href="add_job.php" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#organisationModal">
                                             + Add New 
                                         </a>
@@ -106,8 +106,8 @@
                                         <thead class="table-dark">
                                             <tr>
                                                 <th>Sl</th>
+                                                <th>Subject/Department Name</th>
                                                 <th>Degree Name</th>
-                                                <th>Duration</th>
                                                 <th>Degree Level</th>
 
                                                 <th>Action</th>
@@ -116,15 +116,15 @@
                                         </thead>
 
                                         <tbody>
-                                        <?php foreach($all_degrees as $degree){ ?> 
+                                        <?php foreach($all_sub as $subject){ ?> 
                                             <tr>
-                                                <td><?= $degree['id']?></td>
-                                                <td><?= $degree['degree_name']?></td>
-                                                <td><?= $degree['duration_year']?> years </td>
-                                                <td><?= $degree['degree_level']?></td>
+                                                <td><?= $subject['id']?></td>
+                                                <td><?= $subject['department_name']?></td>
+                                                <td><?= $subject['degree_id']?> </td>
+                                                <td><?= $subject['sub_category']?></td>
                                                 <td>
                                                     <a href="" class="btn btn-sm btn-info mb-1">Show</a>
-                                                    <a href="index.php?page=addexam&delete=<?= $degree['id']?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')"  class="btn btn-sm btn-danger mb-1">Delete</a>
+                                                    <a href="index.php?page=addsubject&delete=<?= $subject['id']?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')"  class="btn btn-sm btn-danger mb-1">Delete</a>
                                                 </td>
                                                 
                                             </tr>
@@ -153,51 +153,59 @@
 
                                         <div class="card-body p-4">
 
-                                            <form action="index.php?page=addexam" method="POST" enctype="multipart/form-data">
+                                            <form action="index.php?page=addsubject" method="POST" enctype="multipart/form-data">
 
                                                 <div class="row">
-                                                    <!-- degree name -->
+                                                    <!-- subject name -->
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label fw-semibold">
-                                                           Degree Name
+                                                           Subject Name
                                                         </label>
 
                                                         <input 
                                                             type="text" 
-                                                            name="degree_name" 
+                                                            name="department_name" 
                                                             class="form-control"
-                                                            placeholder="Enter company name"
+                                                            placeholder="Enter Subject or Department name"
                                                             required
                                                         >
                                                     </div>
                                                     <!-- Duration -->
                                                     <div class="mb-3 col-md-3">
                                                         <label class="form-label fw-semibold">
-                                                            Duration/years
+                                                            Degree Name
                                                         </label>
                                                         
-                                                        <select name="duration_year" class="form-control" required >
+                                                        <select name="degree_id" class="form-control" required >
                                                             <option value="">--select Duration--</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
+                                                            <?php $degrees = $subDep->getData('bachelor_degrees',' * ');
+                                                                foreach($degrees as $degree){ ?>
+                                                                
+                                                            <option value="<?=$degree['id']?>"><?=$degree['degree_name']?></option>
+                                                            <?php } ?>
 
                                                         </select>
                                                     </div>
-                                                    <!-- degree level -->
+                                                    <!-- subject level -->
                                                     <div class="mb-3 col-md-3">
                                                         <label class="form-label fw-semibold">
-                                                            Degree Level
+                                                            subject Category
                                                         </label>
 
-                                                        <select name="degree_level" class="form-control" required >
+                                                        <select name="sub_category" class="form-control" required >
                                                             <option value="">--select exam Level--</option>
-                                                            <option value="1">SSC or Equivilant</option>
-                                                            <option value="2">HSC or Equivilant</option>
-                                                            <option value="3">Bechalor</option>
-                                                            <option value="4">Masters</option>
-                                                            <option value="5">Phd or Mphil</option>
+                                                            <option value="ssc_science">SSC Science</option>
+                                                            <option value="hsc_science">HSC Science</option>
+                                                            <option value="gra_science">Bechalor in Science</option>
+                                                            <option value="MSc">Masters in Science</option>
+                                                            <option value="ssc_business">SSC Science</option>
+                                                            <option value="hsc_business">HSC Science</option>
+                                                            <option value="gra_business">Bechalor in Science</option>
+                                                            <option value="MBA">Masters in Science</option>
+                                                            <option value="ssc_humanities">SSC Science</option>
+                                                            <option value="hsc_humanities">HSC Science</option>
+                                                            <option value="gra_arts">Bechalor in Science</option>
+                                                            <option value="MA">Masters in Science</option>
                                                             
                                                         </select>
                                                     </div>

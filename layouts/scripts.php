@@ -192,3 +192,25 @@ function tablerowlimit(tableId){
 tablerowlimit('categorytable');
 
 </script>
+<!-- <script>
+
+const editButtons = document.querySelectorAll('.editBtn');
+
+editButtons.forEach(button => {
+
+    button.addEventListener('click', function () {
+
+        document.getElementById('edit_id').value =
+            this.dataset.id;
+
+        document.getElementById('edit_name').value =
+            this.dataset.name;
+
+        document.getElementById('edit_email').value =
+            this.dataset.email;
+
+    });
+
+});
+
+</script> -->

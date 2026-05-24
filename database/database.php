@@ -141,6 +141,11 @@
                 return [$result ,$message];
             }
         }
+        public function deleteData($table, $id){
+            $sql= "DELETE FROM $table WHERE id = $id"  ; 
+            $result = $this->connect()->query($sql);
+            return $result; 
+        }
 
         public function calculateFullAge($birthdate)
         {

@@ -270,6 +270,14 @@ switch ($page) {
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
+        }
+    case 'subjectDepartments':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'view/admin/examanddegree/subjectDepartments.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
         } 
     case 'jobedu':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
@@ -278,7 +286,23 @@ switch ($page) {
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
-        }      
+        }
+    case 'addexam':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/cateExmDegController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'addsubject':
+        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        require_once 'actions/admin/cateExmDegController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }            
     case 'logout':
         require_once 'actions/logoutController.php';
         break;

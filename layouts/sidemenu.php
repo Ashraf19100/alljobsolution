@@ -72,7 +72,7 @@ require_once 'database/database.php';
                         <li><a class="nav-link text-muted" href="index.php?page=applications">Applications</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=jobcategory">Job Category</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=examanddegree">Exam & degree</a></li>
-                        <li><a class="nav-link text-muted" href="index.php?page=Subject&departments">Subjcets & departments</a></li>
+                        <li><a class="nav-link text-muted" href="index.php?page=subjectDepartments">Subjcets & departments</a></li>
                     </ul>
                 </div>
             </li>
