@@ -4,8 +4,9 @@ require_once 'database/database.php';
 $personalinfo = new datamodel();   
 $condition = " WHERE user_id ='".$_SESSION['id']."'";
 $personal_info = $personalinfo->getSingleData('user_details',' * ', $condition );
+if(isset($personal_info)){
 $age = $personalinfo->calculateFullAge($personal_info->dob);   
-
+}
 
 
     
@@ -159,7 +160,7 @@ $age = $personalinfo->calculateFullAge($personal_info->dob);
                                         <h3 class="mb-4 text-center">Personal Information</h3>
                                         <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal"></button>
                                     </div>
-                                    <form action="index.php?page=personalinfo-submit" method="POST">
+                                    <form action="index.php?page=personalinfo-submit" method="POST" id="personalInfoForm">
                                         <div class="row">
                                             <!-- Father Name -->
                                             <div class="col-md-6 mb-3">

@@ -36,16 +36,19 @@
                         <div class="name mb-3 d-flex">
                             <label for="name">Full Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter your full name" required>
+                            <small id="nameError" class="text-danger"></small>
                         </div>
 
                         <div class="email mb-3 d-flex">
                             <label for="email">Email</label>
                             <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            <small id="emailError" class="text-danger"></small>
                         </div>
 
                         <div class="password mb-3 d-flex">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+                            <small id="passError" class="text-danger"></small>
                         </div>
                         
                         <div class="role mb-3 d-flex">
@@ -61,7 +64,7 @@
 
                     <!-- Extra Options -->
                     <div class="text-center mt-3">
-                        <span>Already have an account?</span>
+                        <span>Already have an account? </span>
                         <a href="index.php?page=login" class="text-decoration-none fw-bold">Login</a>
                     </div>
 
@@ -73,6 +76,7 @@
 	
 	<!--==================================================================-->
 	<?php require "layouts/scripts.php" ?>
+    
 </body>
 
 </html>

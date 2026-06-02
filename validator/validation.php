@@ -95,7 +95,7 @@ class validation{
             $check_space = strpos($password, ' ');
             if($check_space == false ){
                 $has_number = preg_match('/[0-9]/', $password);
-                // $has_spacial_character =   preg_match('/[^a-zA-Z\s]/', $password);
+                $has_spacial_character =   preg_match('/[^a-zA-Z\s]/', $password);
                 if($has_number == false || $has_spacial_character == false ){
                      return [
                     'result' => false,   
@@ -116,6 +116,16 @@ class validation{
             'result' => false,   
             'message' => 'password must contain at least 8 character'
             ];
+        }
+    }
+    // Birth Date Validation
+    public function DOBValidation($dob){
+        $dob = new DateTime($dob);
+        $today = new DateTime();
+        if($dob > $today){
+            return false;
+        }else{
+            return true;
         }
     }
 }

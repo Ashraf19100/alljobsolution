@@ -90,11 +90,19 @@ class Validation {
 
     // Name Validation
     nameValidation(name) {
+        const has_number = /[0-9]/.test(name);
 
-        return {
-            has_number: /[0-9]/.test(name),
-            has_special_character: /[^a-zA-Z\s]/.test(name)
+        if(has_number){
+            return {
+                result: false,
+                message: 'Name can not contain any number'
+            
+            };
+        }
+        return{
+           result: true 
         };
+        
     }
 
     // Password Validation
@@ -136,9 +144,35 @@ class Validation {
         };
     }
 }
-// console.log();
-// const registerForm = document.getElementById('registerForm');
-// const validate = new Validation(); 
+// Registration Validation
+const registerForm = document.getElementById('registerForm');
+const validate = new Validation(); 
+registerForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    let hasError = false;
+    const nameresult = validate.nameValidation(registerForm.name.value);
+    const nameError = document.getElementById('nameError');
+    const emailresult = validate.emailValidation(registerForm.email.value);
+    const emailError = document.getElementById('emailError');
+    const passwordresult = validate.passwordValidation(registerForm.password.value);
+    const passError = document.getElementById('passError');
+    
+    if(!nameresult.result){
+        document.getElementById('nameError').innerText = nameresult.message;
+        hasError = true;
+    }
+    if(!emailresult.result){
+        document.getElementById('emailError').innerText = emailresult.message;
+        hasError = true;
+    }if(!passwordresult.result){
+        document.getElementById('passError').innerText = passwordresult.message;
+        hasError = true;
+    }
 
-// console.log(validate.emailValidation(registerForm.email.value));
-// coosssle.log();
+    if(!hasError){
+        registerForm.submit();
+    }
+});
+
+// PersonalInfo Validation
+
