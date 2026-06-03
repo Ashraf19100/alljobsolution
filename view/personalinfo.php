@@ -214,8 +214,8 @@ $age = $personalinfo->calculateFullAge($personal_info->dob);
                                                 <label class="form-label">Marital Status</label>
                                                 <select name="marital_status" class="form-select">
                                                     <option value="">Select</option>
-                                                    <option value="single" >Single</option>
-                                                    <option value="married"  >Married</option>
+                                                    <option value="single" <?= ($personal_info->marital_status == 'single') ? 'selected' : '' ?> >Single</option>
+                                                    <option value="married" <?= ($personal_info->marital_status == 'married') ? 'selected' : '' ?> >Married</option>
                                                 </select>
                                             </div>
 

@@ -36,6 +36,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php if(isset($_GET['message'])){ 
+                                        echo  '<div class="alert alert-warning text-center py-2 my-2">'.$_GET['message'].'</div>';
+                                    } ?>
                             
                             
                         <?php 
@@ -45,36 +48,36 @@
                                
                          ?>
                             <div class="card shadow p-1">
-                                <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <strong>Exam Name:</strong>
-                                    <p id="exam_name"><?php $exam_name =  $eduinfo->getSingleData('bachelor_degrees', ' * ', ' WHERE id ='.$educationinfo['exam_name'])?>
-                                    <?= $exam_name->degree_name ?? ' '?></p>
+                                <div class="row mb-3 py-2 px-4">
+                                    <div class="col-md-6 border p-2">
+                                        <strong>Exam Name:</strong>
+                                        <p id="exam_name"><?php $exam_name =  $eduinfo->getSingleData('bachelor_degrees', ' * ', ' WHERE id ='.$educationinfo['exam_name'])?>
+                                        <?= $exam_name->degree_name ?? ' '?></p>
+                                    </div>
+
+                                    <div class="col-md-6 border p-2">
+                                        <strong>University / Board:</strong>
+                                        <p id="uni_board"><?= $educationinfo['uni_board'] ?></p>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <strong>University / Board:</strong>
-                                    <p id="uni_board"><?= $educationinfo['uni_board'] ?></p>
-                                </div>
-                            </div>
+                                <div class="row mb-3 py-2 px-4">
+                                    <div class="col-md-4 border p-2">
+                                        <strong>Roll / ID:</strong>
+                                        <p id="roll_id"><?= $educationinfo['roll_id'] ?></p>
+                                    </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-4">
-                                    <strong>Roll / ID:</strong>
-                                    <p id="roll_id"><?= $educationinfo['roll_id'] ?></p>
-                                </div>
+                                    <div class="col-md-4 border p-2">
+                                        <strong>Subject:</strong>
+                                        <p id="subject"><?php $subject_name =  $eduinfo->getSingleData('bachelor_departments', ' * ', ' WHERE id ='.$educationinfo['subject'])?>
+                                        <?= $subject_name->department_name ?? ' '?></p>
+                                    </div>
 
-                                <div class="col-md-4">
-                                    <strong>Subject:</strong>
-                                    <p id="subject"><?php $subject_name =  $eduinfo->getSingleData('bachelor_departments', ' * ', ' WHERE id ='.$educationinfo['subject'])?>
-                                    <?= $subject_name->department_name ?? ' '?></p>
+                                    <div class="col-md-4 border p-2">
+                                        <strong>Passing Year:</strong>
+                                        <p id="passing_year"><?= $educationinfo['passing_year'] ?></p>
+                                    </div>
                                 </div>
-
-                                <div class="col-md-4">
-                                    <strong>Passing Year:</strong>
-                                    <p id="passing_year"><?= $educationinfo['passing_year'] ?></p>
-                                </div>
-                            </div>
                             </div>
                             <?php } }?>
                         </div>
@@ -99,7 +102,7 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Exam Level</label>
-                            <select id="degreelevel" name="exam_name" class="form-control" required >
+                            <select id="degreelevel" name="exam_level" class="form-control" required >
                                 <option value="">--------select exam Name--------</option>
                                 <option value="1">SSC</option>
                                 <option value="2">HSC</option>

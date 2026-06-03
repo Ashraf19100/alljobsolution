@@ -9,8 +9,10 @@ if(isset($_POST)){
     $user_id = $_SESSION['id'];
     
     $column['user_id'] = $user_id;
+    $personalvalidation->DOBValidation($_POST['dob']);
     if($personalvalidation->DOBValidation($_POST['dob']) == false){
-        header("Location: ../alljobsolution/index.php?page=personalinfo&message='Invalid Date of Birth, Date of Birth can not be Greater than Present date'");
+        header("Location: ../alljobsolution/index.php?page=personalinfo&message='Invalid Date of Birth'");
+        exit;
     }
     foreach($_POST as $key => $val){
         $column[$key] = $val;

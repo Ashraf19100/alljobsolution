@@ -1,6 +1,8 @@
 <?php
+require_once 'database/database.php';
 
 class validation{
+    
 // Email Validation    
     public function emailValidation($email){
             $email = trim($email);
@@ -122,11 +124,42 @@ class validation{
     public function DOBValidation($dob){
         $dob = new DateTime($dob);
         $today = new DateTime();
+        $age = $today->diff($dob);
+        $years = intval($age->y);
         if($dob > $today){
+            return false;
+        }else if($years < intval(14)){
             return false;
         }else{
             return true;
         }
+    }
+    //exam validation
+    public function ExamValidate($user_id, $exam_level, $exam_passing_year){
+        
+        $validationinfo = new datamodel();
+        $prevExamLvl = intval($exam_level) - 1;
+        $previousExam = $validationinfo->getSingleData('user_education', ' * ', ' WHERE user_id ='. $user_id . " and exam_level=". $prevExamLvl);
+        $yearDiff = intval($exam_passing_year) - intval($previousExam->passing_year);
+
+        if($exam_level==2 && $yearDiff < 2){
+            return [
+                'result' => false,
+                'message' => 'The HSC passing year must be at least 2 years after the SSC passing year.'
+            ];
+        }else if($exam_level == 3 && $yearDiff <3){
+            return [
+                'result' => false,
+                'message' => 'The Bachelor passing year must be at least 3 years after the HSC passing year.'
+            ];
+        }else{
+            return [
+                'result' => true,
+                
+            ];
+        }
+
+        
     }
 }
 
