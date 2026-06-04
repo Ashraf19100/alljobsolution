@@ -97,7 +97,7 @@
             <!-- Body -->
             <div class="modal-body">
 
-                <form action="index.php?page=education-submit" method="POST">
+                <form action="index.php?page=education-submit" method="POST" id="educationForm">
 
                     <div class="row g-3">
                         <div class="col-md-6">

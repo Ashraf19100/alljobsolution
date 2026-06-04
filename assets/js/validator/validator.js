@@ -143,36 +143,95 @@ class Validation {
             result: true
         };
     }
+    //Birth Date validation
+    DOBValidation(dob){
+        const Bday = new Date(dob);
+        const today = new Date();
+        
+
+        let ageYears = today.getFullYear() - Bday.getFullYear();
+        
+        if(Bday > today){
+            console.log(ageYears);
+            return {
+                result: false,
+                message: 'Invalid Birth Date '
+            };
+        }else if(ageYears < parseInt(14)){
+            return {
+                result: false,
+                message: 'Your age must not be less than 14'
+            };
+        }else{
+            return {
+                result: true,
+            };
+        }
+        
+    }
 }
+
+
+const validate = new Validation(); 
 // Registration Validation
 const registerForm = document.getElementById('registerForm');
-const validate = new Validation(); 
-registerForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    let hasError = false;
-    const nameresult = validate.nameValidation(registerForm.name.value);
-    const nameError = document.getElementById('nameError');
-    const emailresult = validate.emailValidation(registerForm.email.value);
-    const emailError = document.getElementById('emailError');
-    const passwordresult = validate.passwordValidation(registerForm.password.value);
-    const passError = document.getElementById('passError');
-    
-    if(!nameresult.result){
-        document.getElementById('nameError').innerText = nameresult.message;
-        hasError = true;
-    }
-    if(!emailresult.result){
-        document.getElementById('emailError').innerText = emailresult.message;
-        hasError = true;
-    }if(!passwordresult.result){
-        document.getElementById('passError').innerText = passwordresult.message;
-        hasError = true;
-    }
 
-    if(!hasError){
-        registerForm.submit();
-    }
-});
+if(registerForm){
+    registerForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        let hasError = false;
+        const nameresult = validate.nameValidation(registerForm.name.value);
+        const nameError = document.getElementById('nameError');
+        const emailresult = validate.emailValidation(registerForm.email.value);
+        const emailError = document.getElementById('emailError');
+        const passwordresult = validate.passwordValidation(registerForm.password.value);
+        const passError = document.getElementById('passError');
+        
+        if(!nameresult.result){
+            document.getElementById('nameError').innerText = nameresult.message;
+            hasError = true;
+        }
+        if(!emailresult.result){
+            document.getElementById('emailError').innerText = emailresult.message;
+            hasError = true;
+        }if(!passwordresult.result){
+            document.getElementById('passError').innerText = passwordresult.message;
+            hasError = true;
+        }
+
+        if(!hasError){
+            registerForm.submit();
+        }
+    });
+}
+
 
 // PersonalInfo Validation
+const personalInfoForm = document.getElementById('personalInfoForm');
+if(personalInfoForm){
+    personalInfoForm.addEventListener('submit', function(e){
+        
+        
+        e.preventDefault();
+        let DOBError = false;
+        
+        const BirthDateValidate = validate.DOBValidation(personalInfoForm.dob.value);
+        if(!BirthDateValidate.result){
+            document.getElementById('PersonalinfoError').innerText = BirthDateValidate.message;
+            DOBError = true;
+        }
+        if(!DOBError){
+            personalInfoForm.submit();
+        }
+    });
+}
 
+// Education passing year validation
+const educationForm = document.getElementById('educationForm');
+if(educationForm){
+    educationForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        let eduError = false;
+        
+    });
+}

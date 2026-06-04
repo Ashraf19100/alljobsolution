@@ -49,10 +49,10 @@ $age = $personalinfo->calculateFullAge($personal_info->dob);
                                 <!-- Body -->
                                 <div class="card-body p-2">
                                     <?php if(isset($_GET['message'])){ 
-                                        echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
-
-                                        } ?>
+                                        echo  '<div class="alert alert-warning text-center py-2 my-2">'.$_GET['message'].'</div>';
+                                    } ?>
                                     <div class="row g-2">
+                                        
                                         <?php if(!empty($personal_info)){ ?>
                                         <!-- Father Name -->
                                         <div class="col-md-6">
@@ -178,7 +178,7 @@ $age = $personalinfo->calculateFullAge($personal_info->dob);
                                         <div class="row">
                                             <!-- Date of Birth -->
                                             <div class="col-md-4 mb-3">
-                                                <label class="form-label">Date of Birth</label>
+                                                <label class="form-label">Date of Birth <small id="PersonalinfoError" class="text-danger" ></small></label>
                                                 <input type="date" name="dob" class="form-control" value="<?= $personal_info->dob ?? '' ?>"  required>
                                             </div>
 
@@ -214,8 +214,8 @@ $age = $personalinfo->calculateFullAge($personal_info->dob);
                                                 <label class="form-label">Marital Status</label>
                                                 <select name="marital_status" class="form-select">
                                                     <option value="">Select</option>
-                                                    <option value="single" <?= ($personal_info->marital_status == 'single') ? 'selected' : '' ?> >Single</option>
-                                                    <option value="married" <?= ($personal_info->marital_status == 'married') ? 'selected' : '' ?> >Married</option>
+                                                    <option value="single" <?= isset($personal_info->marital_status) && $personal_info->marital_status == 'single' ? 'selected' : '' ?> >Single</option>
+                                                    <option value="married" <?= isset($personal_info->marital_status) && $personal_info->marital_status == 'married' ? 'selected' : '' ?> >Married</option>
                                                 </select>
                                             </div>
 

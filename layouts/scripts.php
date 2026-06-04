@@ -192,6 +192,9 @@ function tablerowlimit(tableId){
 tablerowlimit('categorytable');
 
 </script>
+<script>
+	
+</script>
 <script type="text/javascript" src="assets/js/validator/validator.js"></script>
 <!-- <script>
 
