@@ -295,6 +295,9 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'getexm':
+        require_once 'validator/getExmData.php';
+        break;
     case 'addsubject':
         if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
         require_once 'actions/admin/cateExmDegController.php';
@@ -313,7 +316,7 @@ switch ($page) {
         break;
 }
 
-// application_download 
+// application_download getexm
 
                 
 ?>

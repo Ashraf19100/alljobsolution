@@ -193,7 +193,8 @@ tablerowlimit('categorytable');
 
 </script>
 <script>
-	
+	const userId = <?= json_encode($_SESSION['id']) ?>;
+    const updateCheck = <?= json_encode($updateCheck) ?>;
 </script>
 <script type="text/javascript" src="assets/js/validator/validator.js"></script>
 <!-- <script>

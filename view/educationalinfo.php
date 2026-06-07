@@ -1,6 +1,7 @@
 <?php  
     require_once 'database/database.php';
     $eduinfo = new datamodel();
+    
     $condition = " WHERE user_id ='".$_SESSION['id']."'";
     $all_degree = $eduinfo->getData('bachelor_degrees',' * ', '' );
 
@@ -150,8 +151,8 @@
 
                         <!-- Passing Year -->
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Passing Year</label>
-                            <input name="passing_year" type="number" class="form-control" min="1950" max="2099" placeholder="e.g. 2022">
+                            <label class="form-label fw-semibold">Passing Year <small id="examYearError" class=" text-danger "></small></label>
+                            <input name="passing_year" type="number" class="form-control passing_year" min="1950" max="2099" placeholder="e.g. 2022">
                         </div>
 
                     </div>

@@ -169,6 +169,31 @@ class Validation {
         }
         
     }
+    // Exam Year Validation
+
+    ExmYrValidate(exam_level, previousExam, passing_year){
+        const yearDiff = parseInt(passing_year) - parseInt(previousExam.passing_year);
+        if(yearDiff < 2 && exam_level == 2){
+            return {
+                result: false,
+                message: 'The HSC passing year must be at least 2 years after the SSC passing year.'
+            };    
+        }else if(yearDiff < 3 && exam_level == 3){
+            return {
+                result: false,
+                message: 'The Bachelor passing year must be at least 3 years after the HSC passing year.'
+            };
+        }else if(yearDiff < 1 && exam_level == 4){
+            return {
+                result: false,
+                message: 'The Masters passing year must be at least 1 years after the Bachelor passing year.'
+            };
+        }else{
+            return {
+                result: true,
+            };
+        }
+    }
 }
 
 
@@ -227,11 +252,42 @@ if(personalInfoForm){
 }
 
 // Education passing year validation
+async function getPreviousExam(examLevel) {
+
+    const response = await fetch(
+        `validator/getExmData.php?exam_level=${examLevel}`
+    );
+
+    const data = await response.json();
+
+    return data;
+}
+
 const educationForm = document.getElementById('educationForm');
 if(educationForm){
-    educationForm.addEventListener('submit', function(e){
+    educationForm.addEventListener('submit', async  function(e){
         e.preventDefault();
         let eduError = false;
-        
+        const previousExam = await getPreviousExam(educationForm.exam_level.value);
+        const examyearvalidate = validate.ExmYrValidate(educationForm.exam_level.value , previousExam, educationForm.passing_year.value);
+        if(!examyearvalidate.result){
+            document.getElementById('examYearError').innerText = examyearvalidate.message;
+            $(educationForm).find('.' + 'passing_year').focus();
+            eduError = true;
+        }else{
+            eduError = false;
+        }
+        console.log(examyearvalidate.result);
+        console.log(eduError);
+        if(!eduError){
+            educationForm.submit();
+        }
     });
 }
+// function showMessageExp(msg, focusId, theForm) {
+//     alert(msg);
+//     if (focusId && $(theForm).find('.' + focusId).length && $(theForm).find('.' + focusId).is(':visible')) {
+//         $(theForm).find('.' + focusId).focus();
+//     }
+//     return false;
+// }

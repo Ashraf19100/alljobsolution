@@ -155,7 +155,6 @@ class validation{
         }else{
             return [
                 'result' => true,
-                
             ];
         }
 
