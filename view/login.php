@@ -8,7 +8,7 @@
 		<?php require "layouts/navbar.php" ?>
         <div class="login_form d-flex justify-content-center align-items-center" style="min-height:100vh; background:#f5f7fb;">
 
-        <div class="login_card mt-3 shadow-lg  rounded-4" style="width:350px; background:#fff;">
+        <div class="login_card mt-3 shadow-lg  rounded-4" style="width:480px; background:#fff;">
             
             <?php if(isset($_GET['message'])){ 
             echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
@@ -40,12 +40,12 @@
                     
                     <div class="username mb-3 d-flex">
                         <label for="email" class="text-capitalize">User email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
+                        <input type="text" name="email" id="email" class="w-100 form-control" placeholder="Enter your email">
                     </div>
 
                     <div class="password mb-3 d-flex">
                         <label for="password" class="text-capitalize">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                        <input type="password" name="password" id="password" class="w-100 form-control" placeholder="Enter your password">
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Login</button>

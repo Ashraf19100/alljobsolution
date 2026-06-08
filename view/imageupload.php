@@ -48,7 +48,7 @@
                                 <div class="card-body p-4">
 
                                     <?php if(isset($_GET['message'])){ 
-                                        echo  '<div class="alert alert-danger text-center">'.$_GET['message'].'</div>';
+                                        echo  '<div class="alert alert-warning text-center">'.$_GET['message'].'</div>';
                                     } ?>
 
                                     <div class="row align-items-center g-4">
@@ -116,22 +116,49 @@
                                         <form action="index.php?page=imageupload-submit" method="POST" enctype="multipart/form-data" >
 
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
+                                                
+                                                <!-- Exam Name -->
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label">Image</label>
+                                                    <input type="file" name="profile_image" class="form-control" placeholder="e.g. jpg,png,jpeg" id="profile_image">
+                                                    <div class="m-2">
+                                                        <div class="form-text">
+                                                            Only jpg,png,jpeg allowed. Max size: 2MB
+                                                        </div>
+
+                                                        <!-- Preview Placeholder -->
+                                                        <div class="mt-3 p-3 border rounded text-center text-muted">
+                                                            <div id="previewDiv" style="margin-bottom:15px;">
+                                                                <img id="previewImage" style="max-width:300px; display:none;">
+                                                            </div>
+                                                        </div>
+                                                                
+                                                    </div>
+                                                </div>
+                                                <!-- University / Board -->
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label">Signature</label>
+                                                    <input type="file" name="signature" class="form-control" placeholder="e.g. jpg,png,jpeg" id="signature">
+                                                    <div class="m-2">
+                                                        <div class="form-text">
+                                                            Only jpg,png,jpeg allowed. Max size: 2MB
+                                                        </div>
+
+                                                        <!-- Preview Placeholder -->
+                                                        <div class="mt-3 p-3 border rounded text-center text-muted">
+                                                            <div id="previewDiv" style="margin-bottom:15px;">
+                                                                <img id="previewsignature" style="max-width:300px; display:none;">
+                                                            </div>
+                                                        </div>
+                                                                
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-6 mb-3">
                                                     <label class="form-label">Phone</label>
                                                     <input type="number" name="phone" class="form-control" <?php if($image_profile->phone !=''){
                                                         ?> value=<?= $image_profile->phone ?> <?php
                                                     } ?> placeholder="e.g. +8801">
-                                                </div>
-                                                <!-- Exam Name -->
-                                                <div class="col-md-4 mb-3">
-                                                    <label class="form-label">Image</label>
-                                                    <input type="file" name="profile_image" class="form-control" placeholder="e.g. jpg,png,jpeg">
-                                                </div>
-                                                <!-- University / Board -->
-                                                <div class="col-md-4 mb-3">
-                                                    <label class="form-label">Signature</label>
-                                                    <input type="file" name="signature" class="form-control" placeholder="e.g. jpg,png,jpeg">
-                                                    
                                                 </div>
                                                 
                                             </div>

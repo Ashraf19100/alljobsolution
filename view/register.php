@@ -7,7 +7,7 @@
         <?php require "layouts/navbar.php" ?>
         <div class="login_form d-flex justify-content-center align-items-center" style="min-height:100vh; background:#f5f7fb;">
     
-            <div class="login_card shadow-lg p-4 rounded-4" style="width:380px; background:#fff;">
+            <div class="login_card shadow-lg p-4 rounded-4" style="width:480px; background:#fff;">
                 
                 <div class="login_card_top text-center mb-3">
                     <img src="assets/img/logo.png" alt="" style="width:80px;">
@@ -33,27 +33,27 @@
 
                     <form action="index.php?page=register-submit" method="POST" id="registerForm">
                         
-                        <div class="name mb-3 d-flex">
+                        <div class="name mb-3 w-100 d-flex ">
                             <label for="name">Full Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter your full name" required>
-                            <small id="nameError" class="text-danger"></small>
+                            <input   type="text" name="name" class="w-100 form-control name" placeholder="Enter your full name" required>
                         </div>
-
+                        <small id="nameError" class="text-danger"></small>
+                        
                         <div class="email mb-3 d-flex">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
-                            <small id="emailError" class="text-danger"></small>
+                            <input type="email" name="email" class="w-100 form-control emailid" placeholder="Enter your email" required>
+                            
                         </div>
-
+                        <small id="emailError" class="text-danger"></small>
+                        
                         <div class="password mb-3 d-flex">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="Create a password" required>
-                            <small id="passError" class="text-danger"></small>
+                            <input type="password" name="password" class="w-100 form-control password" placeholder="Create a password" required>
                         </div>
-                        
+                        <small id="passError" class="text-danger"></small>
                         <div class="role mb-3 d-flex">
                             <label for="role">User Type</label>
-                            <select name="role" class="form-select">
+                            <select name="role" class="w-100 form-select">
                                 <option value="job_seeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
                             </select>

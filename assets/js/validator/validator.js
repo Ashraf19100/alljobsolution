@@ -76,6 +76,8 @@ class Validation {
 
         let extension = domainPart.split('.').slice(1).join('.');
 
+        
+
         if (!domainExtensions.includes(extension)) {
             return {
                 result: false,
@@ -195,14 +197,31 @@ class Validation {
         }
     }
 }
+async function emailduplicatecheck(emailid) {
 
+    const response = await fetch(
+        `validator/emailcheck.php?email=${emailid}`
+    );
+    const data = await response.json();
+    if(data != null){
+        return {
+                result: false,
+                message: 'this email has already been registered'
+            };
+    }else{
+        return { 
+                result: true,   
+            };
+    }
+}
 
 const validate = new Validation(); 
 // Registration Validation
 const registerForm = document.getElementById('registerForm');
 
+
 if(registerForm){
-    registerForm.addEventListener('submit', function(e){
+    registerForm.addEventListener('submit', async function(e){
         e.preventDefault();
         let hasError = false;
         const nameresult = validate.nameValidation(registerForm.name.value);
@@ -211,16 +230,26 @@ if(registerForm){
         const emailError = document.getElementById('emailError');
         const passwordresult = validate.passwordValidation(registerForm.password.value);
         const passError = document.getElementById('passError');
+
+        const emailduplicate = await emailduplicatecheck(registerForm.email.value);
         
+        if(!emailduplicate.result){
+            document.getElementById('emailError').innerText = emailduplicate.message;
+            $(registerForm).find('.' + 'emailid').focus();
+            hasError = true;
+        }
         if(!nameresult.result){
             document.getElementById('nameError').innerText = nameresult.message;
+            $(registerForm).find('.' + 'name').focus();
             hasError = true;
         }
         if(!emailresult.result){
             document.getElementById('emailError').innerText = emailresult.message;
+            $(registerForm).find('.' + 'emailid').focus();
             hasError = true;
         }if(!passwordresult.result){
             document.getElementById('passError').innerText = passwordresult.message;
+            $(registerForm).find('.' + 'password').focus();
             hasError = true;
         }
 
@@ -235,8 +264,7 @@ if(registerForm){
 const personalInfoForm = document.getElementById('personalInfoForm');
 if(personalInfoForm){
     personalInfoForm.addEventListener('submit', function(e){
-        
-        
+ 
         e.preventDefault();
         let DOBError = false;
         
@@ -257,7 +285,6 @@ async function getPreviousExam(examLevel) {
     const response = await fetch(
         `validator/getExmData.php?exam_level=${examLevel}`
     );
-
     const data = await response.json();
 
     return data;
@@ -268,20 +295,45 @@ if(educationForm){
     educationForm.addEventListener('submit', async  function(e){
         e.preventDefault();
         let eduError = false;
-        const previousExam = await getPreviousExam(educationForm.exam_level.value);
-        const examyearvalidate = validate.ExmYrValidate(educationForm.exam_level.value , previousExam, educationForm.passing_year.value);
-        if(!examyearvalidate.result){
-            document.getElementById('examYearError').innerText = examyearvalidate.message;
-            $(educationForm).find('.' + 'passing_year').focus();
-            eduError = true;
+        if(parseInt(educationForm.exam_level.value) > 1){
+            const previousexmlvl = parseInt(educationForm.exam_level.value) - 1;
+            const previousExam = await getPreviousExam(previousexmlvl);
+            const examyearvalidate = validate.ExmYrValidate(educationForm.exam_level.value , previousExam, educationForm.passing_year.value);
+            if(!examyearvalidate.result){
+                document.getElementById('examYearError').innerText = examyearvalidate.message;
+                $(educationForm).find('.' + 'passing_year').focus();
+                eduError = true;
+            }else{
+                eduError = false;
+            }
+
+            if(!eduError){
+                const checkupdate = await getPreviousExam(educationForm.exam_level.value);
+                if(checkupdate != null){
+                const updateConfirmation = confirm('Do you want to update your exam information');
+                if(updateConfirmation === true ){
+                    educationForm.submit();  
+                }
+                }else{
+                    educationForm.submit();
+                }
+                
+            }
         }else{
-            eduError = false;
+            if(!eduError){
+                const checkupdate = await getPreviousExam(educationForm.exam_level.value);
+                if(checkupdate != null){
+                const updateConfirmation = confirm('Do you want to update your exam information');
+                if(updateConfirmation === true ){
+                    educationForm.submit();  
+                }
+                }else{
+                    educationForm.submit();
+                }
+                
+            }
         }
-        console.log(examyearvalidate.result);
-        console.log(eduError);
-        if(!eduError){
-            educationForm.submit();
-        }
+        
     });
 }
 // function showMessageExp(msg, focusId, theForm) {

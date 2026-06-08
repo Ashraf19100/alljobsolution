@@ -112,14 +112,14 @@
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold">Upload Your Resume</label>
 
-                                        <input type="file" name="file_path" class="form-control" accept=".pdf">
+                                        <input type="file" name="file_path" class="form-control" accept=".pdf" id="fileInput">
 
                                         <div class="form-text">
                                             Only PDF allowed. Max size: 2MB
                                         </div>
 
                                         <!-- Preview Placeholder -->
-                                        <div class="mt-3 p-3 border rounded text-center text-muted">
+                                        <div class="mt-3 p-3 border rounded text-center text-muted" id="resuminfo">
                                             No file selected
                                         </div>
                                     </div>

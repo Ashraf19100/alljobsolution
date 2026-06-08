@@ -192,9 +192,63 @@ function tablerowlimit(tableId){
 tablerowlimit('categorytable');
 
 </script>
+
 <script>
-	const userId = <?= json_encode($_SESSION['id']) ?>;
-    const updateCheck = <?= json_encode($updateCheck) ?>;
+document.getElementById('profile_image').addEventListener('change', function() {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const previewImage =
+            document.getElementById('previewImage');
+
+        previewImage.src = e.target.result;
+        previewImage.style.display = 'block';
+    };
+
+    reader.readAsDataURL(file);
+});
+</script>
+<script>
+document.getElementById('signature').addEventListener('change', function() {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const previewsignature =
+            document.getElementById('previewsignature');
+
+        previewsignature.src = e.target.result;
+        previewsignature.style.display = 'block';
+    };
+
+    reader.readAsDataURL(file);
+});
+</script>
+<script>
+document.getElementById('fileInput').addEventListener('change', function() {
+
+    const file = this.files[0];
+
+    if(file){
+
+        document.getElementById('resuminfo').innerHTML =
+            '<strong>File:</strong> ' + file.name +
+            '<br><strong>Size:</strong> ' +
+            (file.size / 1024).toFixed(2) + ' KB';
+    }
+
+});
 </script>
 <script type="text/javascript" src="assets/js/validator/validator.js"></script>
 <!-- <script>

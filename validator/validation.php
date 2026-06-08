@@ -87,7 +87,7 @@ class validation{
     public function nameValidation($name){
         return [
             'has_number' => preg_match('/[0-9]/', $name) ? true : false,
-            'has_special_character' => preg_match('/[^a-zA-Z\s]/', $name) ? true : false
+            
         ];
     }
     // password formate validation

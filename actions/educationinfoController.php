@@ -8,7 +8,7 @@ $validation_edu = new Validation();
 if(isset($_POST)){
     
     $user_id = $_SESSION['id'];
-    $updateCheck = $educationinfo->getSingleData('user_education', ' * ', ' WHERE user_id ='. $user_id . " and exam_name=". $_POST['exam_name']);
+    $updateCheck = $educationinfo->getSingleData('user_education', ' * ', ' WHERE user_id ='. $user_id . " and exam_level=". $_POST['exam_level']);
     
     
     if(intval($_POST['exam_level']) > 1 ){
