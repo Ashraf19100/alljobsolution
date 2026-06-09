@@ -176,7 +176,7 @@ switch ($page) {
             exit;
         }
     case 'userslist':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/users/userlist.php';
         break;
         }else{
@@ -184,7 +184,7 @@ switch ($page) {
             exit;
         }
     case 'showuser':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/users/showuser.php';
         break;
         }else{
@@ -192,7 +192,7 @@ switch ($page) {
             exit;
         }
         case 'companyList':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/company/companylist.php';
         break;
         }else{
@@ -200,7 +200,7 @@ switch ($page) {
             exit;
         }
     case 'showcompany':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/company/showcompany.php';
         break;
         }else{
@@ -208,7 +208,7 @@ switch ($page) {
             exit;
         }
     case 'addcompany':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/companyController.php';
         break;
         }else{
@@ -216,7 +216,7 @@ switch ($page) {
             exit;
         }
     case 'postjob':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/jobpost/jobpostupload.php';
         break;
         }else{
@@ -224,7 +224,7 @@ switch ($page) {
             exit;
         }
     case 'jobpostmanage':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/jobpost/jobpostmanage.php';
         break;
         }else{
@@ -232,7 +232,7 @@ switch ($page) {
             exit;
         }
     case 'jobpost_upload_submit':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/jobController.php';
         break;
         }else{
@@ -240,7 +240,7 @@ switch ($page) {
             exit;
         }
     case 'applications':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/applications/applications.php';
         break;
         }else{
@@ -248,7 +248,7 @@ switch ($page) {
             exit;
         }
     case 'jobcategory':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/category/jobcategory.php';
         break;
         }else{
@@ -256,7 +256,7 @@ switch ($page) {
             exit;
         }
     case 'addcategory':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/cateExmDegController.php';
         break;
         }else{
@@ -264,7 +264,7 @@ switch ($page) {
             exit;
         }
     case 'examanddegree':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/examanddegree/examname.php';
         break;
         }else{
@@ -272,7 +272,7 @@ switch ($page) {
             exit;
         }
     case 'subjectDepartments':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/examanddegree/subjectDepartments.php';
         break;
         }else{
@@ -280,7 +280,7 @@ switch ($page) {
             exit;
         } 
     case 'jobedu':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/jobController.php';
         break;
         }else{
@@ -288,7 +288,7 @@ switch ($page) {
             exit;
         }
     case 'addexam':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/cateExmDegController.php';
         break;
         }else{
@@ -299,7 +299,7 @@ switch ($page) {
         require_once 'validator/getExmData.php';
         break;
     case 'addsubject':
-        if(isset($_SESSION['email']) && $_SESSION['role']=='employer'){
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/cateExmDegController.php';
         break;
         }else{

@@ -197,6 +197,8 @@ class Validation {
         }
     }
 }
+
+
 async function emailduplicatecheck(emailid) {
 
     const response = await fetch(

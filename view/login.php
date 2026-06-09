@@ -11,7 +11,7 @@
         <div class="login_card mt-3 shadow-lg  rounded-4" style="width:480px; background:#fff;">
             
             <?php if(isset($_GET['message'])){ 
-            echo  '<h3 class="text-danger text-center p-2">'.$_GET['message'].'</h3>';
+            echo  '<div class="alert alert-danger text-center p-2">'.$_GET['message'].'</div>';
             } ?>
 
             <div class="login_card_top text-center mb-3">

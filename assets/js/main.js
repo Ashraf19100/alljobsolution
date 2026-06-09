@@ -13,7 +13,7 @@ $(document).ready(function ($) {
 function DependentDropDown(sourceId, targetId, url, paramName){
     const degreeSelect = document.getElementById(sourceId);
     const subjectSelect = document.getElementById(targetId);
-
+    if(!degreeSelect) return;
     degreeSelect.addEventListener("change", function () {
 
         let sourcvalue = this.value;
@@ -51,7 +51,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+function searchTableData(tableId, columnIndex , value){
+    
+
+    const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+
+    rows.forEach(row => {
+
+        const cellValue = row.cells[columnIndex]
+            .innerText
+            .trim()
+            .toLowerCase();
+
+        if (value === 'all' || cellValue.includes(value.toLowerCase()) ) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+
+    });    
+    
+    }
 
 
+    const filter = document.getElementById('searchFilter');
+    filter.addEventListener('change', function () {
+        const value = filter.value.toLowerCase();
+        searchTableData('employeeTable', 1 , value);
+        searchTableData('employeeTable', 2 , value);
 
-
+    });
+    
+    

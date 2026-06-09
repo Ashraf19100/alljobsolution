@@ -115,7 +115,7 @@
 
                                     <div class="col-md-6">
                                         <input name="email" type="text" class="form-control"
-                                            placeholder="Search by name or email">
+                                            placeholder="Search by name or email" id="searchFilter">
                                     </div>
 
                                     <div class="col-md-2">

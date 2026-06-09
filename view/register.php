@@ -15,7 +15,9 @@
 
                 <div class="card_from">
                     <h3 class="text-center mb-3">Create Account</h3>
-                    <h5 class="text-danger" ><?= $_GET['message'] ?? '' ?></h5>
+                    <?php if(isset($_GET['message'])){ 
+                        echo  '<div class="alert alert-danger text-center p-2">'.$_GET['message'].'</div>';
+                    } ?>
                     <!-- Social Register Buttons -->
                     <div class="mb-3">
                         <button type="button" class="btn w-100 mb-2 d-flex align-items-center justify-content-center" style="border:1px solid #ddd;">

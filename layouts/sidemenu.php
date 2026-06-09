@@ -56,7 +56,7 @@ require_once 'database/database.php';
                     </ul>
                 </div>
             </li>
-            <?php if($_SESSION['role'] == 'employer'){?>
+            <?php if($_SESSION['role'] != 'job_seeker'){?>
             <li class="nav-item">
                 <a class="nav-link text-dark d-flex justify-content-between align-items-center"
                 data-bs-toggle="collapse" href="#managejob">

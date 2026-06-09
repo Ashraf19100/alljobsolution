@@ -70,7 +70,7 @@
 					.trim()
 					.toLowerCase();
 
-				if (value === 'all' || cellValue === value) {
+				if (value === 'all' || cellValue === value ) {
 					row.style.display = '';
 				} else {
 					row.style.display = 'none';
@@ -81,10 +81,12 @@
 		});
 
 	}
-	tableFilter('rolefilter', 'employeeTable', 2); //usertable
+    // 
+	tableFilter('rolefilter', 'employeeTable', 3); //usertable
 	tableFilter('statusFilter', 'employeeTable', 4); //usertable
 	tableFilter('typeFilter', 'companyTable', 5); //company table
 	// 
+    
 </script>
 <!-- Charts scripts -->
  <?php 
