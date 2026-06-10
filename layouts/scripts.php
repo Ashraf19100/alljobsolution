@@ -165,33 +165,33 @@
 
 </script>
 <script>
-function tablerowlimit(tableId){
-	const rowLimit = document.getElementById('rowlimit');
-	const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+// function tablerowlimit(tableId){
+// 	const rowLimit = document.getElementById('rowlimit');
+// 	const rows = document.querySelectorAll(`#${tableId} tbody tr`);
 
-	function showLimitedRows() {
+// 	function showLimitedRows() {
 
-		const limit = parseInt(rowLimit.value);
+// 		const limit = parseInt(rowLimit.value);
 
-		rows.forEach((row, index) => {
+// 		rows.forEach((row, index) => {
 
-			if(index < limit){
-				row.style.display = '';
-			}else{
-				row.style.display = 'none';
-			}
+// 			if(index < limit){
+// 				row.style.display = '';
+// 			}else{
+// 				row.style.display = 'none';
+// 			}
 
-		});
+// 		});
 
-	}
+// 	}
 
-	// Run on dropdown change
-	rowLimit.addEventListener('change', showLimitedRows);
+// 	// Run on dropdown change
+// 	rowLimit.addEventListener('change', showLimitedRows);
 
-	// Initial load
-	showLimitedRows();
-}
-tablerowlimit('categorytable');
+// 	// Initial load
+// 	showLimitedRows();
+// }
+// tablerowlimit('categorytable');
 
 </script>
 

@@ -75,6 +75,7 @@ function searchTableData(tableId, columnIndex , value){
 
 
     const filter = document.getElementById('searchFilter');
+    
     filter.addEventListener('change', function () {
         const value = filter.value.toLowerCase();
         searchTableData('employeeTable', 1 , value);
@@ -83,3 +84,87 @@ function searchTableData(tableId, columnIndex , value){
     });
     
     
+///pagination system
+
+
+function tabletotalrow(tableId, page, limit){ ///row limit
+	const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+    const start = (page - 1)* limit;
+    const end = start + limit
+		
+    rows.forEach((row, index) => {
+
+        if(index >= start && index < end){
+            row.style.display = '';
+        }else{
+            row.style.display = 'none';
+        }
+
+    });
+}
+function createPagination(tableID, paginationID , limit) {
+
+    const rows = document.querySelectorAll(`#${tableID} tbody tr`);
+    const totalPages = Math.ceil(rows.length / limit);
+
+    const pagination = document.getElementById(paginationID);
+    pagination.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {//==============================work not done========
+
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.classList.add('btn');
+        btn.classList.add('mx-1');
+
+        btn.addEventListener('click', () => {
+            currentPage = i;
+            tabletotalrow(tableID, currentPage, limit);
+        });
+
+        pagination.appendChild(btn);
+
+    }
+
+}
+
+function paginationWithRowlimit(tableID, paginationID, nxtbtn, prevbtn){
+    let limit = 10;
+    let currentPage = 1;
+    const rowLimit = document.getElementById('totalrow');
+    tabletotalrow(tableID, currentPage, limit);
+    createPagination(tableID, paginationID , limit);
+
+
+    rowLimit.addEventListener('change', function () {
+
+        limit = parseInt(rowLimit.value);
+
+        currentPage = 1;
+
+        tabletotalrow(tableID, currentPage, limit);
+        createPagination(tableID, paginationID , limit);
+
+    });
+    document.getElementById(nxtbtn).addEventListener('click', () =>{
+        const rows = document.querySelectorAll(`#${tableID} tbody tr`);
+        const totalPages = Math.ceil(rows.length / limit);
+
+        if (currentPage < totalPages) {
+            currentPage++;
+            tabletotalrow(tableID, currentPage, limit);
+        }
+    });
+
+    document.getElementById(prevbtn).addEventListener('click', () => {
+
+        if (currentPage > 1) {
+            currentPage--;
+        tabletotalrow(tableID, currentPage, limit);
+        }
+
+    });
+}
+paginationWithRowlimit('employeeTable', 'userpaginationID', 'nxtbtn', 'pevbtn');
+// paginationWithRowlimit('categorytable', 'catpaginationID', 'nxtbtncat', 'prevbtncat');
+
