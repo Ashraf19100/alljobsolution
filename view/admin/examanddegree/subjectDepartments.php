@@ -85,7 +85,7 @@
 
                                     <div class="rowfilter d-flex">
                                         <label for="" class="px-2 text-center">Number of Rows</label>
-                                        <select class="form-select w-auto" id="rowlimit">
+                                        <select class="form-select w-auto" id="totalrow">
                                         <option value="10">10</option>
                                         <option value="15">15</option>
                                         <option value="20">20</option>
@@ -98,10 +98,16 @@
                                         </select>
                                     </div>
                                 </div>
-
+                                <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
+                                    <div class="d-flex pagination">
+                                        <button id="prevbtn" class="btn btn-warning">previous</button>
+                                        <div id="DatapaginationID"></div>
+                                        <button id="nxtbtn" class="btn btn-warning" >next</button>
+                                    </div>
+                                </div>
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover align-middle text-center" id="categorytable">
+                                    <table class="table table-bordered table-hover align-middle text-center" id="DataTable">
 
                                         <thead class="table-dark">
                                             <tr>
@@ -116,9 +122,9 @@
                                         </thead>
 
                                         <tbody>
-                                        <?php foreach($all_sub as $subject){ ?> 
+                                        <?php $sl=1; foreach($all_sub as $subject){ ?> 
                                             <tr>
-                                                <td><?= $subject['id']?></td>
+                                                <td><?= $sl?></td>
                                                 <td><?= $subject['department_name']?></td>
                                                 <td><?= $subject['degree_id']?> </td>
                                                 <td><?= $subject['sub_category']?></td>
@@ -128,7 +134,7 @@
                                                 </td>
                                                 
                                             </tr>
-                                        <?php } ?>
+                                        <?php $sl++; } ?>
                                             
 
                                         </tbody>

@@ -112,14 +112,14 @@
                                 <!-- pagination -->
                                  <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
                                     <div class="d-flex pagination">
-                                        <button id="prevbtncat" class="btn btn-warning">previous</button>
-                                        <div id="catpaginationID"></div>
-                                        <button id="nxtbtncat" class="btn btn-warning" >next</button>
+                                        <button id="prevbtn" class="btn btn-warning">previous</button>
+                                        <div id="DatapaginationID"></div>
+                                        <button id="nxtbtn" class="btn btn-warning" >next</button>
                                     </div>
                                 </div>
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover align-middle text-center" id="categorytable">
+                                    <table class="table table-bordered table-hover align-middle text-center" id="DataTable">
 
                                         <thead class="table-dark">
                                             <tr>

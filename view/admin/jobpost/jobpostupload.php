@@ -1,15 +1,9 @@
 <?php
    require_once 'database/database.php';
-    $limit=10;
-    $pagination = isset($_GET['pagination']) ? (int)$_GET['pagination'] : 1;
-    $offset = ($pagination - 1)*$limit;
-    $jobpost = new datamodel();
     
-    $totalData = $jobpost->getData('jobs',' COUNT(*) as total ');
-    $totalRows = $totalData[0]['total'];
-    $totalpaginations = ceil($totalRows / $limit);
+    $jobpost = new datamodel();
   
-    $allposts = $jobpost->getData('jobs',' * ', '', $limit, $offset);
+    $allposts = $jobpost->getData('jobs',' * ');
     $jobcategories = $jobpost->getData('category',' * ', '');
     $jobcompanies = $jobpost->getData('companies',' * ', '');
     
@@ -91,35 +85,31 @@
                                 <a href="add_job.php" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#jobpostModal">
                                     + Add New Post
                                 </a>
+                                <div class="rowfilter d-flex">
+                                        <label for="" class="px-2 text-center">Number of Rows</label>
+                                        <select class="form-select w-auto" id="totalrow">
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        </select>
+                                    </div>
                             </div>
-                            <nav>
-                                <ul class="pagination justify-content-center py-3">
-
-                                    <!-- Prev Button -->
-                                    <li class="pagination-item <?= ($pagination <= 1) ? 'disabled' : '' ?>">
-                                        <a class="pagination-link " href="index.php?page=postjob&pagination=<?= ($pagination <= 1) ? 1 : $pagination - 1 ?>" >Prev</a>
-                                    </li>
-
-                                    <!-- pagination Numbers -->
-                                    <?php for($i = 1; $i <= $totalpaginations; $i++): ?>
-                                        <li class="pagination-item <?= ($pagination == $i) ? 'active' : '' ?>">
-                                            <a class="pagination-link" href="index.php?page=postjob&pagination=<?= $i ?>">
-                                                <?= $i ?>
-                                            </a>
-                                        </li>
-                                    <?php endfor; ?>
-
-                                    <!-- Next Button -->
-                                    <li class="pagination-item <?= ($pagination >= $totalpaginations) ? 'disabled' : '' ?>">
-                                        <a class="pagination-link" href="index.php?page=postjob&pagination=<?= ($pagination >= $totalpaginations) ? $totalpaginations : $pagination + 1 ?>">Next</a>
-                                    </li>
-
-                                </ul>
-                            </nav>
+                            <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
+                                    <div class="d-flex pagination">
+                                        <button id="prevbtn" class="btn btn-warning">previous</button>
+                                        <div id="DatapaginationID"></div>
+                                        <button id="nxtbtn" class="btn btn-warning" >next</button>
+                                    </div>
+                            </div>
                             <div class="card-body">
                                 <!-- filter row -->
                                  <div class="row mb-3 align-items-center">
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <input type="text" class="form-control" placeholder="Search title...">
                                     </div>
 
@@ -134,7 +124,7 @@
                                     <div class="col-md-2">
                                         <input type="date" class="form-control">
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <select class="form-select">
                                             <option value="">Job Type</option>
                                             <option>Full Time</option>
@@ -143,38 +133,45 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-3 text-end">
-                                        <button class="btn btn-primary">Filter</button>
+                                    <div class="col-md-1 text-end">
                                         <button class="btn btn-secondary">Reset</button>
                                     </div>
                                 </div>
                                 <!-- Header Row -->
-                                <div class="row fw-bold border-bottom pb-2 mb-2 text-center">
-                                    <div class="col-md-2">Title</div>
-                                    <div class="col-md-2">Salary</div>
-                                    <div class="col-md-2">Location</div>
-                                    <div class="col-md-2">Deadline</div>
-                                    <div class="col-md-1">Type</div>
-                                    <div class="col-md-3">Actions</div>
-                                </div>
+                                <table class="table table-bordered table-hover align-middle text-center" id="DataTable">
+                                    <thead >
+                                        <tr>
+                                        <th>Title</th>
+                                        <th>Salary</th>
+                                        <th>Location</th>
+                                        <th>Deadline</th>
+                                        <th >Type</th>
+                                        <th >Actions</th>
+                                        </tr>
+                                    </thead>
+                                <tbody>
+
+                                
                                 <?php
                                 foreach($allposts as $allpost){
                                 ?>
-                                <div class="row align-items-center border-bottom py-2 text-center">
-                                    <div class="col-md-2"><?=$allpost['title']?></div>
-                                    <div class="col-md-2"><?=$allpost['salary']?></div>
-                                    <div class="col-md-2"><?=$allpost['location']?></div>
-                                    <div class="col-md-2"><?= date(" d F Y", strtotime($allpost['deadline'])); ?></div>
-                                    <div class="col-md-1"><?=$allpost['job_type']?></div>
+                                <tr>
+                                    <td><?=$allpost['title']?></td>
+                                    <td><?=$allpost['salary']?></td>
+                                    <td><?=$allpost['location']?></td>
+                                    <td><?= date(" d F Y", strtotime($allpost['deadline'])); ?></td>
+                                    <td><?=$allpost['job_type']?></td>
 
-                                    <div class="col-md-3">
+                                    <td>
                                         <a href="index.php?page=jobdetails&job_id=<?= $allpost['id']?>" class="btn btn-sm btn-info mb-1">Show</a>
                                         <a href="index.php?page=jobpostmanage&manage=<?= $allpost['id']?>" class="btn btn-sm btn-warning mb-1">Manage</a>
                                         <a href="" class="btn btn-sm btn-success mb-1">Active</a>
                                         <a href="" class="btn btn-sm btn-danger mb-1">Delete</a>
-                                    </div>
-                                </div>
-                            <?php } ?>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="modal fade" id="jobpostModal" tabindex="-1">

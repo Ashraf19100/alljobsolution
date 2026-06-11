@@ -172,13 +172,13 @@
                                 <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
                                     <div class="d-flex pagination">
                                         <button id="prevbtn" class="btn btn-warning">previous</button>
-                                        <div id="userpaginationID"></div>
-                                        <button id="nxtbtn " class="btn btn-warning" >next</button>
+                                        <div id="DatapaginationID"></div>
+                                        <button id="nxtbtn" class="btn btn-warning" >next</button>
                                     </div>
                                 </div>
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover align-middle text-center" id="employeeTable">
+                                    <table class="table userlist table-bordered table-hover align-middle text-center" id="DataTable">
 
                                         <thead class="table-dark">
                                             <tr>
@@ -203,7 +203,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="index.php?page=showuser&actvui=<?=$user['id']?>&<?=uniqid();?>" class="btn btn-sm btn-info mb-1">Show</a>
-                                                    <a href="index.php?page=userslist&status=<?=$user['id']?>&<?=uniqid();?>&state=<?=$user['status']?>" class="btn btn-sm <?= ($user['status'] == 1) ? 'btn-success' : 'btn-danger' ?> mb-1"><?= ($user['status'] == 1) ? 'Activate' : 'Deactivate' ?></a>
+                                                    <a href="index.php?page=userslist&status=<?=$user['id']?>&<?=uniqid();?>&state=<?=$user['status']?>" class="btn btn-sm <?= ($user['status'] == 1) ? 'btn-danger' : 'btn-success' ?> mb-1"><?= ($user['status'] == 1) ? 'Deactivate' : 'Activate' ?></a>
                                                     <a href="" class="btn btn-sm btn-danger mb-1">Delete</a>
                                                 </td>
                                             </tr>

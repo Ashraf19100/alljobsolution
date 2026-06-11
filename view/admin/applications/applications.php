@@ -97,6 +97,7 @@
                                 Manage Applications, Applications Status, 
                             </p>
                         </div>
+                        
                     </div>
 
                     <!-- View All Users -->
@@ -106,13 +107,31 @@
                                 <!-- Header -->
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <h3 class="mb-0">Applicant list</h3>
-
+                                    <div class="rowfilter d-flex">
+                                        <label for="" class="px-2 text-center">Number of Rows</label>
+                                        <select class="form-select w-auto" id="totalrow">
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        </select>
+                                    </div>
                                     
                                 </div>
-
+                                <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
+                                    <div class="d-flex pagination">
+                                        <button id="prevbtn" class="btn btn-warning">previous</button>
+                                        <div id="DatapaginationID"></div>
+                                        <button id="nxtbtn" class="btn btn-warning" >next</button>
+                                    </div>
+                                </div>
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover align-middle text-center" id="employeeTable">
+                                    <table class="table table-bordered table-hover align-middle text-center" id="DataTable">
 
                                         <thead class="table-dark">
                                             <tr>

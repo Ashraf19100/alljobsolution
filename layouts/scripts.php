@@ -82,9 +82,9 @@
 
 	}
     // 
-	tableFilter('rolefilter', 'employeeTable', 3); //usertable
-	tableFilter('statusFilter', 'employeeTable', 4); //usertable
-	tableFilter('typeFilter', 'companyTable', 5); //company table
+	tableFilter('rolefilter', 'DataTable', 3); //usertable
+	tableFilter('statusFilter', 'DataTable', 4); //usertable
+	tableFilter('typeFilter', 'DataTable', 5); //company table
 	// 
     
 </script>
@@ -104,7 +104,7 @@
         'FeMale',
         'Male',    
     ];
-
+    
     const percentages = <?= json_encode($nm); ?>;
 
     // Chart
@@ -165,33 +165,7 @@
 
 </script>
 <script>
-// function tablerowlimit(tableId){
-// 	const rowLimit = document.getElementById('rowlimit');
-// 	const rows = document.querySelectorAll(`#${tableId} tbody tr`);
 
-// 	function showLimitedRows() {
-
-// 		const limit = parseInt(rowLimit.value);
-
-// 		rows.forEach((row, index) => {
-
-// 			if(index < limit){
-// 				row.style.display = '';
-// 			}else{
-// 				row.style.display = 'none';
-// 			}
-
-// 		});
-
-// 	}
-
-// 	// Run on dropdown change
-// 	rowLimit.addEventListener('change', showLimitedRows);
-
-// 	// Initial load
-// 	showLimitedRows();
-// }
-// tablerowlimit('categorytable');
 
 </script>
 
@@ -253,25 +227,3 @@ document.getElementById('fileInput').addEventListener('change', function() {
 });
 </script>
 <script type="text/javascript" src="assets/js/validator/validator.js"></script>
-<!-- <script>
-
-const editButtons = document.querySelectorAll('.editBtn');
-
-editButtons.forEach(button => {
-
-    button.addEventListener('click', function () {
-
-        document.getElementById('edit_id').value =
-            this.dataset.id;
-
-        document.getElementById('edit_name').value =
-            this.dataset.name;
-
-        document.getElementById('edit_email').value =
-            this.dataset.email;
-
-    });
-
-});
-
-</script> -->

@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function searchTableData(tableId, columnIndex , value){
+function searchTableData(tableclass, columnIndex , value){
     
 
-    const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+    const rows = document.querySelectorAll(`.${tableclass} tbody tr`);
 
     rows.forEach(row => {
 
@@ -73,15 +73,17 @@ function searchTableData(tableId, columnIndex , value){
     
     }
 
-
+    if( document.getElementById('searchFilter')){
     const filter = document.getElementById('searchFilter');
-    
-    filter.addEventListener('change', function () {
-        const value = filter.value.toLowerCase();
-        searchTableData('employeeTable', 1 , value);
-        searchTableData('employeeTable', 2 , value);
+        
+        filter.addEventListener('change', function () {
+            const value = filter.value.toLowerCase();
+            searchTableData('userlist', 1 , value);
+            searchTableData('userlist', 2 , value);
 
-    });
+        });
+    }
+    
     
     
 ///pagination system
@@ -89,6 +91,7 @@ function searchTableData(tableId, columnIndex , value){
 
 function tabletotalrow(tableId, page, limit){ ///row limit
 	const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+    
     const start = (page - 1)* limit;
     const end = start + limit
 		
@@ -108,18 +111,25 @@ function createPagination(tableID, paginationID , limit) {
     const totalPages = Math.ceil(rows.length / limit);
 
     const pagination = document.getElementById(paginationID);
-    pagination.innerHTML = '';
-
+    pagination.innerHTML = ' ';
+    let currentPage;
     for (let i = 1; i <= totalPages; i++) {//==============================work not done========
 
         const btn = document.createElement('button');
         btn.textContent = i;
         btn.classList.add('btn');
+        btn.classList.add(`buttonno${i}`);
         btn.classList.add('mx-1');
-
+        
         btn.addEventListener('click', () => {
+            pagination.querySelectorAll('button').forEach(button =>{
+                button.classList.remove('btn-primary')
+            });
+            btn.classList.add('btn-primary');
             currentPage = i;
+           
             tabletotalrow(tableID, currentPage, limit);
+            
         });
 
         pagination.appendChild(btn);
@@ -128,24 +138,26 @@ function createPagination(tableID, paginationID , limit) {
 
 }
 
-function paginationWithRowlimit(tableID, paginationID, nxtbtn, prevbtn){
+
+function paginationWithRowlimit(tableID, totalrow, paginationID, nxtbtn, prevbtn ){
+    
+    const rowLimit = document.getElementById(totalrow);
     let limit = 10;
     let currentPage = 1;
-    const rowLimit = document.getElementById('totalrow');
+    
     tabletotalrow(tableID, currentPage, limit);
+    
     createPagination(tableID, paginationID , limit);
-
-
+    
     rowLimit.addEventListener('change', function () {
 
         limit = parseInt(rowLimit.value);
-
-        currentPage = 1;
 
         tabletotalrow(tableID, currentPage, limit);
         createPagination(tableID, paginationID , limit);
 
     });
+    
     document.getElementById(nxtbtn).addEventListener('click', () =>{
         const rows = document.querySelectorAll(`#${tableID} tbody tr`);
         const totalPages = Math.ceil(rows.length / limit);
@@ -165,6 +177,10 @@ function paginationWithRowlimit(tableID, paginationID, nxtbtn, prevbtn){
 
     });
 }
-paginationWithRowlimit('employeeTable', 'userpaginationID', 'nxtbtn', 'pevbtn');
-// paginationWithRowlimit('categorytable', 'catpaginationID', 'nxtbtncat', 'prevbtncat');
+
+if(document.getElementById('DataTable')){
+    paginationWithRowlimit('DataTable','totalrow', 'DatapaginationID', 'nxtbtn', 'prevbtn');
+}
+
+
 

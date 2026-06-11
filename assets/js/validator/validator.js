@@ -273,6 +273,7 @@ if(personalInfoForm){
         const BirthDateValidate = validate.DOBValidation(personalInfoForm.dob.value);
         if(!BirthDateValidate.result){
             document.getElementById('PersonalinfoError').innerText = BirthDateValidate.message;
+            $(personalInfoForm).find('.' + 'dob').focus();
             DOBError = true;
         }
         if(!DOBError){
