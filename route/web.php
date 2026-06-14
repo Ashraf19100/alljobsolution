@@ -23,7 +23,12 @@ switch ($page) {
     case 'register-submit':
         require_once 'actions/registerController.php';
         break;
-
+    case 'forgetpassword':
+        require_once 'view/passwordtoken.php';
+        break;
+    case 'pass-token':
+        require_once 'actions/passrestController.php';
+        break;
     case 'dashboard':
         if(isset($_SESSION['email'])){
         require_once 'view/dashboard.php';
@@ -316,7 +321,7 @@ switch ($page) {
         break;
 }
 
-// application_download getexm
+// application_download getexm 
 
                 
 ?>
