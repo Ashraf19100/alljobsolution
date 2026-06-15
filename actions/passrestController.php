@@ -18,10 +18,10 @@ if($resetusers){
 
     $column['pass_reset_token'] = $token;
     $column['pass_token_exp'] = $expires;
-    print_r($column);
+    
     $setToken = $passreset->updateData('users', $column, " WHERE email ='".$email."'");
 
-     $link = "https://yourwebsite.com/reset-password.php?token=".$token;
+     $link = "http://localhost/alljobsolution/index.php?page=reset-password&token=".$token;
 
     // Send email
     $mail = new PHPMailer(true);

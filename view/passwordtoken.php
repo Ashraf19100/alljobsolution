@@ -22,12 +22,13 @@
                 <h3 class="text-center mb-3">Reset Your Password</h3>
 
 
-                <form action="index.php?page=pass-token" method="post">
-                    
+                <form action="index.php?page=pass-token" method="post" id="resetPassForm">
+                    <small class="text-danger text-center" id="resetemailerror"></small>
                     <div class="username mb-3 d-flex">
                         <label for="email" class="text-capitalize">User email</label>
-                        <input type="text" name="email" id="email" class="w-100 form-control" placeholder="Enter your email">
+                        <input type="text" name="email" id="email" class="w-100 form-control resetemailerror" placeholder="Enter your email"> 
                     </div>
+                    
 
                     <button type="submit" class="btn btn-primary w-100">Submit</button>
                 </form>

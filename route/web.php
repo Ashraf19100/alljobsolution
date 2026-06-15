@@ -29,6 +29,12 @@ switch ($page) {
     case 'pass-token':
         require_once 'actions/passrestController.php';
         break;
+    case 'reset-password':
+        require_once 'view/resetPassword.php';
+        break;
+    case 'newpassset':
+        require_once 'actions/passupdateController.php';
+        break;
     case 'dashboard':
         if(isset($_SESSION['email'])){
         require_once 'view/dashboard.php';

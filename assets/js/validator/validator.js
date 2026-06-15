@@ -142,8 +142,23 @@ class Validation {
         }
 
         return {
-            result: true
+            result: true,
+            message:''
         };
+    }
+    // passworrd match
+    passwordmatchValidation(password, retypepass){
+        if (password != retypepass) {
+            return {
+                result: false,
+                message: 'password Dose not match'
+            };
+        }else{
+           return {
+                result: true,
+                
+            };  
+        }
     }
     //Birth Date validation
     DOBValidation(dob){
@@ -212,7 +227,8 @@ async function emailduplicatecheck(emailid) {
             };
     }else{
         return { 
-                result: true,   
+                result: true,
+                message: 'this email is not Registered'   
             };
     }
 }
@@ -337,6 +353,56 @@ if(educationForm){
             }
         }
         
+    });
+}
+//reset password validation
+const resetPassForm = document.getElementById('resetPassForm');
+
+if(resetPassForm){
+   resetPassForm.addEventListener('submit', async function(e){
+    
+    e.preventDefault();
+    let resetError = false;
+    const emailvarification = await emailduplicatecheck(resetPassForm.email.value);
+        
+        if(!emailvarification.result){
+            resetError = false;
+        }else{
+            document.getElementById('resetemailerror').innerText = emailvarification.message;
+            $(resetPassForm).find('.' + 'resetemailerror').focus();
+            resetError = true;
+        }
+
+        if(!resetError){
+            resetPassForm.submit();
+        }
+   }); 
+}
+
+const updatePassForm = document.getElementById('updatePassForm');
+if(updatePassForm){
+    console.log('hi');
+    updatePassForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        let passError = false;
+
+        const passretype = validate.passwordValidation(updatePassForm.password.value);
+        const matchpassword = validate.passwordmatchValidation(updatePassForm.password.value, updatePassForm.confirm_password.value);
+
+        if(!passretype.result){
+            document.getElementById('passErr').innerText = passretype.message;
+            $(updatePassForm).find('.' + 'passErr').focus();
+            passError = true;
+        }
+        if(!matchpassword.result){
+            document.getElementById('passmatchErr').innerText = matchpassword.message;
+            $(updatePassForm).find('.' + 'passmatchErr').focus();
+            passError = true;
+        }
+        if(!passError){
+            updatePassForm.submit();
+        }
+
     });
 }
 // function showMessageExp(msg, focusId, theForm) {
