@@ -6,6 +6,7 @@
     $allposts = $jobpost->getData('jobs',' * ');
     $jobcategories = $jobpost->getData('category',' * ', '');
     $jobcompanies = $jobpost->getData('companies',' * ', '');
+    $jobCirculars = $jobpost->getData('job_circulars',' * ', " WHERE status = 'active'");
     
     
 
@@ -260,14 +261,24 @@
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
+                                                        <!--circular no-->
+                                                        <div class="col-md-4">
+                                                            <label class="form-label fw-semibold">Circular Reference</label>
+                                                            <select name="circular_id" id="circular_id" class="form-select" required>
+                                                                <option value="">----select Circulars----</option>
+                                                                <?php foreach($jobCirculars as $jobCircular){?>
+                                                                    <option value="<?= $jobCircular['id'] ?? '' ?>"><?= $jobCircular['circular_reference'] ?? '' ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
                                                         <!-- Min Age -->
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <label class="form-label fw-semibold">Minimum Age</label>
                                                             <input type="number" name="min_age" class="form-control" required>
                                                         </div>
 
                                                         <!-- Max Age -->
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <label class="form-label fw-semibold">Maximum Age</label>
                                                             <input type="number" name="max_age" class="form-control" required>
                                                         </div>
@@ -458,7 +469,7 @@
                                                             </div>
 
                                                             <!-- MPHIL -->
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <label class="fw-bold d-block mb-2">MPhil Active</label>
 
                                                                 <div class="form-check form-check-inline">
@@ -472,8 +483,122 @@
                                                                 </div>
                                                             </div>
 
-                                                            <!-- Continue similarly for remaining fields -->
-                                                            
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">MPhil Required</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="mph_required" value="1" required>
+                                                                    <label class="form-check-label">Required</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="mph_required" value="0" >
+                                                                    <label class="form-check-label">Not Required</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">MPhil Running</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="mph_running" value="1" required>
+                                                                    <label class="form-check-label">Yes</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="mph_running" value="0">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <!--------Phd ------------>
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">Phd Active</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="phd_active" value="1" required>
+                                                                    <label class="form-check-label">Yes</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="phd_active" value="0">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">Phd Required</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="phd_required" value="1" required>
+                                                                    <label class="form-check-label">Required</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="phd_required" value="0" >
+                                                                    <label class="form-check-label">Not Required</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">Phd Running</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="phd_running" value="1" required>
+                                                                    <label class="form-check-label">Yes</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="phd_running" value="0">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">Job Experience Active</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="job_exp_active" value="1" required>
+                                                                    <label class="form-check-label">Yes</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="job_exp_active" value="0">
+                                                                    <label class="form-check-label">No</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label class="fw-bold d-block mb-2">Job Experience Required</label>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="job_exp_required" value="1" required>
+                                                                    <label class="form-check-label">Required</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="job_exp_required" value="0">
+                                                                    <label class="form-check-label">Not Required</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label fw-bold d-block mb-2">Minimum Job Experience year</label>
+                                                                <div class="">
+                                                                    <input class="form-control" type="number" name="min_job_exp_year" value="0">
+                                                                </div>
+                                                            </div>
+                                                            <!----------application start time --------->
+                                                            <div class="col-md-6">
+                                                                <label class="form-label fw-bold">Application Start Time</label>
+                                                                <input type="datetime-local" name="app_start_time" class="form-control" placeholder="e.g. 25000" required>
+                                                                
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label class="form-label fw-bold">Application End Time</label>
+                                                                <input type="datetime-local" name="app_end_time" class="form-control" placeholder="e.g. 25000" required>
+                                                                
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label class="form-label fw-bold">total vacancy</label>
+                                                                <input type="number" name="vacancy" class="form-control" placeholder="e.g. 25000" required>
+                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
 

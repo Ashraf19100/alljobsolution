@@ -37,12 +37,12 @@
                                             <!-- Post Info -->
                                             <div class="col-md-4">
                                                 <label class="form-label">Post Code</label>
-                                                <input type="number" name="job_code" class="form-control" value="<?=$post_details->id?>" >
+                                                <input type="number" name="job_code" class="form-control" value="<?=$post_details->id?>" readonly>
                                             </div>
 
                                             <div class="col-md-8">
                                                 <label class="form-label">Post Name</label>
-                                                <input type="text" name="job_title" class="form-control" value="<?=$post_details->title?>" >
+                                                <input type="text" name="job_title" class="form-control" value="<?=$post_details->title?>" readonly>
                                             </div>
 
                                             <!-- Allowed Exams -->

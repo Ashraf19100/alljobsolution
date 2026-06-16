@@ -42,7 +42,7 @@ if($_GET['token']){
 
                 <form action="index.php?page=newpassset" method="post" id="updatePassForm">
                     <input type="hidden" name="id" value="<?=$userreset->id ?? ''?>">
-                    <small id=" passErr "></small>
+                    <small id="passErr"></small>
                     <div class="newpasswod mb-3 d-flex">
                         <label for="password" class="w-25 text-capitalize ">New Password</label>
                         <input type="password" name="password" id="password" class="w-75 form-control passErr" placeholder="Enter your new Password">
