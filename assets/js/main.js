@@ -11,33 +11,33 @@ $(document).ready(function ($) {
 });
 
 function DependentDropDown(sourceId, targetId, url, paramName){
-    const degreeSelect = document.getElementById(sourceId);
-    const subjectSelect = document.getElementById(targetId);
-    if(!degreeSelect) return;
-    degreeSelect.addEventListener("change", function () {
+    const sourceSelect = document.getElementById(sourceId);
+    const targetSelect = document.getElementById(targetId);
+    if(!sourceSelect) return;
+    sourceSelect.addEventListener("change", function () {
 
         let sourcvalue = this.value;
 
         if (sourcvalue === "") {
-            subjectSelect.innerHTML = "<option value=''>Select Subject</option>";
+            targetSelect.innerHTML = "<option value=''>-------Select------</option>";
             return;
         }
-			console.log(sourcvalue)
+			console.log(sourcvalue);
         let xhr = new XMLHttpRequest();
         xhr.open("GET", `${url}?${paramName}=` + sourcvalue, true);
 
         xhr.onload = function () {
             if (this.status === 200) {
-                subjectSelect.innerHTML = this.responseText;
-			console.log(this.responseText)
+                targetSelect.innerHTML = this.responseText;
+			console.log(this.responseText);
 
             } else {
-                subjectSelect.innerHTML = "<option value=''>Error loading data</option>";
+                targetSelect.innerHTML = "<option value=''>Error loading data</option>";
             }
         };
 
         xhr.onerror = function () {
-            subjectSelect.innerHTML = "<option value=''>Request failed</option>";
+            targetSelect.innerHTML = "<option value=''>Request failed</option>";
         };
         
         xhr.send();
@@ -47,8 +47,10 @@ function DependentDropDown(sourceId, targetId, url, paramName){
 document.addEventListener("DOMContentLoaded", function () {
     DependentDropDown("degreelevel", "formdegree", "layouts/degreelevel.php", "degree_level");
     DependentDropDown("formdegree", "degreeSubject", "layouts/degreeselect.php", "degree_id");
+});
+document.addEventListener("DOMContentLoaded", function () {
+    DependentDropDown("company_name", "circulars_list", "layouts/circular_reference.php", "circular_id");
     
-
 });
 
 function searchTableData(tableclass, columnIndex , value){
@@ -109,6 +111,7 @@ function createPagination(tableID, paginationID , limit) {
 
     const rows = document.querySelectorAll(`#${tableID} tbody tr`);
     const totalPages = Math.ceil(rows.length / limit);
+    
 
     const pagination = document.getElementById(paginationID);
     pagination.innerHTML = ' ';
@@ -142,7 +145,7 @@ function createPagination(tableID, paginationID , limit) {
 function paginationWithRowlimit(tableID, totalrow, paginationID, nxtbtn, prevbtn ){
     
     const rowLimit = document.getElementById(totalrow);
-    let limit = 10;
+    let limit = 20;
     let currentPage = 1;
     
     tabletotalrow(tableID, currentPage, limit);

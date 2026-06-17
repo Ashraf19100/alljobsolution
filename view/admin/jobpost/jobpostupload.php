@@ -254,7 +254,7 @@
                                                          
                                                         <div class="col-md-4">
                                                             <label class="form-label fw-semibold">Company</label>
-                                                            <select name="company_id" id="company_id" class="form-select" required>
+                                                            <select name="company_id" id="company_name" class="form-select" required>
                                                                 <option value="">----select job category----</option>
                                                                 <?php foreach($jobcompanies as $jobcompany){?>
                                                                     <option value="<?= $jobcompany['id'] ?? '' ?>"><?= $jobcompany['company_name'] ?? '' ?></option>
@@ -264,11 +264,9 @@
                                                         <!--circular no-->
                                                         <div class="col-md-4">
                                                             <label class="form-label fw-semibold">Circular Reference</label>
-                                                            <select name="circular_id" id="circular_id" class="form-select" required>
+                                                            <select name="circular_id" id="circulars_list" class="form-select" required>
                                                                 <option value="">----select Circulars----</option>
-                                                                <?php foreach($jobCirculars as $jobCircular){?>
-                                                                    <option value="<?= $jobCircular['id'] ?? '' ?>"><?= $jobCircular['circular_reference'] ?? '' ?></option>
-                                                                <?php } ?>
+                                                                
                                                             </select>
                                                         </div>
                                                         <!-- Min Age -->

@@ -31,9 +31,15 @@ $min_edu = "Class 8";
     $institution = "Reputated School";
     $subject= "any subject";
 }
-
+if($single_job->description){
 $responsibility= explode('.', $single_job->description);
+}
+if($single_job->comp_benifits){
+$com_benifits= explode('.', $single_job->comp_benifits);
+}
 
+
+$i = count($responsibility);
 
     
 ?>
@@ -74,12 +80,12 @@ $responsibility= explode('.', $single_job->description);
                                 </div>
                                 <div class="w-75 company-details p-2 text-left row">
                                     <div class="col-4">
-                                        <p><strong>Vaccancy:</strong>........</p>
+                                        <p><strong>Vaccancy:</strong><?=$single_job->vacancy?></p>
                                         <p><strong>Salary:</strong><?=$single_job->salary?></p>
                                     </div>
                                     <div class="col-4">
-                                        <p><strong>Age at Most:</strong><?= 32 ?></p>
-                                        <p><strong>Experience:</strong><?=$single_job->min_job_exp_year ?></p>
+                                        <p><strong>Age at Most:</strong><?= $single_job->max_age ?></p>
+                                        <p><strong>Experience:</strong><?=$single_job->min_job_exp_year ?> years</p>
                                     </div>
                                     <div class="col-4">
                                         <p><strong>Location:</strong><?=$single_job->location ?></p>
@@ -98,7 +104,7 @@ $responsibility= explode('.', $single_job->description);
                                 <div class="addi_requirements py-2">
                                     <h5 class="fs-5 fw-bold">Additional Requirements</h5>
                                     <ul>
-                                        <li>Candidate Must have Knowledge in the field of <?= $single_job->requirements ?> </li>
+                                        <li>Candidate Must have <?= $single_job->requirements ?> </li>
                                     </ul>
                                 </div>
                                 <div class="experience py-2 ">
@@ -115,21 +121,21 @@ $responsibility= explode('.', $single_job->description);
                                 <div class="description">
                                     <h3 class="fs-3 fw-bold text-success">Responsibilities</h3>
                                     <ol>
-                                        <?php $i=0; 
-                                        foreach($responsibility as $responsibility){?>
+                                        <?php $j=1; 
+                                        foreach($responsibility as $responsibility){ if($j<$i){ ?>
                                         
                                         <li><?= $responsibility ?></li>
-                                        <?php $i++; } ?>
+                                        <?php } $j++;} ?>
                                     </ol>
                                 </div>
                                 <div class="company-benifits">
                                     <h3 class="fs-3 fw-bold text-success">Compensation & Other Benefits</h3>
                                     <ol>
-                                        <li>Lunch Facilities: Partially Subsidize</li>
-                                        <li>Festival Bonus: 2</li>
-                                        <li>A competitive salary structure.</li>
-                                        <li>An exceptional working environment with supportive peers and mentors.</li>
-                                        <li>Lots of challenges and even more scope to implement your ideas.</li>
+                                        <?php $k=1; $c=count($com_benifits); 
+                                        foreach($com_benifits as $com_benifit){ if($k<$c){ ?>
+                                        
+                                        <li><?= $com_benifit ?></li>
+                                        <?php } $k++;} ?>
                                     </ol>
                                 </div>
                                 <div class="others">
