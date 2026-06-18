@@ -110,21 +110,10 @@
                             <div class="card-body">
                                 <!-- filter row -->
                                  <div class="row mb-3 align-items-center">
-                                    <div class="col-md-3">
-                                        <input type="text" class="form-control" placeholder="Search title...">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" placeholder="Search title,salary,location, job type ,date" id="searchFilter">
                                     </div>
 
-                                    
-
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" placeholder="salary">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="text" class="form-control" placeholder="Search title...">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="date" class="form-control">
-                                    </div>
                                     <div class="col-md-2">
                                         <select class="form-select">
                                             <option value="">Job Type</option>
@@ -139,7 +128,7 @@
                                     </div>
                                 </div>
                                 <!-- Header Row -->
-                                <table class="table table-bordered table-hover align-middle text-center" id="DataTable">
+                                <table class="table searchtableData table-bordered table-hover align-middle text-center" id="DataTable">
                                     <thead >
                                         <tr>
                                         <th>Title</th>

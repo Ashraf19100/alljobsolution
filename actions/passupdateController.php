@@ -11,7 +11,12 @@ if(!$oldusrcheck){
     exit;      
 }else{
     if($_POST){
-
+        $passwordValidate = $validation->passwordValidation($_POST['password']);
+        if($passwordValidate['result'] == false){
+            $query = http_build_query($passwordValidate);
+            header("Location: ../alljobsolution/index.php?page=reset-password&$query");
+            exit;   
+        }
         if($_POST['password'] == $_POST['confirm_password']){
             foreach($_POST as $key => $val){
             if($key =='password' ){

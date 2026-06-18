@@ -178,7 +178,7 @@
                                 </div>
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table userlist table-bordered table-hover align-middle text-center" id="DataTable">
+                                    <table class="table userlist searchtableData table-bordered table-hover align-middle text-center" id="DataTable">
 
                                         <thead class="table-dark">
                                             <tr>

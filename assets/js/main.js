@@ -9,7 +9,7 @@ $(document).ready(function ($) {
 	  });
       
 });
-
+//Dependent Dropdown
 function DependentDropDown(sourceId, targetId, url, paramName){
     const sourceSelect = document.getElementById(sourceId);
     const targetSelect = document.getElementById(targetId);
@@ -44,34 +44,29 @@ function DependentDropDown(sourceId, targetId, url, paramName){
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {//add education form
     DependentDropDown("degreelevel", "formdegree", "layouts/degreelevel.php", "degree_level");
     DependentDropDown("formdegree", "degreeSubject", "layouts/degreeselect.php", "degree_id");
 });
 document.addEventListener("DOMContentLoaded", function () {
-    DependentDropDown("company_name", "circulars_list", "layouts/circular_reference.php", "circular_id");
+    DependentDropDown("company_name", "circulars_list", "layouts/circular_reference.php", "circular_id");//add company form
     
 });
-
-function searchTableData(tableclass, columnIndex , value){
+// Search Table Data
+function searchTableData(tableclass,  value){
     
 
     const rows = document.querySelectorAll(`.${tableclass} tbody tr`);
 
     rows.forEach(row => {
+        const found = Array.from(row.cells).some(cell =>
+            cell.innerText.trim().toLowerCase().includes(value.toLowerCase())
+        );
 
-        const cellValue = row.cells[columnIndex]
-            .innerText
-            .trim()
-            .toLowerCase();
+        row.style.display = (value === 'all' || found) ? '' : 'none';
 
-        if (value === 'all' || cellValue.includes(value.toLowerCase()) ) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-
-    });    
+    });
+    
     
     }
 
@@ -80,9 +75,7 @@ function searchTableData(tableclass, columnIndex , value){
         
         filter.addEventListener('change', function () {
             const value = filter.value.toLowerCase();
-            searchTableData('userlist', 1 , value);
-            searchTableData('userlist', 2 , value);
-
+            searchTableData('searchtableData', value);
         });
     }
     

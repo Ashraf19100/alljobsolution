@@ -206,30 +206,20 @@
                             <!-- Action Buttons -->
                             <div class="mt-4 d-flex flex-wrap gap-2">
 
-                                <a class="p-2 btn-success" href="index.php?page=showuser&status=<?=$userinfo->id ?>&<?=uniqid();?>&state=0&actvui=<?=$_GET['actvui']?>">
-                                    <i class="fa-solid fa-user-check"></i>
-                                    Activate
-                                </a>
-
-                                <a class="p-2 btn-danger" href="index.php?page=showuser&status=<?=$userinfo->id ?>&<?=uniqid();?>&state=1&actvui=<?=$_GET['actvui']?>">
-                                    <i class="fa-solid fa-user-lock"></i>
-                                    Deactivate
-</a>
-
-                                <button class="btn btn-danger">
+                                <a class="btn btn-danger text-dark">
                                     <i class="fa-solid fa-ban"></i>
                                     Ban User
-                                </button>
+                                </a>
 
-                                <button class="btn btn-secondary">
+                                <a class="btn btn-secondary text-light">
                                     <i class="fa-solid fa-key"></i>
                                     Reset Password
-                                </button>
+                                </a>
 
-                                <button class="btn btn-primary">
+                                <a class="btn btn-primary">
                                     <i class="fa-solid fa-user-gear"></i>
                                     Assign Role
-                                </button>
+                                </a>
 
                             </div>
 

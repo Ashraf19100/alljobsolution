@@ -84,7 +84,9 @@
                                         } ?>
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
-                                
+                                <div class="col-md-12 mb-2">
+                                        <input type="text" class="text-center form-control border-3" placeholder="Search company name , website , type, location" id="searchFilter">
+                                </div>
                                 <!-- Header -->
                                 <div class="d-flex justify-content-between align-items-center mb-1 card-header bg-dark text-white">
                                     
@@ -123,7 +125,8 @@
                                 
                                 <!-- Table -->
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover align-middle text-center" id="DataTable">
+                                    
+                                    <table class="table searchtableData table-bordered table-hover align-middle text-center" id="DataTable">
 
                                         <thead class="table-dark">
                                             <tr>
