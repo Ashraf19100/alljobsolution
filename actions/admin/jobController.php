@@ -44,6 +44,36 @@ print("<pre>");
 
         }  
     }
+}else if($_GET['page']=='job_circular_submit'){
+    
+    if(isset($_POST)){
+        foreach( $_POST as $k => $v){
+            $col[$k] = $v;
+        }
+    }
+    
+    if(isset($_FILES)){
+        if($_FILES['circular_doc']['name'] != ''){
+            $fileExten = strtolower(pathinfo($_FILES['circular_doc']['name'], PATHINFO_EXTENSION));
+            if($fileExten == 'pdf'){
+                list($cir_doc_result , $circular_file)=$admin_job->fileupload($_FILES['circular_doc'], 'circulars');
+                $col['circular_doc']=$circular_file;
+                if($cir_doc_result == 0){
+                    header("Location: ../alljobsolution/index.php?page=jobcirculars&message='".$circular_file."'");
+                    die();
+                }else{
+                    $cir_upload = $admin_job->insertData('job_circulars', $col);
+                    header("Location: ../alljobsolution/index.php?page=jobcirculars&message='Uploaded Successfully'");
+                    die();
+                }
+
+            }else{
+                header("Location: ../alljobsolution/index.php?page=jobcirculars&message='invalid file extention, only pdf file allowed'");
+                die();
+            }
+        }
+        
+    }
 }else{
     if(isset($_POST)){ 
         

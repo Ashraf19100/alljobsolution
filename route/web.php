@@ -242,7 +242,23 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'jobcirculars':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'view/admin/jobpost/job_circulars.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
     case 'jobpost_upload_submit':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'actions/admin/jobController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'job_circular_submit':
         if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'actions/admin/jobController.php';
         break;
