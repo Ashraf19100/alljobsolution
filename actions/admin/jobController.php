@@ -44,14 +44,18 @@ print("<pre>");
 
         }  
     }
-}else if($_GET['page']=='job_circular_submit'){
     
+}else if($_GET['page']=='job_circular_submit'){
+    if(isset($_GET['delete'])){
+        $delete_circulars = $admin_job->deleteData('job_circulars', $_GET['delete']);
+        header("Location: ../alljobsolution/index.php?page=jobcirculars&message=data deleted");
+        exit;
+    }
     if(isset($_POST)){
         foreach( $_POST as $k => $v){
             $col[$k] = $v;
         }
     }
-    
     if(isset($_FILES)){
         if($_FILES['circular_doc']['name'] != ''){
             $fileExten = strtolower(pathinfo($_FILES['circular_doc']['name'], PATHINFO_EXTENSION));
@@ -73,6 +77,18 @@ print("<pre>");
             }
         }
         
+    }
+    if(isset($_GET['activate'])){
+        
+        $status = $admin_job->getSingleData('job_circulars', 'status', " WHERE id=".$_GET['activate']);
+        if($status->status == 'active'){
+            $circular_actv['status'] = 'inactive';
+        }else{
+            $circular_actv['status'] = 'active';
+        }
+        $admin_job->updateData('job_circulars', $circular_actv , " WHERE id =".$_GET['activate']);
+        header("Location: ../alljobsolution/index.php?page=jobcirculars&message=data deleted");
+        exit;
     }
 }else{
     if(isset($_POST)){ 
@@ -101,6 +117,13 @@ print("<pre>");
 
         }  
     }
+    
+    if(isset($_GET['delete'])){
+        $delete_jobpost = $admin_job->deleteData('jobs', $_GET['delete']);
+        header("Location: ../alljobsolution/index.php?page=postjob&message=data deleted");
+        exit;
+    }
+    
 
 }
 ?>

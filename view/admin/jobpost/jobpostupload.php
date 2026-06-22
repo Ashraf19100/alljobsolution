@@ -87,18 +87,18 @@
                                     + Add New Post
                                 </a>
                                 <div class="rowfilter d-flex">
-                                        <label for="" class="px-2 text-center">Number of Rows</label>
-                                        <select class="form-select w-auto" id="totalrow">
-                                        <option value="10">10</option>
-                                        <option value="15">15</option>
-                                        <option value="20">20</option>
-                                        <option value="25">25</option>
-                                        <option value="30">30</option>
-                                        <option value="35">35</option>
-                                        <option value="40">40</option>
-                                        <option value="50">50</option>
-                                        </select>
-                                    </div>
+                                    <label for="" class="px-2 text-center">Number of Rows</label>
+                                    <select class="form-select w-auto" id="totalrow">
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="35">35</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
                                     <div class="d-flex pagination">

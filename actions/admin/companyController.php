@@ -42,7 +42,11 @@ if(isset($check_company)){
         header("Location: ../alljobsolution/index.php?page=companyList&message='successfully inserted'");
 
 }
-
+if(isset($_GET['delete'])){
+    $delete_company = $admin_job->deleteData('companies', $_GET['delete']);
+    header("Location: ../alljobsolution/index.php?page=companyList&message=data deleted");
+    exit;
+}
 
 
 

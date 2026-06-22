@@ -2,12 +2,21 @@
    require_once 'database/database.php';
     
     $job_circulars = new datamodel();
-  
+    $today = new DateTime();
     $allcirculars = $job_circulars->getData('job_circulars',' * ');
     $circular_companies = $job_circulars->getData('companies',' * ', '');
     $jobCirculars = $job_circulars->getData('job_circulars',' * ', " WHERE status = 'active'");
-    
-    
+    foreach($allcirculars as $circul){
+        $deadline = new DateTime($circul['apply_last_date']);
+       
+        if( $deadline > $today && $circul['status'] != 'expired' ){
+             print_r( $deadline);
+        echo '<br>';
+            $cir_col['status'] = 'expired';
+            $job_circulars->updateData('job_circulars', $cir_col , " WHERE id =".$circul['id']);
+            
+        }
+    }/////start from here
 
 ?>
 <!doctype html>
@@ -135,9 +144,10 @@
                                         <th>Company</th>
                                         <th>Circular no (reference)</th>
                                         <th>status</th>
-                                        <th>file</th>
+                                        
                                         <th>publish date</th>
                                         <th >expected Activation Date</th>
+                                        <th>Deadline/last Date</th>
                                         <th >Actions</th>
                                         </tr>
                                     </thead>
@@ -145,28 +155,30 @@
 
                                 
                                 <?php
-                                foreach($allcirculars as $allcirculars){
+                                if(isset($allcirculars)){ foreach($allcirculars as $allcirculars){
                                 ?>
                                 <tr>
                                     <td><?php $circular_companie = $job_circulars->getSingleData('companies',' * ', ' WHERE id= '.$allcirculars['company_id']);
                                     echo $circular_companie->company_name; ?></td>
                                     <td><?=$allcirculars['circular_reference']?></td>
-                                    <td><?=$allcirculars['status']?></td>
-                                    <td><?php if(isset($allcirculars['circular_doc'])){ echo '<a href="uploads/circulars/'.$allcirculars['circular_doc'].'" target="_blank" class="btn btn-primary btn-sm">
-                                            View PDF
-                                        </a>';}else{ echo "not uploaded";} ?>
-                                    </td>
+                                    <td class="<?= $allcirculars['status'] == 'expired' ? 'text-danger' : '' ?>" ><?=$allcirculars['status']?></td>
+                                    
                                     <td><?= date(" d F Y", strtotime($allcirculars['published_date'])); ?></td>
-                                    <td><?= $allcirculars['expected_activation_date'] ? date(" d F Y", strtotime($allcirculars['expected_activation_date'])): 'null' ?></td>
+                                    <td><?= $allcirculars['expected_activation_date'] ? date(" d F Y h:i:s A", strtotime($allcirculars['expected_activation_date'])): 'null' ?></td>
+                                    <td>
+                                        <?= $allcirculars['apply_last_date'] ? date(" d F Y h:i:s A", strtotime($allcirculars['apply_last_date'])): 'null' ?>
+                                    </td>
 
                                     <td>
-                                        <a href="index.php?page=jobdetails&cir_i=<?= $allcirculars['id']?>" class="btn btn-sm btn-info mb-1">Show</a>
-                                        <a href="index.php?page=job_circularsmanage&manage=<?= $allcirculars['id']?>" class="btn btn-sm btn-warning mb-1">Manage</a>
-                                        <a href="" class="btn btn-sm btn-success mb-1">Active</a>
-                                        <a href="" class="btn btn-sm btn-danger mb-1">Delete</a>
+                                        <?php if(isset($allcirculars['circular_doc'])){ echo '<a href="uploads/circulars/'.$allcirculars['circular_doc'].'" target="_blank" class="mb-1 btn btn-primary btn-sm">
+                                            View PDF
+                                        </a>';}else{ echo "not uploaded";} ?>
+                                        
+                                        <a href="index.php?page=job_circular_submit&activate=<?= $allcirculars['id']?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to Change the status')" class="btn btn-sm btn-success mb-1">Activate</a>
+                                        <a href="index.php?page=job_circular_submit&delete=<?= $allcirculars['id']?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-sm btn-danger mb-1">Delete</a>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                                <?php } } ?>
                                 </tbody>
                                 </table>
                             </div>
@@ -183,14 +195,11 @@
                                             <div class="row">
                                                 <div class="col-md-6 mb-3 ">
                                                     <label class="form-label fw-bold">Company</label>
-
                                                     <select name="company_id" class="form-select" required>
                                                         <option value="">Select Company</option>
                                                         <?php foreach($circular_companies as $companie){ ?>
                                                         <option value="<?= $companie['id'] ?> "><?= $companie['company_name'] ?></option>
-                                                        <?php } ?>
-                                                        
-                                                        
+                                                        <?php } ?>    
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 mb-3 ">
@@ -208,8 +217,11 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label fw-bold">Expected Activation Date</label>
-                                                    <input type="datetime-local" name="published_date" class="form-control" placeholder="e.g. 25000" required>
-                                                    
+                                                    <input type="datetime-local" name="expected_activation_date" class="form-control" placeholder="e.g. 25000" required>    
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Application Last Date</label>
+                                                    <input type="datetime-local" name="apply_last_date" class="form-control" placeholder="e.g. 25000" required>    
                                                 </div>
                                             </div>
                                             <div class="text-center mt-5">

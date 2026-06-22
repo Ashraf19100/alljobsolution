@@ -67,6 +67,7 @@ require_once 'database/database.php';
                     <ul class="nav flex-column">
                         <li><a class="nav-link text-muted" href="index.php?page=userslist">user list</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=postjob">Post job list</a></li>
+                        <li><a class="nav-link text-muted" href="index.php?page=jobcirculars">Create Circular</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=admitcard">Admit Card action</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=companyList">Comapnies</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=applications">Applications</a></li>
