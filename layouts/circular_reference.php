@@ -4,7 +4,7 @@
 
 
     if(isset($_GET['circular_id'])){
-        $circulars = $circular_reff->getData('job_circulars',' * ', ' WHERE id ='.$_GET['circular_id'].' and status = "active"' );    
+        $circulars = $circular_reff->getData('job_circulars',' * ', ' WHERE company_id ='.$_GET['circular_id'].' and status = "active"' );    
     }
 ?>
 

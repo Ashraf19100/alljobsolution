@@ -2,21 +2,23 @@
    require_once 'database/database.php';
     
     $job_circulars = new datamodel();
-    $today = new DateTime();
+     $today = new DateTime();
     $allcirculars = $job_circulars->getData('job_circulars',' * ');
     $circular_companies = $job_circulars->getData('companies',' * ', '');
     $jobCirculars = $job_circulars->getData('job_circulars',' * ', " WHERE status = 'active'");
-    foreach($allcirculars as $circul){
-        $deadline = new DateTime($circul['apply_last_date']);
-       
-        if( $deadline > $today && $circul['status'] != 'expired' ){
-             print_r( $deadline);
-        echo '<br>';
-            $cir_col['status'] = 'expired';
-            $job_circulars->updateData('job_circulars', $cir_col , " WHERE id =".$circul['id']);
-            
+    if(!empty($allcirculars)){
+        foreach($allcirculars as $circul){
+            $deadline = new DateTime($circul['apply_last_date']);
+        
+            if( strtotime($circul['apply_last_date']) < time() && $circul['status'] != 'expired' ){
+                
+                $cir_col['status'] = 'expired';
+                $job_circulars->updateData('job_circulars', $cir_col , " WHERE id =".$circul['id']);
+                
+            }
         }
-    }/////start from here
+    }
+    
 
 ?>
 <!doctype html>

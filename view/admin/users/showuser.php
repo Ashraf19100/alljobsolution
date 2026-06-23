@@ -211,20 +211,125 @@
                                     Ban User
                                 </a>
 
-                                <a class="btn btn-secondary text-light">
-                                    <i class="fa-solid fa-key"></i>
-                                    Reset Password
-                                </a>
+                                <!-- Dropdown Form -->
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <i class="fa-solid fa-gear"></i>
+                                        Assigne Role
+                                    </button>
 
-                                <a class="btn btn-primary">
-                                    <i class="fa-solid fa-user-gear"></i>
-                                    Assign Role
-                                </a>
+                                    <div class="dropdown-menu p-3" style="min-width: 300px;">
+                                        <form action="index.php?page=roleaction" method="POST">
+                                            <input type="hidden" name="id" value="<?=$userinfo->id?>">
+                                            <input type="hidden" name="tab" value="users">
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Set Role</label>
+                                                <select class="form-select" name="role">
+                                                    <option value="">Select Action</option>
+                                                    <option value="job_seeker" <?= ($userinfo->role == 'job_seeker') ? 'selected': '' ?> >job_seeker</option>
+                                                    <option value="employer" <?= ($userinfo->role == 'employer') ? 'selected': '' ?> >employee</option>
+                                                    <option value="admin" <?= ($userinfo->role == 'admin') ? 'selected': '' ?> >Admin</option>
+                                                </select>
+                                            </div>
 
+                                            <button type="submit" class="btn btn-primary w-100">
+                                                Submit
+                                            </button>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#actionModal">
+                                    <i class="fa-solid fa-gear"></i>
+                                    Assign Action 
+                                </button>
+                                    
                             </div>
 
                         </div>
+                            
+                    </div>
+                    <div class="modal fade" id="actionModal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
+                                <div class="modal-header">
+                                    <h5 class="modal-title">User Action</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <form action="index.php?page=roleaction" method="POST">
+                                            <input type="hidden" name="id" value="<?=$userinfo->id?>">
+                                            <input type="hidden" name="tab" value="action_permission">
+                                    <div class="modal-body row">
+                                        <div class="col-md-6">
+                                            <label class="fw-bold d-block mb-2">Delete Data</label>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="delete_data" value="1" required>
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="delete_data" value="0">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="fw-bold d-block mb-2">Edit Data </label>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="edit_data" value="1" required>
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="edit_data" value="0">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="fw-bold d-block mb-2">Add Data</label>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="add_data" value="1" required>
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="add_data" value="0">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="fw-bold d-block mb-2">Active/Deactive Data</label>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="activate_deactivate_data" value="1" required>
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="active_deactive_data" value="0">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            Save Action
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
 
                 </div>

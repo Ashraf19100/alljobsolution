@@ -194,6 +194,14 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'roleaction':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'actions/admin/useractionController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
     case 'showuser':
         if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/users/showuser.php';
@@ -202,7 +210,7 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
-        case 'companyList':
+    case 'companyList':
         if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/company/companylist.php';
         break;
