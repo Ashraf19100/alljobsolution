@@ -1,3 +1,5 @@
+
+
 class Validation {
 
     // Email Validation
@@ -405,6 +407,126 @@ if(updatePassForm){
 
     });
 }
+
+// //Action Permission Validation
+// async function actionValidation(id) {
+//     const response = await fetch(
+//         `validator/actionPermitCheck.php?id=${id}`
+//     );
+//     const data = await response.json();
+//     if(data != null){
+//         let permit = [];
+//         permit['delete'] = data.delete_data;
+//         permit['add'] = data.add_data;
+//         permit['edit'] = data.edit_data;
+//         permit['activate_deactivate'] = data.activate_deactivate_data;
+//         permit['assigned_role'] = data.assigned_role;
+        
+//         return permit;
+//     }else{
+//        return null; 
+//     }
+// }
+
+// const addPermit = document.getElementById("addPermit");
+// const deletePermit = document.getElementById("deletePermit");
+// const editPermit = document.getElementById("editPermit");
+// const AssignedPermit = document.getElementById("AssignedPermit");
+// const actv_dactvPermit = document.getElementById("actv_dactvPermit");
+
+// if(addPermit){
+//     console.log(0);
+//     addPermit.addEventListener('click', async function(e) {
+//         e.preventDefault();
+//         const permit = await actionValidation(sessionUserId);
+//         if(permit != null){
+//             if(permit.add == 0){
+//             alert('you are not permitted to ADD data');
+                
+//             }else{
+//                 window.location.href = this.href;
+//             }
+//         }else{
+//             alert('you are not permitted to ADD data');
+//         }
+        
+//     })
+// }
+// if(AssignedPermit){
+//     console.log(0);
+//     document.querySelectorAll(".AssignedPermit").forEach(link => {
+//         AssignedPermit.addEventListener('click', async function(e) {
+//             e.preventDefault();
+//             const permit = await actionValidation(sessionUserId);
+//             if(permit != null){
+//                 if(permit.assigned_role == 0){
+//                 alert('you are not permitted to Manage Users data');
+                    
+//                 }else{
+//                     window.location.href = this.href;
+//                 }
+//             }else{
+//                 alert('you are not permitted to Manage Users data');
+                
+//             }
+            
+//         });
+//     });
+// }
+// if(actv_dactvPermit){
+//     console.log(0);
+//     actv_dactvPermit.addEventListener('click', async function(e) {
+//         e.preventDefault();
+//         const permit = await actionValidation(sessionUserId);
+//         if(permit != null){
+//             if(permit.activate_deactivate == 0){
+//             alert('you are not permitted to Active or Deactivate data');
+                
+//             }else{
+//                 window.location.href = this.href;
+//             }
+//         }else{
+//             alert('you are not permitted to Active or Deactivate data');
+//         }
+        
+//     })
+// }
+// if(editPermit){
+//     console.log(0);
+//     editPermit.addEventListener('click', async function(e) {
+//         e.preventDefault();
+//         const permit = await actionValidation(sessionUserId);
+//         if(permit != null){
+//             if(permit.edit == 0){
+//             alert('you are not permitted to edit data');
+                
+//             }else{
+//                 window.location.href = this.href;
+//             }
+//         }else{
+//             alert('you are not permitted to edit data');
+//         }
+        
+//     })
+// }
+// if(deletePermit){
+//     console.log(0);
+//     deletePermit.addEventListener('click', async function(e) {
+//         e.preventDefault();
+//         const permit = await actionValidation(sessionUserId);
+//         if(permit != null){
+//             if(permit.delete == 0){
+//             alert('you are not permitted to Delete data');
+                
+//             }else{
+//                 window.location.href = this.href;
+//             }
+//         }else{
+//             alert('you are not permitted to delete data');
+//         }
+        
+//     })
+// }
 // function showMessageExp(msg, focusId, theForm) {
 //     alert(msg);
 //     if (focusId && $(theForm).find('.' + focusId).length && $(theForm).find('.' + focusId).is(':visible')) {

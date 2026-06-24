@@ -1,8 +1,26 @@
 <?php
    require_once 'database/database.php';
-    $limit='';
+   require_once 'validator/validation.php';
     
     $adminuser = new datamodel();
+    $actionvalidate = new validation();
+    if(isset($_GET['action'])){
+        if($_SESSION['role'] != 'admin'){
+            $usrChck=$actionvalidate->actionPermitValidate($_GET['action'],$_SESSION['id']);
+            if($usrChck['result'] == false){
+                header("Location:../alljobsolution/index.php?page=userslist&message=You are not allowed to ". $_GET['action']."Data");
+                exit;
+            }
+        }
+    }
+    if(isset($_GET['delete'])){ 
+        $adminuser->deleteData('users', $_GET['delete']);        
+        header("Location: ../alljobsolution/index.php?page=userslist&message='deleted the the row'");
+        exit;
+    }
+
+
+
     if(isset($_GET['status'])){
         if($_GET['state']== 1){
             $state = 0;
@@ -102,7 +120,9 @@
                             <i class="fa-solid fa-user-plus"></i> Add User
                         </button>
                     </div>
-
+                    <?php if(isset($_GET['message'])){ 
+                        echo  '<div class="alert alert-danger text-center">'.$_GET['message'].'</div>';
+                    } ?>
                     <!-- Search & Filter -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -202,9 +222,10 @@
                                                     <span class="badge <?= ($user['status'] == 1) ? 'bg-success' : 'bg-danger' ?>"><?= ($user['status'] == 1) ? 'Active' : 'Inactive' ?></span>
                                                 </td>
                                                 <td>
-                                                    <a href="index.php?page=showuser&actvui=<?=$user['id']?>&<?=uniqid();?>" class="btn btn-sm btn-info mb-1">Show</a>
-                                                    <a href="index.php?page=userslist&status=<?=$user['id']?>&<?=uniqid();?>&state=<?=$user['status']?>" class="btn btn-sm <?= ($user['status'] == 1) ? 'btn-danger' : 'btn-success' ?> mb-1"><?= ($user['status'] == 1) ? 'Deactivate' : 'Activate' ?></a>
-                                                    <a href="" class="btn btn-sm btn-danger mb-1">Delete</a>
+                                                    <a href="index.php?page=showuser&actvui=<?=$user['id']?>&<?=uniqid();?>&action=assigned_role" class="btn btn-sm btn-info mb-1 <?= $_SESSION['role'] == 'admin' ? '' :'AssignedPermit' ?>" id="<?= $_SESSION['role'] == 'admin' ? '' :'AssignedPermit' ?>" >Manage User</a>
+                                                    <a href="index.php?page=userslist&status=<?=$user['id']?>&<?=uniqid();?>&state=<?=$user['status']?>&action=activate_deactivate_data" class="<?= $_SESSION['role'] == 'admin' ? '' :'actv_dactvPermit' ?> btn btn-sm <?= ($user['status'] == 1) ? 'btn-danger' : 'btn-success' ?> mb-1" id="<?= $_SESSION['role'] == 'admin' ? '' :'actv_dactvPermit' ?>" ><?= ($user['status'] == 1) ? 'Deactivate' : 'Activate' ?></a>
+                                                    <a href="index.php?page=userslist&delete=<?= $user['id']?>&<?=uniqid()?>&<?=uniqid()?>&action=delete_data" class="btn btn-sm btn-danger mb-1 <?= $_SESSION['role'] == 'admin' ? '' :'deletePermit' ?>" id="<?= $_SESSION['role'] == 'admin' ? '' :'deletePermit' ?>" onclick=" return confirm('Are you sure You want to delete the data')" >Delete</a>
+                                                    
                                                 </td>
                                             </tr>
     

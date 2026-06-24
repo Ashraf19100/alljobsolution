@@ -160,6 +160,19 @@ class validation{
 
         
     }
+    public function actionPermitValidate($action,$id){
+        $validationinfo = new datamodel();
+        $actionCheck = $validationinfo->getSingleData('action_permission', ' * ', ' WHERE user_id ='. $id );   
+        
+        if($actionCheck->$action == 0){
+            return [
+                'result' => false,
+                'message' => 'you are not Permitted to'. $action.' data'
+            ];
+        }else{
+            return['result' => true];
+        }
+    }
 }
 
 

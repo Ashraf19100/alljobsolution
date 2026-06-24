@@ -173,6 +173,15 @@
             }
         }
 
+        public function actionPermit($id){
+            $sql = "SELECT * FROM `action_permission` WHERE user_id = $id";
+            $result = $this->connect()->query($sql);
+    
+            return $result -> fetch_object();
+            
+        }
+
+
     }
 
 ?>

@@ -2,9 +2,21 @@
 
 <?php
    require_once 'database/database.php';
-    $limit='';
+   require_once 'validator/validation.php';
+
+    
     
     $showuser = new datamodel();
+    $actionvalidate = new validation();
+    if(isset($_GET['action'])){
+        if($_SESSION['role'] != 'admin'){
+            $usrChck=$actionvalidate->actionPermitValidate($_GET['action'],$_SESSION['id']);
+            if($usrChck['result'] == false){
+                header("Location:../alljobsolution/index.php?page=userslist&message=You are not allowed to manage user data");
+                exit;
+            }
+        }
+    }
     $WHERE = " WHERE id =".$_GET['actvui'];
     $WHEREid = " WHERE user_id =".$_GET['actvui'];
     $userinfo = $showuser->getSingleData('users',' * ', $WHERE);
@@ -19,7 +31,6 @@
         $statusui = " WHERE id =".$_GET['status'];
         $showuser->updateData('users', $status, $statusui );
     }
-    
     
 
 ?>
