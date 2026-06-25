@@ -212,19 +212,22 @@ document.getElementById('signature').addEventListener('change', function() {
 });
 </script>
 <script>
-document.getElementById('fileInput').addEventListener('change', function() {
+if(document.getElementById('fileInput')){
+    document.getElementById('fileInput').addEventListener('change', function() {
 
-    const file = this.files[0];
+        const file = this.files[0];
 
-    if(file){
+        if(file){
 
-        document.getElementById('resuminfo').innerHTML =
-            '<strong>File:</strong> ' + file.name +
-            '<br><strong>Size:</strong> ' +
-            (file.size / 1024).toFixed(2) + ' KB';
-    }
+            document.getElementById('resuminfo').innerHTML =
+                '<strong>File:</strong> ' + file.name +
+                '<br><strong>Size:</strong> ' +
+                (file.size / 1024).toFixed(2) + ' KB';
+        }
 
-});
+    });
+}    
+
 </script>
 <script>
     const sessionUserId = <?= json_encode($_SESSION['id'] ?? null) ?>;

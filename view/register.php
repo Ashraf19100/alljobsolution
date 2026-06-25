@@ -57,7 +57,6 @@
                             <label for="role">User Type</label>
                             <select name="role" class="w-100 form-select">
                                 <option value="job_seeker">Job Seeker</option>
-                                <option value="employer">Employer</option>
                             </select>
                         </div>
 

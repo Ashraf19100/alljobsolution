@@ -178,5 +178,30 @@ if(document.getElementById('DataTable')){
     paginationWithRowlimit('DataTable','totalrow', 'DatapaginationID', 'nxtbtn', 'prevbtn');
 }
 
+//search data
 
+
+    function searchData(cardclass,  value){
+    const divsCards = document.querySelectorAll(`.${cardclass}`);
+
+    divsCards.forEach(card => {
+        const found = card.innerText.toLowerCase().includes(value);
+        card.style.display = (value === '' || value === 'all' || found) ? '' : 'none';
+        card.style.witdh = (value === '' || value === 'all' || found) ? '' : '0px';
+        card.style.height = (value === '' || value === 'all' || found) ? '' : '0px';
+
+    });
+    
+    
+    }
+
+    if( document.getElementById('searchDatainput')){
+        console.log(0);
+    const searchinput = document.getElementById('searchDatainput');
+        
+        searchinput.addEventListener('change', function () {
+            const value = searchinput.value.trim().toLowerCase();
+            searchData('searchcard', value);
+        });
+    }
 

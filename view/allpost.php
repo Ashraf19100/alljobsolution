@@ -53,7 +53,7 @@ $crnt_page= isset($_GET['page']) ?  $_GET['page'] : '' ;
     
     <div class="row">
     <?php foreach($result as $job) {?>
-                <div class="col-md-3 my-2">
+                <div class="col-md-3 my-2 searchcard">
                     <div class="card job-card h-100 border">
                         <div class="card-body">
                             <?php
