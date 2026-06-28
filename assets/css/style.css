@@ -330,3 +330,66 @@ a:hover {
     overflow: scroll;
     scrollbar-width: none;
 }
+.page-header{
+    background:linear-gradient(135deg,#0E3F70,#0a58ca);
+    color:#fff;
+    padding:30px 0;
+    margin-bottom:40px;
+}
+
+.page-title{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.page-description{
+    max-width:700px;
+    font-size:17px;
+    opacity:.9;
+    margin-bottom:0;
+}
+
+.breadcrumb{
+    background:none;
+    padding:0;
+}
+
+.breadcrumb-item a{
+    color:#dbe8ff;
+    text-decoration:none;
+}
+
+.breadcrumb-item.active{
+    color:#fff;
+}
+
+.breadcrumb-item+.breadcrumb-item::before{
+    color:#dbe8ff;
+}
+
+@media(max-width:768px){
+
+    .page-header{
+        padding:50px 0;
+        text-align:center;
+    }
+
+    .page-title{
+        font-size:30px;
+    }
+
+    .page-description{
+        font-size:15px;
+    }
+
+    .breadcrumb{
+        justify-content:center;
+    }
+
+}
+
+
+        
+
+        

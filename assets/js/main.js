@@ -179,8 +179,6 @@ if(document.getElementById('DataTable')){
 }
 
 //search data
-
-
     function searchData(cardclass,  value){
     const divsCards = document.querySelectorAll(`.${cardclass}`);
 
@@ -202,6 +200,38 @@ if(document.getElementById('DataTable')){
         searchinput.addEventListener('change', function () {
             const value = searchinput.value.trim().toLowerCase();
             searchData('searchcard', value);
+        });
+    }
+
+
+///Multi page data button function
+
+    const CirculsecBtn=document.getElementById('circularBtn');
+    const AllpostsecBtn=document.getElementById('postBtn');
+
+    const circulSection = document.getElementById('Circular_section');
+    const allPostSection = document.getElementById('Allpost_section');
+    circulSection.style.display = '';
+            allPostSection.style.display = 'none';
+    if(CirculsecBtn){
+        console.log('hi');
+        CirculsecBtn.addEventListener('click', ()=>{
+            circulSection.style.display = '';
+            allPostSection.style.display = 'none';
+            
+            CirculsecBtn.classList.add('btn-primary');
+            AllpostsecBtn.classList.remove('btn-primary');
+            CirculsecBtn.classList.remove('btn-outline-dark');
+        });
+    }
+    if(AllpostsecBtn){
+        AllpostsecBtn.addEventListener('click', ()=>{
+            circulSection.style.display = 'none';
+            allPostSection.style.display = '';
+
+            AllpostsecBtn.classList.add('btn-primary');
+            CirculsecBtn.classList.add('btn-outline-dark');
+            CirculsecBtn.classList.remove('btn-primary');
         });
     }
 

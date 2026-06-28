@@ -106,6 +106,14 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
             exit;
         }
+    case 'jobspercircular':
+        if(isset($_SESSION['email'])){
+        require_once 'view/AllPosts/jobbycircular.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=login&message='please login first'");
+            exit;
+        }
         
     case 'imageupload-submit':
         if(isset($_SESSION['email'])){

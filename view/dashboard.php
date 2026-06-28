@@ -27,7 +27,7 @@ $totalcompanies = $admin_dashboard->getData('companies',' COUNT(*) as total ');
 
                         
                     <?php
-                        require_once 'view/allpost.php';
+                        require_once 'view/AllPosts/allpost.php';
                     }else{ ?> 
                         <div class="container py-4">
 

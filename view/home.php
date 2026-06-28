@@ -234,7 +234,7 @@
         </div>
     </section>
 				<div class="job-post container">
-					<?php require_once 'view/allpost.php' ?>
+					<?php require_once 'view/AllPosts/allpost.php' ?>
 				</div>
 				<?php } ?>
 			</div>
