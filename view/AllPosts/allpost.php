@@ -1,21 +1,9 @@
 <?php
     require_once 'database/database.php';
-    $allpostlimit=8;
-    $allpostpagn = isset($_GET['pagination']) ? (int)$_GET['pagination'] : 1;
-    $allpostoffset = ($allpostpagn - 1)*$allpostlimit;
+    
     $alljob = new datamodel();
-
-    $totalpost = $alljob->getData('jobs',' COUNT(*) as total ');
-    $postRows = $totalpost[0]['total'];
-    $totalpgn= ceil( $postRows / $allpostlimit);
-    $jobpostresult = $alljob->getData('jobs',' * ', '', $allpostlimit, $allpostoffset);
-    $crnt_page= isset($_GET['page']) ?  $_GET['page'] : '' ;
-
-
-    $totalcircul = $alljob->getData('jobs',' COUNT(*) as total ');
-    $circulRows = $totalcircul[0]['total'];
-    $totalpgncircul= ceil( $circulRows / $allpostlimit);
-    $jobCirculresult = $alljob->getData('job_circulars',' * ', ' WHERE status= "active"', $allpostlimit, $allpostoffset);
+    $jobpostresult = $alljob->getData('jobs',' * ', '');
+    $jobCirculresult = $alljob->getData('job_circulars',' * ', ' WHERE status= "active"');
 
 
 
@@ -46,31 +34,13 @@
 
         </div>
     </div>
+    
     <div id="Circular_section">
+            
+        <div class="jobs">
             <?php if(!empty($_GET['page']) && $_GET['page'] != 'home'){ ?> 
             <nav>
-                <ul class="pagination justify-content-center py-3">
-
-                    <!-- Prev Button -->
-                    <li class="pagination-item <?= ($allpostpagn <= 1) ? 'disabled' : '' ?>">
-                        <a class="pagination-link " href="index.php?page=<?=$crnt_page?>&pagination=<?= ($allpostpagn <= 1) ? 1 : $allpostpagn - 1 ?>" >Prev</a>
-                    </li>
-
-                    <!-- pagination Numbers -->
-                    <?php for($i = 1; $i <= $totalpgn; $i++): ?>
-                        <li class="pagination-item <?= ($allpostpagn == $i) ? 'active' : '' ?>">
-                            <a class="pagination-link" href="index.php?page=<?=$crnt_page?>&pagination=<?= $i ?>">
-                                <?= $i ?>
-                            </a>
-                        </li>
-                    <?php endfor; ?>
-
-                    <!-- Next Button -->
-                    <li class="pagination-item <?= ($allpostpagn >= $totalpgn) ? 'disabled' : '' ?>">
-                        <a class="pagination-link" href="index.php?page=<?=$crnt_page?>&pagination=<?= ($allpostpagn >= $totalpgn) ? $totalpgn: $allpostpagn + 1 ?>">Next</a>
-                    </li>
-
-                </ul>
+                <ul id="pagination" class="pagination justify-content-center"></ul>
             </nav>
             <?php } else{ ?> 
                         <div class="d-flex align-item-center justify-content-between my-2">
@@ -78,12 +48,10 @@
                             <a href="index.php?page=dashboard" class="btn btn-success px-4 text-capitalize">See all <i class="fa fa-arrow-right me-2   text-light"></i> </a>
                         </div>
             <?php } ?>
-        <div class="jobs">
-            
             <div class="row">
                 
             <?php foreach($jobCirculresult as $Circular) {?>
-                        <div class="col-md-3 my-2 searchcard">
+                        <div class="col-md-3 my-2 searchcard card-item">
                             <div class="card job-card h-100 border">
                                 <div class="card-body">
                                     <?php
@@ -117,7 +85,7 @@
 
                                 <div class="card-footer bg-white border-0">
                                     <a href="index.php?page=jobspercircular&circular=<?= $Circular['id']?>&<?=uniqid()?>" class="btn btn-primary w-100">
-                                        Apply Now
+                                        see available position
                                     </a>
                                 </div>
                             </div>
@@ -128,30 +96,11 @@
         </div>
     </div>
     <div id="Allpost_section">
-        <?php if(!empty($_GET['page']) && $_GET['page'] != 'home'){ ?> 
+        
+        <div class="jobs">
+            <?php if(!empty($_GET['page']) && $_GET['page'] != 'home'){ ?> 
             <nav>
-                <ul class="pagination justify-content-center py-3">
-
-                    <!-- Prev Button -->
-                    <li class="pagination-item <?= ($allpostpagn <= 1) ? 'disabled' : '' ?>">
-                        <a class="pagination-link " href="index.php?page=<?=$crnt_page?>&pagination=<?= ($allpostpagn <= 1) ? 1 : $allpostpagn - 1 ?>" >Prev</a>
-                    </li>
-
-                    <!-- pagination Numbers -->
-                    <?php for($i = 1; $i <= $totalpgn; $i++): ?>
-                        <li class="pagination-item <?= ($allpostpagn == $i) ? 'active' : '' ?>">
-                            <a class="pagination-link" href="index.php?page=<?=$crnt_page?>&pagination=<?= $i ?>">
-                                <?= $i ?>
-                            </a>
-                        </li>
-                    <?php endfor; ?>
-
-                    <!-- Next Button -->
-                    <li class="pagination-item <?= ($allpostpagn >= $totalpgn) ? 'disabled' : '' ?>">
-                        <a class="pagination-link" href="index.php?page=<?=$crnt_page?>&pagination=<?= ($allpostpagn >= $totalpgn) ? $totalpgn: $allpostpagn + 1 ?>">Next</a>
-                    </li>
-
-                </ul>
+                <ul id="paginationjobs" class="pagination justify-content-center"></ul>
             </nav>
             <?php } else{ ?> 
                         <div class="d-flex align-item-center justify-content-between my-2">
@@ -159,12 +108,10 @@
                             <a href="index.php?page=dashboard" class="btn btn-success px-4 text-capitalize">See all <i class="fa fa-arrow-right me-2   text-light"></i> </a>
                         </div>
             <?php } ?>
-        <div class="jobs">
-            
             <div class="row">
                 
             <?php foreach($jobpostresult as $job) {?>
-                        <div class="col-md-3 my-2 searchcard">
+                        <div class="col-md-3 my-2 searchcard card-item-job">
                             <div class="card job-card h-100 border">
                                 <div class="card-body">
                                     <?php

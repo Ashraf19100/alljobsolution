@@ -194,7 +194,7 @@ if(document.getElementById('DataTable')){
     }
 
     if( document.getElementById('searchDatainput')){
-        console.log(0);
+        
     const searchinput = document.getElementById('searchDatainput');
         
         searchinput.addEventListener('change', function () {
@@ -205,16 +205,17 @@ if(document.getElementById('DataTable')){
 
 
 ///Multi page data button function
-
-    const CirculsecBtn=document.getElementById('circularBtn');
+const CirculsecBtn=document.getElementById('circularBtn');
     const AllpostsecBtn=document.getElementById('postBtn');
 
     const circulSection = document.getElementById('Circular_section');
     const allPostSection = document.getElementById('Allpost_section');
-    circulSection.style.display = '';
-            allPostSection.style.display = 'none';
+    
     if(CirculsecBtn){
-        console.log('hi');
+        
+    circulSection.style.display = '';
+    allPostSection.style.display = 'none';
+        
         CirculsecBtn.addEventListener('click', ()=>{
             circulSection.style.display = '';
             allPostSection.style.display = 'none';
@@ -235,3 +236,87 @@ if(document.getElementById('DataTable')){
         });
     }
 
+//card pagination
+
+
+function divitempagination(cardID, paginationnav){
+    function createCardsPagination() {
+
+    cardpagination.innerHTML = "";
+
+    const totalPages = Math.ceil(cards.length / cardsPerPage);
+    console.log(cards.length);
+    // Previous Button
+    const prev = document.createElement("li");
+    prev.className = `page-item ${presentPage === 1 ? "disabled" : ""}`;
+
+    prev.innerHTML = `<a href="#" class="page-link">Previous</a>`;
+
+    prev.onclick = function(e){
+        e.preventDefault();
+        if(presentPage > 1){
+            displayCards(presentPage - 1);
+        }
+    };
+
+    cardpagination.appendChild(prev);
+
+    // Page Numbers
+    for(let i = 1; i <= totalPages; i++){
+
+        const li = document.createElement("li");
+        li.className = `page-item ${presentPage === i ? "active" : ""}`;
+
+        li.innerHTML = `<a href="#" class="page-link">${i}</a>`;
+
+        li.onclick = function(e){
+            e.preventDefault();
+            displayCards(i);
+        };
+
+        cardpagination.appendChild(li);
+    }
+
+    // Next Button
+    const next = document.createElement("li");
+    next.className = `page-item ${presentPage === totalPages ? "disabled" : ""}`;
+
+    next.innerHTML = `<a href="#" class="page-link">Next</a>`;
+
+    next.onclick = function(e){
+        e.preventDefault();
+        if(presentPage < totalPages){
+            displayCards(presentPage + 1);
+        }
+    };
+
+    cardpagination.appendChild(next);
+
+    }
+    function displayCards(page) {
+        
+        presentPage = page;
+
+        const start = (page - 1) * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        cards.forEach((card, index) => {
+            if (index >= start && index < end) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        createCardsPagination();
+    }
+    const cards = document.querySelectorAll(`.${cardID}`);
+    const cardpagination = document.getElementById(`${paginationnav}`);
+
+    const cardsPerPage = 8;
+    let presentPage = 1;
+    displayCards(1);
+}
+
+divitempagination('card-item','pagination');
+divitempagination('card-item-job','paginationjobs');
