@@ -3,21 +3,10 @@
     
     $job_circulars = new datamodel();
     $today = new DateTime();
-    $allcirculars = $job_circulars->getData('job_circulars',' * ');
+    
     $circular_companies = $job_circulars->getData('companies',' * ', '');
     $jobCirculars = $job_circulars->getData('job_circulars',' * ', " WHERE status = 'active'");
-    if(!empty($allcirculars)){
-        foreach($allcirculars as $circul){
-            $deadline = new DateTime($circul['apply_last_date']);
-        
-            if( strtotime($circul['apply_last_date']) < time() && $circul['status'] != 'expired' ){
-                
-                $cir_col['status'] = 'expired';
-                $job_circulars->updateData('job_circulars', $cir_col , " WHERE id =".$circul['id']);
-                
-            }
-        }
-    }
+   
     
 
 ?>
@@ -94,9 +83,7 @@
                             
                             <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                                 <h4 class="mb-0">Job Circulars</h4>
-                                <a href="add_job.php" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#job_circularsModal">
-                                    + Add New Circular
-                                </a>
+                                
                                 <div class="rowfilter d-flex">
                                         <label for="" class="px-2 text-center">Number of Rows</label>
                                         <select class="form-select w-auto" id="totalrow">
@@ -124,20 +111,6 @@
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" placeholder="Search Circulars ,date" id="searchFilter">
                                     </div>
-
-                                    <div class="col-md-2">
-                                        <select class="form-select">
-                                            <option value="">Circular Status</option>
-                                            <option>active</option>
-                                            <option>inactive</option>
-                                            <option>draft</option>
-                                            <option>expired</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-1 text-end">
-                                        <button class="btn btn-secondary">Reset</button>
-                                    </div>
                                 </div>
                                 <!-- Header Row -->
                                 <table class="table searchtableData table-bordered table-hover align-middle text-center" id="DataTable">
@@ -157,27 +130,27 @@
 
                                 
                                 <?php
-                                if(isset($allcirculars)){ foreach($allcirculars as $allcirculars){
+                                if(isset($jobCirculars )){ foreach($jobCirculars  as $jobCirculars ){
                                 ?>
                                 <tr>
-                                    <td><?php $circular_companie = $job_circulars->getSingleData('companies',' * ', ' WHERE id= '.$allcirculars['company_id']);
+                                    <td><?php $circular_companie = $job_circulars->getSingleData('companies',' * ', ' WHERE id= '.$jobCirculars ['company_id']);
                                     echo $circular_companie->company_name; ?></td>
-                                    <td><?=$allcirculars['circular_reference']?></td>
-                                    <td class="<?= $allcirculars['status'] == 'expired' ? 'text-danger' : '' ?>" ><?=$allcirculars['status']?></td>
+                                    <td><?=$jobCirculars ['circular_reference']?></td>
+                                    <td class="<?= $jobCirculars ['status'] == 'expired' ? 'text-danger' : '' ?>" ><?=$jobCirculars ['status']?></td>
                                     
-                                    <td><?= date(" d F Y", strtotime($allcirculars['published_date'])); ?></td>
-                                    <td><?= $allcirculars['expected_activation_date'] ? date(" d F Y h:i:s A", strtotime($allcirculars['expected_activation_date'])): 'null' ?></td>
+                                    <td><?= date(" d F Y", strtotime($jobCirculars ['published_date'])); ?></td>
+                                    <td><?= $jobCirculars ['expected_activation_date'] ? date(" d F Y h:i:s A", strtotime($jobCirculars ['expected_activation_date'])): 'null' ?></td>
                                     <td>
-                                        <?= $allcirculars['apply_last_date'] ? date(" d F Y h:i:s A", strtotime($allcirculars['apply_last_date'])): 'null' ?>
+                                        <?= $jobCirculars ['apply_last_date'] ? date(" d F Y h:i:s A", strtotime($jobCirculars ['apply_last_date'])): 'null' ?>
                                     </td>
 
                                     <td>
-                                        <?php if(isset($allcirculars['circular_doc'])){ echo '<a href="uploads/circulars/'.$allcirculars['circular_doc'].'" target="_blank" class="mb-1 btn btn-primary btn-sm">
+                                        <?php if(isset($jobCirculars ['circular_doc'])){ echo '<a href="uploads/circulars/'.$jobCirculars ['circular_doc'].'" target="_blank" class="mb-1 btn btn-primary btn-sm">
                                             View PDF
                                         </a>';}else{ echo "not uploaded";} ?>
                                         
-                                        <a href="index.php?page=job_circular_submit&activate=<?= $allcirculars['id']?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to Change the status')" class="btn btn-sm btn-success mb-1">Activate</a>
-                                        <a href="index.php?page=job_circular_submit&delete=<?= $allcirculars['id']?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-sm btn-danger mb-1">Delete</a>
+                                        <a href="index.php?page=job_circular_submit&cicular=<?= $jobCirculars ['id']?>&<?=uniqid()?>&<?=uniqid()?>" class="btn btn-sm btn-success mb-1">Creat Exam</a>
+                                        <a href="index.php?page=job_circular_submit&ciccular=<?= $jobCirculars ['id']?>&<?=uniqid()?>&<?=uniqid()?>" class="btn btn-sm btn-danger mb-1">Delete</a>
                                     </td>
                                 </tr>
                                 <?php } } ?>

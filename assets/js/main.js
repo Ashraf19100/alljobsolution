@@ -1,14 +1,4 @@
-$(document).ready(function ($) {
-	//meanmenu
-	$("#navbar nav").meanmenu();
-	  
-	  
-	//jQuery Sticky Area
-	  $(".sticky-area").sticky({
-		topSpacing: 0,
-	  });
-      
-});
+
 //Dependent Dropdown
 function DependentDropDown(sourceId, targetId, url, paramName){
     const sourceSelect = document.getElementById(sourceId);
@@ -205,37 +195,41 @@ if(document.getElementById('DataTable')){
 
 
 ///Multi page data button function
-const CirculsecBtn=document.getElementById('circularBtn');
-    const AllpostsecBtn=document.getElementById('postBtn');
+function multipageDataView(view_onebtnID, view_OneSectionID, view_twobtnID, view_twoSectionID){
+    const view_onebtn=document.getElementById(view_onebtnID);
+    const view_twobtn=document.getElementById(view_twobtnID);
 
-    const circulSection = document.getElementById('Circular_section');
-    const allPostSection = document.getElementById('Allpost_section');
+    const view_OneSection = document.getElementById(view_OneSectionID);
+    const view_twoSection = document.getElementById(view_twoSectionID);
     
-    if(CirculsecBtn){
+    if(view_onebtn){
         
-    circulSection.style.display = '';
-    allPostSection.style.display = 'none';
+    view_OneSection.style.display = '';
+    view_twoSection.style.display = 'none';
         
-        CirculsecBtn.addEventListener('click', ()=>{
-            circulSection.style.display = '';
-            allPostSection.style.display = 'none';
+        view_onebtn.addEventListener('click', ()=>{
+            view_OneSection.style.display = '';
+            view_twoSection.style.display = 'none';
             
-            CirculsecBtn.classList.add('btn-primary');
-            AllpostsecBtn.classList.remove('btn-primary');
-            CirculsecBtn.classList.remove('btn-outline-dark');
+            view_onebtn.classList.add('btn-primary');
+            view_twobtn.classList.remove('btn-primary');
+            view_onebtn.classList.remove('btn-outline-dark');
         });
     }
-    if(AllpostsecBtn){
-        AllpostsecBtn.addEventListener('click', ()=>{
-            circulSection.style.display = 'none';
-            allPostSection.style.display = '';
+    if(view_twobtn){
+        view_twobtn.addEventListener('click', ()=>{
+            view_OneSection.style.display = 'none';
+            view_twoSection.style.display = '';
 
-            AllpostsecBtn.classList.add('btn-primary');
-            CirculsecBtn.classList.add('btn-outline-dark');
-            CirculsecBtn.classList.remove('btn-primary');
+            view_twobtn.classList.add('btn-primary');
+            view_onebtn.classList.add('btn-outline-dark');
+            view_onebtn.classList.remove('btn-primary');
         });
     }
-
+}
+    
+multipageDataView('circularBtn', 'Circular_section', 'postBtn', 'Allpost_section');
+multipageDataView('gridViewBtn', 'gridList', 'tableViewBtn', 'tableList');
 //card pagination
 
 

@@ -348,7 +348,15 @@ switch ($page) {
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
-        }            
+        }    
+    case 'examManage':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'view/admin/Admit_exam_manage/exam.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }        
     case 'logout':
         require_once 'actions/logoutController.php';
         break;

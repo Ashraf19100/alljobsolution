@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="container my-2">
   <form method="" class="d-flex justify-content-center">
     <div class="input-group w-75 shadow-sm">
       <input type="text" name="search" class="form-control" id="searchDatainput" placeholder="Search jobs, circulars, company, title, location (e.g. gov, Dhaka, remote)">

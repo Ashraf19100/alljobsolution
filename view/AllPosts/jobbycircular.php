@@ -17,27 +17,23 @@ $availableposts = $availablepostbycircular->getData('jobs', ' * ', ' WHERE post_
         <?php require "layouts/sidemenu.php" ?>
             <div class="col-md-10">
                 <div class="content"> 
-                    <div class="search_area">
-                        <?php require "layouts/searcharea.php" ?>
-                    </div>
+                    
                     <!-- Page Header -->
                     <section class="page-header">
                         <div class="container">
                             <h1 class="page-title">Available Position</h1>
-                            <p class="page-description">
-                                View complete job information including company details,
-                                requirements, responsibilities, benefits, and application process.
-                            </p>
                             <nav aria-label="breadcrumb">
+                                <label for="">
+                                    <p class="page-description">
+                                        Chosse View Type
+                                    </p>
+                                </label>
                                 <ol class="breadcrumb mb-2">
                                     <li class="breadcrumb-item">
-                                        <a href="#" class="px-3 rounded btn-light text-dark" >List</a>
-                                    </li>
-                                    <li class="breadcrumb-item">
-                                        <a href="#" class="px-3 rounded btn-light text-dark">Grid</a>
+                                        <a href="#" class="px-3 rounded btn-light text-dark" id="gridViewBtn" >Grid</a>
                                     </li>
                                     <li class="breadcrumb-item active">
-                                        <a href="#" class="px-3 rounded btn-light text-dark">Table</a>
+                                        <a href="#" class="px-3 rounded btn-light text-dark" id="tableViewBtn">Table</a>
                                         
                                     </li>
                                 </ol>
@@ -45,7 +41,10 @@ $availableposts = $availablepostbycircular->getData('jobs', ' * ', ' WHERE post_
 
                         </div>
                     </section>   
-                    <section id="gridList ">
+                    <section id="gridList">
+                        <div class="search_area">
+                            <?php require "layouts/searcharea.php" ?>
+                        </div>
                         <nav class="mt-4">
                             <ul id="pagination" class="pagination justify-content-center"></ul>
                         </nav>
@@ -102,7 +101,74 @@ $availableposts = $availablepostbycircular->getData('jobs', ' * ', ' WHERE post_
                         </div>
                     </section>
                     <section id="tableList">
+                        <div class="card shadow">
+                            
+                            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0"></h4>
+                                <div class="rowfilter d-flex">
+                                    <label for="" class="px-2 text-center">Number of Rows</label>
+                                    <select class="form-select w-auto" id="totalrow">
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="35">35</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pagination_div my-2 d-flex justify-content-center align-item-center">
+                                    <div class="d-flex pagination">
+                                        <button id="prevbtn" class="btn btn-warning">previous</button>
+                                        <div id="DatapaginationID"></div>
+                                        <button id="nxtbtn" class="btn btn-warning" >next</button>
+                                    </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- filter row -->
+                                <div class="row mb-3 d-flex align-items-center justify-content-center">
+                                    <div class="col-md-10 d-flex">
+                                        <input type="text" class="form-control" placeholder="Search title,salary,location, job type ,date" id="searchFilter"><button class="btn btn-info text-white" disabled><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    </div>
+                                </div>
+                                <!-- Header Row -->
+                                <table class="table searchtableData table-bordered table-hover align-middle text-center" id="DataTable">
+                                    <thead >
+                                        <tr>
+                                        <th>Title</th>
+                                        <th>Salary</th>
+                                        <th>Location</th>
+                                        <th>Deadline</th>
+                                        <th >Type</th>
+                                        <th >Actions</th>
+                                        </tr>
+                                    </thead>
+                                <tbody>
 
+                                
+                                <?php
+                                foreach($availableposts as $availablepost){
+                                ?>
+                                <tr>
+                                    <td><?=$availablepost['title']?></td>
+                                    <td><?=$availablepost['salary']?></td>
+                                    <td><?=$availablepost['location']?></td>
+                                    <td><?= date(" d F Y", strtotime($availablepost['deadline'])); ?></td>
+                                    <td><?=$availablepost['job_type']?></td>
+
+                                    <td>
+                                        <a href="index.php?page=jobdetails&job_id=<?= $availablepost['id']?>" class="btn btn-primary w-100">
+                                            Apply Now
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </section>
                     <div class="row">
 

@@ -68,7 +68,18 @@ require_once 'database/database.php';
                         <li><a class="nav-link text-muted" href="index.php?page=userslist">user list</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=postjob">Post job list</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=jobcirculars">Create Circular</a></li>
-                        <li><a class="nav-link text-muted" href="index.php?page=admitcard">Admit Card action</a></li>
+                        <li class="nav-item "><a class="nav-link text-muted d-flex justify-content-between align-items-center"  data-bs-toggle="collapse" href="#ExamManage">Manage Exam & Admit<i class="fa fa-angle-down"></i></a>
+                            <div class="collapse" id="ExamManage">
+                                <ul class="nav  flex-column" >
+                                    <li><a class="nav-link text-muted" href="index.php?page=examManage">Create Exam</a></li>
+                                    <li><a class="nav-link text-muted" href="index.php?">Set Exam Venue and Date</a></li>
+                                    <li><a class="nav-link text-muted" href="index.php?">Assigned Venue</a></li>
+                                    <li><a class="nav-link text-muted" href="index.php?">Admit Card</a></li>
+
+                                </ul>
+                            </div>
+                            
+                        </li>
                         <li><a class="nav-link text-muted" href="index.php?page=companyList">Comapnies</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=applications">Applications</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=jobcategory">Job Category</a></li>

@@ -1,3 +1,7 @@
+<?php
+require_once 'database/database.php';
+$cvTamplate= new datamodel();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -158,10 +162,10 @@
         </tr>
         <?php foreach($education as $education){?> 
         <tr>
-            <td><?= $education['exam_name'] ?></td>
+            <td><?php $exam_degree_name = $cvTamplate->getSingleData('bachelor_degrees', ' * ', " WHERE id=".$education['exam_name']) ?><?= $exam_degree_name->degree_name?></td>
             <td><?= $education['uni_board'] ?></td>
             <td><?= $education['roll_id'] ?></td>
-            <td><?= $education['subject'] ?></td>
+            <td><?php $exam_subject = $cvTamplate->getSingleData('bachelor_departments', ' * ', " WHERE id=".$education['subject']) ?><?= $exam_subject->department_name ?? ''?></td>
             <td><?= $education['result'] ?></td>
             <td><?= $education['passing_year'] ?></td>
         </tr>
@@ -174,7 +178,7 @@
 <div class="section">
     <h3>Experience</h3>
     <table>
-        <?php foreach($experience as $experience){?> 
+        <?php if(isset($experience)){ foreach($experience as $experience){?> 
         <tr><th>Company</th><td>ABC Company</td></tr>
         <tr><th>Job Title</th><td>Web Developer</td></tr>
         <tr><th>Type</th><td>IT</td></tr>
@@ -182,7 +186,7 @@
         <tr><th>End</th><td>Present</td></tr>
         <tr><th>Location</th><td>Dhaka</td></tr>
         <tr><th>Description</th><td>Worked on web applications using PHP and JavaScript.</td></tr>
-        <?php } ?>
+        <?php }  } ?>
     </table>
 </div>
 
