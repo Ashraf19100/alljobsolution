@@ -71,10 +71,10 @@ require_once 'database/database.php';
                         <li class="nav-item "><a class="nav-link text-muted d-flex justify-content-between align-items-center"  data-bs-toggle="collapse" href="#ExamManage">Manage Exam & Admit<i class="fa fa-angle-down"></i></a>
                             <div class="collapse" id="ExamManage">
                                 <ul class="nav  flex-column" >
-                                    <li><a class="nav-link text-muted" href="index.php?page=examManage">Create Exam</a></li>
-                                    <li><a class="nav-link text-muted" href="index.php?">Set Exam Venue and Date</a></li>
-                                    <li><a class="nav-link text-muted" href="index.php?">Assigned Venue</a></li>
-                                    <li><a class="nav-link text-muted" href="index.php?">Admit Card</a></li>
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=examManage">Create Exam</a></li>
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=examCenterManage">Set Exam Venue and Date</a></li>
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?">Assigned Venue</a></li>
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?">Admit Card</a></li>
 
                                 </ul>
                             </div>

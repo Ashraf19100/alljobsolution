@@ -149,65 +149,13 @@
                                             View PDF
                                         </a>';}else{ echo "not uploaded";} ?>
                                         
-                                        <a href="index.php?page=job_circular_submit&cicular=<?= $jobCirculars ['id']?>&<?=uniqid()?>&<?=uniqid()?>" class="btn btn-sm btn-success mb-1">Creat Exam</a>
-                                        <a href="index.php?page=job_circular_submit&ciccular=<?= $jobCirculars ['id']?>&<?=uniqid()?>&<?=uniqid()?>" class="btn btn-sm btn-danger mb-1">Delete</a>
+                                        <a href="index.php?page=examCreate&circular=<?= $jobCirculars ['id']?>&<?=uniqid()?>&<?=uniqid()?>&ref=<?=$jobCirculars['circular_reference']?>" class="btn btn-sm btn-success mb-1">Create Exam</a>
+                                        
                                     </td>
                                 </tr>
                                 <?php } } ?>
                                 </tbody>
                                 </table>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="job_circularsModal" tabindex="-1">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                                <div class="modal-content rounded-4">
-                                    <div class="text-center mt-5">
-                                        <h3 class="alert bg-primary text-center fw-bold text-dark ">
-                                            ADD NEW CIRCULAR
-                                        </h3>
-                                    </div>
-                                        <form action="index.php?page=job_circular_submit" method="POST" class="container my-5" enctype="multipart/form-data">
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3 ">
-                                                    <label class="form-label fw-bold">Company</label>
-                                                    <select name="company_id" class="form-select" required>
-                                                        <option value="">Select Company</option>
-                                                        <?php foreach($circular_companies as $companie){ ?>
-                                                        <option value="<?= $companie['id'] ?> "><?= $companie['company_name'] ?></option>
-                                                        <?php } ?>    
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 mb-3 ">
-                                                    <label class="form-label fw-bold">Circular reference</label>
-                                                    <input type="text" name="circular_reference" class="form-control" required>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">Circular Documents</label>
-                                                    <input type="file" name="circular_doc" class="form-control" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-bold">published Date</label>
-                                                    <input type="datetime-local" name="published_date" class="form-control" placeholder="e.g. 25000" required>
-                                                    
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-bold">Expected Activation Date</label>
-                                                    <input type="datetime-local" name="expected_activation_date" class="form-control" placeholder="e.g. 25000" required>    
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-bold">Application Last Date</label>
-                                                    <input type="datetime-local" name="apply_last_date" class="form-control" placeholder="e.g. 25000" required>    
-                                                </div>
-                                            </div>
-                                            <div class="text-center mt-5">
-                                                <button type="submit" class="btn btn-success px-5 py-2">
-                                                    Save Information
-                                                </button>
-                                            </div>
-                                            
-
-                                        </form>
-                                </div>
                             </div>
                         </div>
                     </div>
