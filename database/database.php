@@ -49,7 +49,26 @@
 
             return null;
         }
+        public function getjoinData($tableone, $tabletwo, $fieldone=' * ', $condition=''){
+            $sql = "SELECT DISTINCT $fieldone FROM $tableone INNER JOIN $tabletwo ";
+            
+            if($condition != '' ){
+                $sql .= $condition;//SELECT DISTINCT A.id FROM tableone AS A INNER JOIN tabletwo AS B ON A.id = B.A_id;
+            }
 
+            $result = $this->connect()->query($sql);
+            
+            if($result->num_rows > 0){
+                $infodata = array();
+                while($row = $result->fetch_object()){
+                    $infodata[] = $row;
+                }
+                
+                return $infodata;
+            }    
+
+            return null;
+        }
         public function getSingleData($table, $field=' * ', $condition=''){
             $sql = "SELECT $field FROM $table";
             

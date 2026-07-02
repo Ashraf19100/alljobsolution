@@ -373,14 +373,31 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }   
-    case 'examCenterManage':
+    case 'exmCirculars':
         if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
-        require_once 'view/admin/Admit_exam_manage/examCenters.php';
+        require_once 'view/admin/Admit_exam_manage/setedExmCirculars.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
-        }     
+        } 
+            
+     case 'PostsExm':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'view/admin/Admit_exam_manage/availablePosts.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        } 
+    case 'setExmCenter':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'view/admin/Admit_exam_manage/setExmCenter.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
     case 'logout':
         require_once 'actions/logoutController.php';
         break;
