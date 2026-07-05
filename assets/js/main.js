@@ -128,7 +128,7 @@ function createPagination(tableID, paginationID , limit) {
 function paginationWithRowlimit(tableID, totalrow, paginationID, nxtbtn, prevbtn ){
     
     const rowLimit = document.getElementById(totalrow);
-    let limit = 20;
+    let limit = 15;
     let currentPage = 1;
     
     tabletotalrow(tableID, currentPage, limit);

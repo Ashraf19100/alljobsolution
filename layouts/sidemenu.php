@@ -80,6 +80,15 @@ require_once 'database/database.php';
                             </div>
                             
                         </li>
+                        <li class="nav-item "><a class="nav-link text-muted d-flex justify-content-between align-items-center"  data-bs-toggle="collapse" href="#CenterManage">Centers<i class="fa fa-angle-down"></i></a>
+                            <div class="collapse" id="CenterManage">
+                                <ul class="nav  flex-column" >
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=centers">Center List</a></li>
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=rooms">Set Center Rooms</a></li>
+                                </ul>
+                            </div>
+                            
+                        </li>
                         <li><a class="nav-link text-muted" href="index.php?page=companyList">Comapnies</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=applications">Applications</a></li>
                         <li><a class="nav-link text-muted" href="index.php?page=jobcategory">Job Category</a></li>

@@ -7,7 +7,7 @@
     $all_degrees = $exam_degree->getData('bachelor_degrees',' * ');
     
     
-    
+   
 
 ?>
 <!doctype html>

@@ -84,7 +84,32 @@
             return null;
  
         }
+        public function getobjectData($table, $field=' * ', $condition='',$limit= null, $offset=null){
+            $sql = "SELECT $field FROM $table";
+            
+            if($condition != '' ){
+                $sql .= $condition;
+            }
+            if($limit !== null){
+                $sql .= " LIMIT " . intval($limit);
+                
+                if($offset !== null){
+                    $sql .= " OFFSET " . intval($offset);
+                }
+            }
+            $result = $this->connect()->query($sql);
+            
+            if($result->num_rows > 0){
+                $infodata = array();
+                while($row = $result->fetch_object()){
+                    $infodata[] = $row;
+                }
+                
+                return $infodata;
+            }    
 
+            return null;
+        }
         public function insertData($table , $column){
             if($column != ''){
                 foreach($column as $key => $val){
