@@ -406,9 +406,25 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'addcenter':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'actions/admin/centers-venue/centerController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
     case 'rooms':
         if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/add_and_manage_centers/center_rooms.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'setRooms':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'actions/admin/centers-venue/centersroomController.php';
         break;
         }else{
             header("Location: ../alljobsolution/index.php?page=&message=''");

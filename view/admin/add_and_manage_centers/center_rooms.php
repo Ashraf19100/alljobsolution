@@ -120,24 +120,22 @@
                                         </thead>
 
                                         <tbody>
-                                        <?php $sl=1; foreach($center_rooms as $center_room){ 
+                                        <?php if(isset($center_rooms)){foreach($center_rooms as $center_room){ 
                                             $centers = $rooms->getSingleData('exam_centers', '*', ' Where id='.$center_room->center_id);
                                             ?> 
                                             <tr>
-                                                <td>
-                                                    
-                                                    <?= $centers->center_name?></td>
+                                                <td> <?= $centers->center_name?></td>
                                                 
-                                                <td><?= $center_room->room_name?></td>
+                                                <td><?= substr($center_room->room_name,0,30)?>............</td>
                                                 <td><?= $center_room->capacity?></td>
                                                 
                                                 <td>
                                                     <a href="" class="btn btn-sm btn-info mb-1">Set Rooms</a>
-                                                    <a href="index.php?page=addexam&delete=<?= $center_room->id?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')"  class="btn btn-sm btn-danger mb-1">Delete</a>
+                                                    <a href="index.php?page=setRooms&delete=<?= $center_room->id?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')"  class="btn btn-sm btn-danger mb-1">Delete</a>
                                                 </td>
                                                 
                                             </tr>
-                                        <?php $sl++; } ?>
+                                        <?php } } ?>
                                             
 
                                         </tbody>
@@ -157,11 +155,11 @@
                                 <div class="bg-primary text-center text-light">
                                     <h3>Add New </h3>
                                 </div>
-                                <form action="index.php?page=addexam" method="POST" enctype="multipart/form-data">
+                                <form action="index.php?page=setRooms" method="POST" enctype="multipart/form-data">
                                     <div class="row p-3">
                                         <div class="col-md-6 mt-1">
-                                            <label for="center_name " class="form-label fw-bold">Center Name</label>
-                                            <Select class="form-control" name="center_name" required>
+                                            <label for="center_id " class="form-label fw-bold">Center Name</label>
+                                            <Select class="form-control" name="center_id" required>
                                                 <option value="">----choose center------</option>
                                                 <?php  
                                                     $venues=$rooms->getobjectData('exam_centers', '*');
@@ -176,6 +174,11 @@
                                         <div class="col-md-6 mt-1">
                                             <label for="capacity" class="form-label fw-bold">Total Student Capecity</label>
                                             <input type="number" class="form-control" name="capacity" required>
+                                        </div>
+
+                                        <div class="col-md-12 mt-1">
+                                            <label for="room_name" class="form-label fw-bold">Enter Rooms</label>
+                                            <textarea  class="form-control" name="room_name" placeholder="write list of rooms,: 101,102,103,....." ></textarea>
                                         </div>
                                     </div>
                                     <div class="row">

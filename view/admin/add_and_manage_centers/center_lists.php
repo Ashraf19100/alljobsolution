@@ -132,7 +132,7 @@
                                                 
                                                 <td>
                                                     <a href="" class="btn btn-sm btn-info mb-1">Set Rooms</a>
-                                                    <a href="index.php?page=addexam&delete=<?= $exam_center->id?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')"  class="btn btn-sm btn-danger mb-1">Delete</a>
+                                                    <a href="index.php?page=addcenter&delete=<?= $exam_center->id?>&<?=uniqid()?>&<?=uniqid()?>" onclick="return confirm('Are you sure you want to delete this data?')"  class="btn btn-sm btn-danger mb-1">Delete</a>
                                                 </td>
                                                 
                                             </tr>
@@ -156,7 +156,7 @@
                                     <div class="bg-primary text-center text-light">
                                         <h3>Add New Center</h3>
                                     </div>
-                                    <form action="index.php?page=addexam" method="POST" enctype="multipart/form-data">
+                                    <form action="index.php?page=addcenter" method="POST" enctype="multipart/form-data">
                                         <div class="row p-3">
                                             <div class="col-md-6 mt-1">
                                                 <label for="center_name " class="form-label fw-bold">Center Name</label>
