@@ -398,6 +398,22 @@ switch ($page) {
             header("Location: ../alljobsolution/index.php?page=&message=''");
             exit;
         }
+    case 'assigned_exam_vanue':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'actions/admin/admit_examController/setVenueController.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }
+    case 'setCentersRooms':
+        if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
+        require_once 'view/admin/Admit_exam_manage/setCentersRoom.php';
+        break;
+        }else{
+            header("Location: ../alljobsolution/index.php?page=&message=''");
+            exit;
+        }//
     case 'centers':
         if(isset($_SESSION['email']) && $_SESSION['role']!='job_seeker'){
         require_once 'view/admin/add_and_manage_centers/center_lists.php';

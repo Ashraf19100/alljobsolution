@@ -1,14 +1,14 @@
 <?php
     require_once 'database/database.php';
 
-    $createExm = new datamodel();
+    $set_examCenter = new datamodel();
     $today = new DateTime();
     $circular_id = $_GET['circular'];
-    $circular_ref = $_GET['ref'];
-    $circular_jobs = $createExm->getData('jobs', ' * ', ' WHERE circular_id='.$circular_id );
-
-
-
+    $ref = $_GET['ref'];
+    $exam_id = $_GET['exam'];
+    $all_centers = $set_examCenter->getobjectData('exam_centers', ' * ', ' WHERE status=1');
+    $exams_posts = $set_examCenter->getSingleData('exams', ' * ', ' WHERE id='.$exam_id);
+    
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -26,7 +26,7 @@
                 </section>
                 <section> 
                         <div class="container mt-4">
-                            <form method="POST" action="index.php?page=setexam" class="container mt-4">
+                            <form method="POST" action="index.php?page=assigned_exam_vanue&circular=<?=$circular_id?>&ref=<?=$ref?>" class="container mt-4">
 
                                 <div class="card shadow">
                                     <div class="card-header bg-dark text-white">
@@ -38,49 +38,33 @@
                                         <div class="row g-3">
 
                                             <!-- Post Info -->
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label class="form-label">Circular Reference</label>
-                                                <input type="text"  class="form-control" value="<?=$circular_ref ?>" readonly>
-                                                <input type="hidden" name="circular_id" value="<?=$circular_id?>">
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label class="form-label">Post Name</label>
-                                                <select name="exam_posts_title" id="" class="form-control">
-                                                    <option value="">-----select-----</option>
-                                                    <?php foreach($circular_jobs as $job){?> 
-                                                    <option value="<?= $job['title'] ?>"><?= $job['title'] ?></option>
-                                                    
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">Exam Type</label>
-                                                <select name="exam_type" id="" class="form-control">
-                                                    <option value="">-----select-----</option>
-                                                    <option value="MCQ">MCQ</option>
-                                                    <option value="Written">Written</option>
-                                                    <option value="Practical">Practical</option>
-                                                    <option value="Viva">Viva</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label fw-bold">Exam Date</label>
-                                                <input type="date" name="exam_date" class="form-control" placeholder="e.g. 25000" required>
+                                                <input type="text" name="" class="form-control" id="searchDatainput" placeholder="Search Center">
+                                                <div  style="max-height:220px; overflow-y:auto;">
+                                                    <?php foreach($all_centers as $center){ ?>
+                                                    <div class="form-check searchcard">
+                                                        <input type="checkbox" name="center_ids[]" class="form-check-input" value="<?= $center->id ?>" id="skill1">
+                                                        <label class="form-check-label" for="skill1"><?= $center->center_name ?></label>
+                                                        
+                                                    </div>
+                                                    <?php }   ?>
+                                                </div>
                                                 
                                             </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label fw-bold">Start time</label>
-                                                <input type="time" name="start_time" class="form-control" placeholder="e.g. 25000" required>    
+                                            <div class="col-md-6">
+                                                <div class="col-md-12">
+                                                    <label class="form-label">Post Name</label>
+                                                    <input type="hidden" name="exam_id" value="<?=$exam_id?>" >
+                                                    <input type="text" class="form-control" value="<?=$exams_posts->exam_posts_title?>" readonly>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="form-label">Exam Date</label>
+                                                    <input type="hidden" name="exam_date" value="<?=$exams_posts->exam_date?>" >
+                                                    <input type="text" class="form-control" value="<?=$exams_posts->exam_date?>" readonly>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label fw-bold">End Time</label>
-                                                <input type="time" name="end_time" class="form-control" placeholder="e.g. 25000" required>    
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="form-label fw-bold">End Time</label>
-                                                <textarea name="instructions" id="" class="form-control"></textarea>   
-                                            </div>
+                                            
 
                                         
 

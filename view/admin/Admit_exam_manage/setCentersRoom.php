@@ -1,15 +1,11 @@
 <?php
-    require_once 'database/database.php';
-
-    $availableposts = new datamodel();
-    $today = new DateTime();
-    $circular_id = $_GET['circular'];
-    $circular_ref = $_GET['ref'];
-    $examPosts = $availableposts->getData('exams', ' * ', ' WHERE circular_id='.$circular_id );
+   require_once 'database/database.php';
+    
+    
+   
+    
 
 ?>
-
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -116,38 +112,40 @@
                                 <table class="table searchtableData table-bordered table-hover align-middle text-center" id="DataTable">
                                     <thead >
                                         <tr>
-                                            <th>Exam Posts</th>
-                                            <th>Exam Type</th>
-                                            <th>Exam Date</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Duration</th>
-                                            
-                                            <th >Actions</th>
+                                        <th>Company</th>
+                                        <th>Circular no (reference)</th>
+                                        <th>status</th>
+                                        
+                                        <th>publish date</th>
+                                        <th >expected Activation Date</th>
+                                        <th>Deadline/last Date</th>
+                                        <th >Actions</th>
                                         </tr>
                                     </thead>
                                 <tbody>
 
                                 
                                 <?php
-                                if(isset($examPosts )){ foreach($examPosts  as $examPosts ){
+                                if(isset($jobCirculars )){ foreach($jobCirculars  as $jobCirculars ){
                                 ?>
                                 <tr>
-                                    <td><?=$examPosts ['exam_posts_title']?></td>
-                                    <td><?=$examPosts ['exam_type']?></td>
+                                    <td><?php $circular_companie = $job_circulars->getSingleData('companies',' * ', ' WHERE id= '.$jobCirculars ['company_id']);
+                                    echo $circular_companie->company_name; ?></td>
+                                    <td><?=$jobCirculars ['circular_reference']?></td>
+                                    <td class="<?= $jobCirculars ['status'] == 'expired' ? 'text-danger' : '' ?>" ><?=$jobCirculars ['status']?></td>
                                     
-                                    
-                                    <td><?= date(" d F Y", strtotime($examPosts ['exam_date'])); ?></td>
-                                    <td><?= $examPosts ['start_time'] ? date("h:i:s A", strtotime($examPosts ['start_time'])): 'null' ?></td>
+                                    <td><?= date(" d F Y", strtotime($jobCirculars ['published_date'])); ?></td>
+                                    <td><?= $jobCirculars ['expected_activation_date'] ? date(" d F Y h:i:s A", strtotime($jobCirculars ['expected_activation_date'])): 'null' ?></td>
                                     <td>
-                                        <?= $examPosts ['end_time'] ? date(" h:i:s A", strtotime($examPosts ['end_time'])): 'null' ?>
+                                        <?= $jobCirculars ['apply_last_date'] ? date(" d F Y h:i:s A", strtotime($jobCirculars ['apply_last_date'])): 'null' ?>
                                     </td>
-                                    <td><?=$examPosts ['duration']?></td>
 
                                     <td>
+                                        <?php if(isset($jobCirculars ['circular_doc'])){ echo '<a href="uploads/circulars/'.$jobCirculars ['circular_doc'].'" target="_blank" class="mb-1 btn btn-primary btn-sm">
+                                            View PDF
+                                        </a>';}else{ echo "not uploaded";} ?>
                                         
-                                        <a href="index.php?page=setCentersRooms&circular=<?= $examPosts['circular_id']?>&<?=uniqid()?>&<?=uniqid()?>&exam=<?= $examPosts['id']?>&<?=uniqid()?>&<?=uniqid()?>&ref=<?=$circular_ref?>" class="btn btn-sm btn-success mb-1 text-uppercase">manage centers rooms</a>
-                                        <a href="index.php?page=setExmCenter&circular=<?= $examPosts['circular_id']?>&<?=uniqid()?>&<?=uniqid()?>&exam=<?= $examPosts['id']?>&<?=uniqid()?>&<?=uniqid()?>&ref=<?=$circular_ref?>" class="btn btn-sm btn-success mb-1 text-uppercase">set Exam Centers</a>
+                                        <a href="index.php?page=examCreate&circular=<?= $jobCirculars ['id']?>&<?=uniqid()?>&<?=uniqid()?>&ref=<?=$jobCirculars['circular_reference']?>" class="btn btn-sm btn-success mb-1">Create Exam</a>
                                         
                                     </td>
                                 </tr>

@@ -139,7 +139,7 @@
                                             View PDF
                                         </a>';}else{ echo "not uploaded";} ?>
                                         
-                                        <a href="index.php?page=PostsExm&circular=<?= $examCirculars->id?>&<?=uniqid()?>&<?=uniqid()?>&ref=<?=$examCirculars->circular_reference?>" class="btn btn-sm btn-success mb-1">Set Exam Centers</a>
+                                        <a href="index.php?page=PostsExm&circular=<?= $examCirculars->id?>&<?=uniqid()?>&<?=uniqid()?>&ref=<?=$examCirculars->circular_reference?>" class="btn btn-sm btn-success mb-1" >Set Exam Centers</a>
                                         
                                     </td>
                                 </tr>

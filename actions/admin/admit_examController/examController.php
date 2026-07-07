@@ -20,10 +20,6 @@
             header("Location: ../alljobsolution/index.php?page=examManage&message='successfully Added exam for the Post ".$_POST['exam_posts_title']);
             exit;
         }
-
-
-
-
     }
 
 

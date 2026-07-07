@@ -63,7 +63,7 @@ function searchTableData(tableclass,  value){
     if( document.getElementById('searchFilter')){
     const filter = document.getElementById('searchFilter');
         
-        filter.addEventListener('change', function () {
+        filter.addEventListener('input', function () {
             const value = filter.value.toLowerCase();
             searchTableData('searchtableData', value);
         });
@@ -187,7 +187,7 @@ if(document.getElementById('DataTable')){
         
     const searchinput = document.getElementById('searchDatainput');
         
-        searchinput.addEventListener('change', function () {
+        searchinput.addEventListener('input', function () {
             const value = searchinput.value.trim().toLowerCase();
             searchData('searchcard', value);
         });
