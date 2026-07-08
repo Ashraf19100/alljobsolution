@@ -72,8 +72,7 @@ require_once 'database/database.php';
                             <div class="collapse" id="ExamManage">
                                 <ul class="nav  flex-column" >
                                     <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=examManage">Create Exam</a></li>
-                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=exmCirculars">Assigned Venue</a></li>
-                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?">Set center rooms building</a></li>
+                                    <li class="ps-3"><a class="nav-link text-muted" href="index.php?page=exmCirculars">Assigned Venue & rooms</a></li>
                                     <li class="ps-3"><a class="nav-link text-muted" href="index.php?">Admit Card</a></li>
 
                                 </ul>

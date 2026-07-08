@@ -1,9 +1,21 @@
 <?php
-   require_once 'database/database.php';
+    require_once 'database/database.php';
+
+    $setCenterRoom = new datamodel();
+    
+    $exm_id = $_GET['exam'];
+    $ref = $_GET['ref'];
+    $circular_id = $_GET['circular'];
+
+    $assigned_venue_list = $setCenterRoom->getSingleData('set_exam_venue', '*' , ' WHERE status = 1 and exam_id='.$exm_id);
+    $venue_lists = $setCenterRoom->getobjectData('exam_centers', '*' , ' WHERE id IN('.$assigned_venue_list->center_ids.')');
     
     
-   
+
+
     
+
+   die;
 
 ?>
 <!doctype html>
@@ -67,7 +79,7 @@
                     </div>
 
                     <p>
-                        🌐 <a href="https://www.teletalk.com" target="_blank">
+                         <a href="https://www.teletalk.com" target="_blank">
                             www.teletalk.com
                         </a>
                     </p>
